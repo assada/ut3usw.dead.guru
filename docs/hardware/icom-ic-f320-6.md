@@ -4,10 +4,10 @@ description: Прошивка рації Icom IC-F320 та Icom IC-F310 на Win
 ---
 
 :::warning
-Читайте нову, розширену версію цієї статті тут: #hw/icom-ic-f300-reverse.md
+Читайте нову, розширену версію цієї статті тут: [hardware/icom-ic-f300-reverse.md](/docs/hardware/icom-ic-f300-reverse)
 :::
 
-![Не вистачає потужності блока живлення](https://assada.dead.guru/storage/images/1691399195_image.png)
+![Не вистачає потужності блока живлення](./img/1691399195_image.png)
 
 ## Корисні файли для прошивки
 
@@ -19,7 +19,7 @@ description: Прошивка рації Icom IC-F320 та Icom IC-F310 на Win
 
 Для прошивки вам знадобиться USB TTL(я використовую Pl2303) перехідник чи Flipper Zero. Також вам потрібен буде восьмижильний Ethernet кабель з роз'ємом RJ-45. Я використовував стандартну для RJ-45 розпіновку - **T-568B**.
 
-![T-568B](https://assada.dead.guru/storage/images/1691350719_image.png)
+![T-568B](./img/1691350719_image.png)
 
 Розпіновка для рації (відносно **номеру** жили в коннекторі зі схеми вище) виглядає так:
 
@@ -52,6 +52,6 @@ description: Прошивка рації Icom IC-F320 та Icom IC-F310 на Win
 
 На linux в мене не вайшло зовсім. На Virtualbox з втановленним Windows XPx86 в мене вийшло лише з Pl2303. А от на Windows 11 вийшло і з Pl2303 і з Flipper Zero.
 
-![Flipper Zero USB UART](https://assada.dead.guru/storage/images/1691399255_image.png)
+![Flipper Zero USB UART](./img/1691399255_image.png)
 
 З питань пишіть в IRC `#dead@irc.dead.guru`

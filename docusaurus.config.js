@@ -7,8 +7,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'UT3USW',
-  tagline: 'персональні нотатки радіогубителя',
-  favicon: 'img/favicon.ico',
+  tagline: 'Персональні нотатки радіогубителя',
+  favicon: 'img/favicon.svg',
 
   // Set the production url of your site here
   url: 'https://ut3usw.dead.guru',
@@ -18,8 +18,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'dead-guru', // Usually your GitHub org/user name.
-  projectName: 'ut3usw', // Usually your repo name.
+  organizationName: 'assada', // Usually your GitHub org/user name.
+  projectName: 'ut3usw.dead.guru', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -46,14 +46,24 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/assada/ut3usw.dead.guru/edit/master/',
+        },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+          ignorePatterns: ['/tags/**'],
+          filename: 'sitemap.xml',
+        },
+        gtag: {
+          trackingID: 'G-BB6G190X63',
+          anonymizeIP: true,
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/assada/ut3usw.dead.guru/edit/master/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -66,7 +76,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/docusaurus-social-card.png',
       imageZoom: {
         // CSS selector to apply the plugin to, defaults to '.markdown img'
         selector: '.markdown img',
@@ -83,6 +93,7 @@ const config = {
         logo: {
           alt: 'UT3USW Логотип',
           src: 'img/logo.svg',
+          srcDark: "img/logo-white.svg",
         },
         items: [
           {
@@ -93,7 +104,7 @@ const config = {
           },
           {to: '/blog', label: 'Блог', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/assada/ut3usw.dead.guru',
             label: 'GitHub',
             position: 'right',
           },
@@ -103,33 +114,33 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Корисні сервіси',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'APRS Мапа',
+                href: 'https://aprs.dead.guru',
               },
             ],
           },
           {
-            title: 'Посилання',
+            title: 'Контакти',
             items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                href: 'https://twitter.com/speed_shit',
+              },
+              {
+                label: 'IRC',
+                href: 'https://irc.dead.guru',
+              },
+              {
+                label: 'Telegram',
+                href: 'https://t.me/figushki',
               },
             ],
           },
           {
-            title: 'More',
+            title: 'Більше',
             items: [
               {
                 label: 'Blog',
@@ -137,12 +148,12 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/assada',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} UT3USW. Built with Docusaurus.`,
+        copyright: `Щось-там © ${new Date().getFullYear()} UT3USW. Це частина dead.guru.`,
       },
       prism: {
         theme: lightCodeTheme,

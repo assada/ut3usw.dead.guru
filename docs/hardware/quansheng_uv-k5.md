@@ -5,19 +5,19 @@ description: Quansheng UV-K5 кастомні прошивки і загальн
 
 # Quansheng UV-K5
 
-![Quansheng UV-K5](https://assada.dead.guru/storage/images/d_s_c00782._j_p_g)
+![Quansheng UV-K5](./img/d_s_c00782._j_p_g)
 
 ## Загальна інформація
 
-![Плата рації](https://assada.dead.guru/storage/images/q_s__u_v__k5_export.jpg)
+![Плата рації](./img/q_s__u_v__k5_export.jpg)
 
 Продається також під брендом Anysecu.
 
 Рація побудована навколо BK4819. Тому працює загалом як баофенг та інші схожі дешеві рації. Якість відповідна.
 
-![UV-K5 Таблиця потужності на передачу TX](https://assada.dead.guru/storage/images/photo_2023-06-26_04-23-42.jpg)
+![UV-K5 Таблиця потужності на передачу TX](./img/photo_2023-06-26_04-23-42.jpg)
 
-![UV-K5 мінімальний сигнал RX, який можна виявити](https://assada.dead.guru/storage/images/photo_2023-07-05_16-10-34.jpg)
+![UV-K5 мінімальний сигнал RX, який можна виявити](./img/photo_2023-07-05_16-10-34.jpg)
 
 Важко сказати що це хороша рація. Скоріше це щось накшталт DEV board для BK4819, або інструмент для експериментів з радіо. Цікава заміна для Baofeng UV-5R, але не більше.
 
@@ -27,4 +27,4 @@ description: Quansheng UV-K5 кастомні прошивки і загальн
 
 ## Інші модифікації
 
-![Заміна конденцаторів може підвищити якість звуку в рації](https://assada.dead.guru/storage/images/photo_2023-07-03_09-17-53.jpg)
+![Заміна конденцаторів може підвищити якість звуку в рації](./img/photo_2023-07-03_09-17-53.jpg)

@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  utusw_web:
+    image: joseluisq/static-web-server:2
+    restart: always
+    environment:
+      - SERVER_PORT=8885
+      - SERVER_ROOT=/public
+    volumes:
+      - ./build:/public
+    networks:
+      - caddy
+    labels:
+      caddy: ut3usw.dead.guru
+      caddy.reverse_proxy: "{{upstreams 8885}}"
+      caddy.tls: "assada.ua@gmail.com"
+networks:
+  caddy:
+    name: dead-services
+    external: true

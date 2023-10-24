@@ -53,7 +53,7 @@ grgsm_scanner --band=GSM900  --gain=40 --args=hackrf=0
 
 ```
 
-![Ваші базові станції поряд](https://i.imgur.com/sUp1gRR.jpeg)
+![Ваші базові станції поряд](./img/sUp1gRR.png)
 
 Коди операторів (mnc) можна подививтись тут: https://mcc-mnc.com/
 
@@ -71,7 +71,7 @@ grgsm_livemon_headless --fc 949.8M --gain 40 --args hackrf=0
 
 Тепер можна запускати **Wireshark** з фільтром: `wireshark -k -Y '!icmp && gsmtap' -i lo &`
 
-![Wireshark і GSM пакети перехоплені з lo інтерфейсу по udp порту 4729](https://i.imgur.com/qCdGTpd.png)
+![Wireshark і GSM пакети перехоплені з lo інтерфейсу по udp порту 4729](./img/qCdGTpd.png)
 
 Тепер можете шукати пакет `e212.imsi` і там все буде. 
 

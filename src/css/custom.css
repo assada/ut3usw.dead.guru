@@ -32,9 +32,21 @@
 }
 
 .footer {
-  background-color: var(--ifm-footer-background-color);
+  background-color: var(--ifm-footer-background-color) !important;
+}
+
+.meshtastic-sidebar > a {
+  color: #469b66 !important;
+}
+
+.meshtastic-sidebar > a::before {
+  padding-right: 0.5rem;
+  content: url(/img/meshtastic_18.png);
 }
 
 .markdown img {
+  display: block;
   width: 60%;
+  margin-left: auto;
+  margin-right: auto;
 }

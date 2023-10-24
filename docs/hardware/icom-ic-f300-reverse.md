@@ -5,7 +5,7 @@ description: Розбір прошивок для рацій серії Icom IC-
 
 # Icom IC F300 reverse engineering project
 
-![Не вистачає потужності блока живлення](https://assada.dead.guru/storage/images/1691399195_image.png)
+![Не вистачає потужності блока живлення](./img/1691399195_image.png)
 
 ## Мотивація
 Програмне забезпечення Icom CS для ряду моделі IC-F300 родом з 1997 року, працює лише під DOS і не корисніше, ніж xxb. Група ентузіастів отримала в своє розпорядження два Icom IC-F320-6 після таксопарку в невідомому стані.
@@ -24,7 +24,7 @@ description: Розбір прошивок для рацій серії Icom IC-
 
 **Схема розпіновки RJ45 роз'єму трансмітера:**
 
-![T-568B](https://assada.dead.guru/storage/images/1691350719_image.png)
+![T-568B](./img/1691350719_image.png)
 
 1. 8V
 2. CLONE
@@ -35,7 +35,7 @@ description: Розбір прошивок для рацій серії Icom IC-
 7. GND
 8. HANGER
 
-![Схема розпіновки RJ45 роз'єму трансмітера](https://assada.dead.guru/storage/images/1691750228_image.png)
+![Схема розпіновки RJ45 роз'єму трансмітера](./img/1691750228_image.png)
 
 :::info
 В якості USB TTL/UART можна використати Flipper Zero.
@@ -87,11 +87,11 @@ ICCF300.EXE
 Автозапуск не обов'язковий, але дуже зручний.
 
 ## Повна схема рації
-![З офіційного сервіс мануалу](https://assada.dead.guru/storage/images/1691751379_icom_icf320_schema.png)
+![З офіційного сервіс мануалу](./img/1691751379_icom_icf320_schema.png)
 
 ## Приклади прошивок
 
-![Прошивка з першим каналом з частотою RX\TX 144.800Mhz в першому каналі і High Power](https://assada.dead.guru/storage/images/1691752037_image.png)
+![Прошивка з першим каналом з частотою RX\TX 144.800Mhz в першому каналі і High Power](./img/1691752037_image.png)
 
 * Абсолютно пуста прошивка: [EMPTY.ICF](https://assada.dead.guru/storage/secret_files/EMPTY_2023_08_11_12_23_23.ICF)
 * Прошивка з першим каналом RX\TX 144.800MHz в 1 каналі і High Power: [144800_0.ICF](https://assada.dead.guru/storage/secret_files/144800_0_2023_08_11_12_19_45.ICF)

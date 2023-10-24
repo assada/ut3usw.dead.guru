@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # RC General
 
-![ELRS vs TBS](https://i.imgur.com/2b9lWO2.png)
+![ELRS vs TBS](./img/2b9lWO2.png)
 
 Загальні відомості про те як працюють сучасні радіокеровані штуки.
 

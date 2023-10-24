@@ -1,0 +1,46 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.HAM": {
+    "message": "HAM",
+    "description": "The label for category HAM in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.HAM.link.generated-index.description": {
+    "message": "Документи що пов'язані з радіоматорською діяльністю",
+    "description": "The generated-index page description for category HAM in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.GSM": {
+    "message": "GSM",
+    "description": "The label for category GSM in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.GSM.link.generated-index.description": {
+    "message": "Робота з мережами GSM",
+    "description": "The generated-index page description for category GSM in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Hardware": {
+    "message": "Hardware",
+    "description": "The label for category Hardware in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Hardware.link.generated-index.description": {
+    "message": "Записи що стосуються апаратного забезпечення",
+    "description": "The generated-index page description for category Hardware in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Radio Control": {
+    "message": "Radio Control",
+    "description": "The label for category Radio Control in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Radio Control.link.generated-index.description": {
+    "message": "Нотатки про радіокерувані моделі і всеп що з ними пов'язано",
+    "description": "The generated-index page description for category Radio Control in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Моделі": {
+    "message": "Моделі",
+    "description": "The label for category Моделі in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Моделі.link.generated-index.description": {
+    "message": "Приклади реалізованих радіоелектронних моделей",
+    "description": "The generated-index page description for category Моделі in sidebar tutorialSidebar"
+  }
+}
