@@ -1,6 +1,7 @@
 {
   "label": "Radio Control",
   "position": 4,
+  "collapsed": false,
   "link": {
     "type": "generated-index",
     "description": "Нотатки про радіокерувані моделі і всеп що з ними пов'язано"

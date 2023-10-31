@@ -5,7 +5,7 @@ description: Quansheng UV-K5 кастомні прошивки і загальн
 
 # Quansheng UV-K5
 
-![Quansheng UV-K5](./img/d_s_c00782._j_p_g)
+![Quansheng UV-K5](./img/d_s_c00782.jpg)
 
 ## Загальна інформація
 

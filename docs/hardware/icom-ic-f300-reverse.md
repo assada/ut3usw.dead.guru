@@ -50,7 +50,7 @@ description: Розбір прошивок для рацій серії Icom IC-
 
 Для моніторингу(сніфінгу) протоколу оригінального прошивальщика і рації був використаний проект [com0com](https://sourceforge.net/projects/com0com/) і [hub4com](https://sourceforge.net/projects/com0com/files/hub4com/).
 
-```bat
+```powershell
 REM use hub4com-2.1.0.0-386
 REM com0com setup:
 REM

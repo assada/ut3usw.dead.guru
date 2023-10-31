@@ -37,11 +37,31 @@
 
 .meshtastic-sidebar > a {
   color: #469b66 !important;
+  font-weight: bold;
+}
+
+.pistar-sidebar > a {
+  color: #c52828 !important;
+}
+
+.pistar-sidebar > a::before {
+  background-image: url(/img/pistar.png);
+  background-size: 18px;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+  content:"";
 }
 
 .meshtastic-sidebar > a::before {
-  padding-right: 0.5rem;
-  content: url(/img/meshtastic_18.png);
+  background-image: url(/img/meshtastic_18.png);
+  background-size: 18px;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+  content:"";
 }
 
 .markdown img {
@@ -49,4 +69,12 @@
   width: 60%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.medium-zoom-overlay {
+  z-index: 200 !important;
+}
+
+.medium-zoom-image--opened {
+  z-index: 201 !important;
 }

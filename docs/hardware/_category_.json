@@ -1,6 +1,7 @@
 {
   "label": "Hardware",
   "position": 3,
+  "collapsed": false,
   "link": {
     "type": "generated-index",
     "description": "Записи що стосуються апаратного забезпечення"

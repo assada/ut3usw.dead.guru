@@ -272,16 +272,15 @@ meshtastic --set-owner 'your node name' --set-owner-short  'NODE' --set lora.reg
 **Приклад для T-Beam:**
 
 Файл `/firmware/variants/tbeam/platformio.ini`
-```ini{8}
+```ini
 ; The 1.0 release of the TBEAM board 
 [env:tbeam]
 extends = esp32_base
 board = ttgo-t-beam
 lib_deps =
   ${esp32_base.lib_deps}
-build_flags = 
-  ${esp32_base.build_flags} -D TBEAM_V10  -I variants/tbeam -D OLED_UA
-  -DGPS_POWER_TOGGLE ; comment this line to disable double press function on the user button to turn off gps entirely.
+// highlight-next-line
+build_flags = ${esp32_base.build_flags} -D TBEAM_V10  -I variants/tbeam -D OLED_UA -DGPS_POWER_TOGGLE ; comment this line to disable double press function on the user button to turn off gps entirely.
 upload_speed = 921600
 ```
 
@@ -302,7 +301,7 @@ EInk дисплей t-echo за замовчуванням використов�
 
 **Приклад:**
 
-```ini{8}
+```ini
 ; First prototype eink/nrf52840/sx1262 device
 [env:t-echo]
 extends = nrf52840_base
@@ -310,8 +309,8 @@ board = t-echo
 debug_tool = jlink
 
 # add -DCFG_SYSVIEW if you want to use the Segger systemview tool for OS profiling.
-build_flags = ${nrf52840_base.build_flags} -D OLED_UA -Ivariants/t-echo
-  -L "${platformio.libdeps_dir}/${this.__env__}/BSEC2 Software Library/src/cortex-m4/fpv4-sp-d16-hard"
+// highlight-next-line
+build_flags = ${nrf52840_base.build_flags} -D OLED_UA -Ivariants/t-echo -L "${platformio.libdeps_dir}/${this.__env__}/BSEC2 Software Library/src/cortex-m4/fpv4-sp-d16-hard"
 build_src_filter = ${nrf52_base.build_src_filter} +<../variants/t-echo>
 lib_deps = 
   ${nrf52840_base.lib_deps}

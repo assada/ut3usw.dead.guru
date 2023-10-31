@@ -28,7 +28,9 @@ embedded.
 
 Реокмендований офіційним сайтом спосіб встановлення platformio
 
-``` {#станом на <2023-07-22 Sat 00:43> це офіційні рекомендації команди platformio по встановленню існтурментарію .bash org-language="sh" eval="never"}
+```bash
+#станом на <2023-07-22 Sat 00:43> це офіційні рекомендації команди platformio по встановленню існтурментарію
+
 wget https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py -O get-platformio.py
 python3 get-platformio.py
 
@@ -41,7 +43,8 @@ sudo ln -s ~/.platformio/penv/bin/pio  /usr/local/bin/pio
 Крім того я використовував деякі скрипти з директорії
 `firmware/bin`, але про це згодом.
 
-``` {#отримання вихідного коду meshtastic .bash org-language="sh" eval="never"}
+```bash
+#отримання вихідного коду meshtastic
 git clone https://github.com/meshtastic/firmware.git && cd meshtastic && git submodule update --init
 ```
 
@@ -56,7 +59,8 @@ git clone https://github.com/meshtastic/firmware.git && cd meshtastic && git sub
 `platformio.ini` я знайшов два способи запустити збірку
 проєкту:
 
-``` {#збірка з указанням оточення (environment) .bash org-language="sh" eval="never"}
+```bash
+#збірка з указанням оточення (environment)
 pio run -e tbeam
 ```
 
@@ -64,7 +68,7 @@ pio run -e tbeam
 своє оточення і закоментувавши решту. У мене плата Lilygo Tbeam, тому у
 моєму конфізі буде щось таке:
 
-``` example
+```ini
 [platformio]
 default_envs = tbeam
 ```
@@ -76,7 +80,8 @@ default_envs = tbeam
 `firmware.bin`. `pio` поклав їх в піддиректорію
 проєкту: `.pio/build/tbeam/firmware.bin`
 
-``` {#meshtastic build + flash, .bash org-language="sh" eval="never"}
+```bash
+#meshtastic build + flash
 pio run -t upload
 ```
 
@@ -93,6 +98,7 @@ pio run -t upload
 кофігурації присторю я побачив українську мову на дисплеї і зміг
 виставити рівень 14dBm, а не дефолтні 12.
 
-``` {#Альтернативний спосіб прошивки .bash org-language="sh" eval="never"}
+```bash
+#Альтернативний спосіб прошивки
 ./bin/device-install.sh -f ../.pio/build/tbeam/firmware.bin
 ```

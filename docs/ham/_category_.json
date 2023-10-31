@@ -1,6 +1,7 @@
 {
   "label": "HAM",
   "position": 3,
+  "collapsed": false,
   "link": {
     "type": "generated-index",
     "description": "Документи що пов'язані з радіоматорською діяльністю"
