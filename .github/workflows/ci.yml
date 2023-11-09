@@ -35,7 +35,7 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            cd /home/assada/ut3usw.dead.guru/ && rm -rf build && unzip release.zip && rm release.zip
+            cd /home/assada/ut3usw.dead.guru/ && rm -rf /home/assada/ut3usw.dead.guru/build && unzip release.zip && rm release.zip && docker compose restart
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
