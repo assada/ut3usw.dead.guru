@@ -36,6 +36,7 @@ export default function Home() {
       title={`Персоналні нотатки UT3USW. ut3usw.dead.guru`}
       description="Персональні нотатки про радіо, програмування та інженерію від однієї людини.">
       <HomepageHeader />
+        <iframe height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://irc.dead.guru/"></iframe>
     </Layout>
   );
 }
