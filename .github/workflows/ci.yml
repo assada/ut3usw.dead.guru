@@ -24,9 +24,18 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
           source: "release.zip"
-          target: /home/assada/test
-
+          target: /home/assada/ut3usw.dead.guru/
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /home/assada/ut3usw.dead.guru/ && rm -rf build && unzip release.zip && rm release.zip
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
