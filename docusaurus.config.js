@@ -58,7 +58,7 @@ const config = {
           filename: 'sitemap.xml',
         },
         gtag: {
-          trackingID: 'G-BB6G190X63',
+          trackingID: 'G-YT3JZ6ZGEP',
           anonymizeIP: true,
         },
         blog: {

@@ -1,0 +1,58 @@
+.heroMeshtastic {
+    color: #ffffff;
+    background-size: initial;
+    background-position: top center;
+    background-repeat: repeat;
+    background-image: linear-gradient(114deg,#3cd68c 25%,rgba(57,204,152,0) 100%),url(https://meshtastic.letstalkthis.com/wp-content/uploads/2020/07/gridx.jpg)!important;
+    padding: 4rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 996px) {
+    .heroMeshtastic {
+        padding: 2rem;
+    }
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+
+.underliner {
+    text-decoration: none;
+    border-bottom: 4px dashed #237951;
+    padding-bottom: 3px;
+}
+
+.buttonMesh {
+    background-color: #237951;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+.buttonMesh:hover {
+    background-color: #46f6a0;
+    color: #0d281c;
+}
+
+.meshRow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1200px;
+}
