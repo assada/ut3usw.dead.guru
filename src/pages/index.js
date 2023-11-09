@@ -12,7 +12,7 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero', styles.heroBanner)}>
       <div className="container">
-          <img src="/img/banner.gif" className="mx-auto" alt="" />
+          <img src="/img/animation_logo.gif" className="mx-auto" alt="Dead Guru!" />
         <Heading as="h1" className="hero__title">
             {siteConfig.title}
         </Heading>
