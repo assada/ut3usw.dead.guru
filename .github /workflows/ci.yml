@@ -18,7 +18,7 @@ jobs:
         run: npm run build
       - name: Create package
         run: zip -r release.zip build
-      - name: copy file via ssh password
+      - name: copy file via ssh
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
