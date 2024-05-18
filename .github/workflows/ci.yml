@@ -40,7 +40,7 @@ jobs:
       - name: IRC notification
         uses: Gottox/irc-message-action@v2
         with:
-          channel: '##dead'
+          channel: '#dead'
           nickname: GitHub
           server: 'irc.dead.guru'
           notice: true
