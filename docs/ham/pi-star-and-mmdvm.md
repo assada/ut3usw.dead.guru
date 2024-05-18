@@ -1,5 +1,5 @@
 ---
-Author: Assada
+Author: UT3USW
 Title: Що таке MMDVM та PI-Star?
 Description: Опис MMDVM та PI-Star
 sidebar_class_name: pistar-sidebar
@@ -27,6 +27,8 @@ DMR, D-STAR, YSF, P25 — радіоаматори дуже полюбляють
 
 З фізичної точки зору найдешевший хотспот (JumboSPOT) містить передавач ADF7021 з можливим діапазоном частот 80-940 МГц, STM32 та невелику антену. JumboSPOT встановлюється на Raspberry Pi Zero W. Це найбільш доступний варіант для використання в домашніх умовах. Також є купа різних більш дорогих і зручних варіантів, що мають вбудований GPS для APRS, LTE для доступу до Інтернету, а також вбудований дисплей.
 
+Існують як сімплексні так і дуплексні модеми. Для домашнього використання і швидкого старту достатньо придбати сімплексний модем і підключити його до Raspberry Pi Zero W. 
+
 ### Короткий юзкейс використання MMDVM:
 
 У вас є DMR (наприклад [hardware/anytone-d878uvII](/docs/hardware/anytone-d878uvII)) рація та у вашого друга з іншої країни є YSF рація. Ви хочете звязатися з ним. Що ви робите? 
@@ -48,6 +50,8 @@ DMR, D-STAR, YSF, P25 — радіоаматори дуже полюбляють
 * https://github.com/USA-RedDragon/DMRHub
 * https://github.com/w9zep/Crazy-Horse-DMR-Server
 * https://github.com/hp3icc/Easy-FreeDMR-Docker
+
+Дивись нижче список корисних посилань. 
 
 ## Що таке PI-Star?
 
@@ -104,9 +108,9 @@ reboot=99997
 
 **Pi-Star** доволі давно не оновлювався. Він працює. Працює майже без проблем (основна проблема це обчислювальна потужність Raspberry Pi Zero W). 
 
-Я **наполегливо** рекомендую хардфорк Pi-Star від W0CHP (W0CHP-PiStar-Dash (WPSD)) https://w0chp.net/w0chp-pistar-dash/ Він розвивається активно, має підтримку в діскорді, базовий дестрибутив оновлений до останньої версії LTS Raspbian, а також має декілька додаткових функцій.
+Я **наполегливо** рекомендую хардфорк Pi-Star від W0CHP (W0CHP-PiStar-Dash (WPSD)) https://w0chp.radio/wpsd/ Він розвивається активно, має підтримку в діскорді, базовий дестрибутив оновлений до останньої версії LTS Raspbian, а також має декілька додаткових функцій. А оригінальний Pi-Star вже давно не оновлювався і скоріше мертвий ніж живий. Хоча все ще працює.
 
-Також дуже рекомендую використовувати щось більш потужне ніж Raspberry Pi Zero W. Можливо варто подивитися в сторону Raspberry Pi 3B+ або Raspberry Pi 4. Але в основному повільність системи можна помітити під час її налаштування. Умовний read only режим працює нормально навіть на Raspberry Pi Zero W.
+Також рекомендую використовувати щось більш потужне ніж Raspberry Pi Zero W. Можливо варто подивитися в сторону Raspberry Pi 3B+ або Raspberry Pi 4. Але в основному повільність системи можна помітити під час її налаштування. Умовний read only режим працює нормально навіть на Raspberry Pi Zero W.
 
 ![Загальний вигляд робочого столу з відкритим Live Caller Display в W0CHP-PiStar-Dash (WPSD)](./img/INmGQq9.jpeg)
 
@@ -129,3 +133,43 @@ reboot=99997
 - NWDR's ThumbDV-3 device
 - DVMEGA AMBE3000 device
 - DVMEGA AMBE3003 device
+
+## Корисні посилання
+* [Випадкові зображення пов'язані з MMDVM репітерами](https://fs.dead.guru/radio/mmdvm/random_rep_images/) - чисто як архів. Може знайдете щось корисне для себе.
+
+### freeDMR
+* FreeDMR https://gitlab.hacknix.net/hacknix/FreeDMR/-/wikis/Installing-using-Docker-(recommended!)
+
+**Make sure this script will delete your exists Docker service!!!!**
+* Why use freeDMR https://www.freedmr.uk/index.php/why-use-freedmr/
+* Install without Docker https://github.com/hp3icc/Easy-FreeDMR-SERVER-Install
+
+### Xlxd for DMR/D-Star
+* DMR reflector/D-Star reflector in one https://github.com/bi7jta/XLX_CN
+* How to create an XLX_XRF D-Star Reflector https://n5amd.com/digital-radio-how-tos/create-xlx-xrf-d-star-reflector/
+
+### YSF/C4FM reflector
+* How to Creating a YSFReflector http://ks0lnk.net/?page_id=2968
+
+### P25 NXDN Ref Dashboard
+P25 NXDN Ref Dashboard https://github.com/bi7jta/MMDVM-Install_RPT_N4IRS/tree/master/P25/P25Reflector-Dashboard
+
+### HBLink Link build DMR server
+* Private BM: https://github.com/n0mjs710/hblink3
+* Video https://www.chrishoodblog.com/make-your-own-dmr-server/
+* DMR Master Server Pt1 Deploy new server https://www.youtube.com/watch?v=A6-a8DaKPCQ
+* DMR Master Server Pt2 Install packages HBlink https://www.youtube.com/watch?v=LsqdO0xRjoQ
+* DMR Master Server Pt3 Configure HBlink https://www.youtube.com/watch?v=oXRCW-5JMws
+* Docker CE https://yeasy.gitbooks.io/docker_practice/install/raspberry-pi.html
+
+### DVSwitch + USRP
+DVSwitch_install http://dvswitch.org/DVSwitch_install.pdf
+
+### USRP_Tetra_Bridge
+* https://github.com/dg1yiq/USRP_Tetra_Bridge
+
+### AMBE Digital Voice Transcoding Server
+* How to build a Digital Voice Transcoding Server with AMBE https://n5amd.com/digital-radio-how-tos/build-digital-voice-transcoding-server/?fbclid=IwAR2KoV7n7jHE8olO1c0Jv6xKRCS4UXOZSF3kH7tks8vfiKUjRRL1NtQuQc4
+
+### mmdvm svxlink
+* mmdvm_svxlink-1.pdf https://www.do0tpb.de/app/download/20307140/mmdvm_svxlink-1.pdf ([Дзеркало1](https://fs.dead.guru/radio/mmdvm/mmdvm_svxlink-1.pdf))
