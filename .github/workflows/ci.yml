@@ -43,7 +43,8 @@ jobs:
           channel: '#dead'
           nickname: GitHub
           server: 'irc.dead.guru'
-          notice: true
+          sasl_password: ${{ secrets.IRC_PASSWORD }}
+          notice: false
           message: |-
             ${{ github.actor }} pushed ${{ github.event.ref }} ${{ github.event.compare }}
 
