@@ -36,6 +36,17 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /home/assada/ut3usw.dead.guru/ && rm -rf /home/assada/ut3usw.dead.guru/build && unzip release.zip && rm release.zip && docker compose restart
+
+      - name: IRC notification
+        uses: Gottox/irc-message-action@v2
+        with:
+          channel: '##dead'
+          nickname: GitHub
+          server: 'irc.dead.guru'
+          notice: true
+          message: |-
+            ${{ github.actor }} pushed ${{ github.event.ref }} ${{ github.event.compare }}
+
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
