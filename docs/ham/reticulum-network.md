@@ -5,9 +5,9 @@ Description: Що таке Reticulum?
 tags: [ham, mesh, reticulum, network, ut3ums]
 ---
 
-**by** UT3UMS
+# Reticulum Network
 
-# Reticulum
+**by** UT3UMS
 
 ![logo](./img/reticulum_logo_512.png)
 
