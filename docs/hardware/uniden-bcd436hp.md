@@ -1,6 +1,7 @@
 ---
 title: Uniden BCD436HP/536HP
 description: Про Uniden BCD436HP/536HP
+tags: [ham, scanner, uniden]
 ---
 
 # Uniden BCD436HP/536HP Digital Scanner

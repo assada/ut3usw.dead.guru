@@ -1,6 +1,7 @@
 ---
 title: Працюємо з gr-gsm і збираєм IMSI поряд
 description: Короткий опис роботи з gr-gsm для перехоплення трафіку GSM і збору IMSI
+tags: [ham, gsm, gr-gsm, imsi]
 ---
 
 # Працюємо з gr-gsm і збираєм IMSI поряд
@@ -14,7 +15,7 @@ description: Короткий опис роботи з gr-gsm для перех�
 
 ## Встановлення gnuradio
 
-```bash 
+```bash
 sudo add-apt-repository ppa: gnuradio/gnuradio-releases
 sudo apt-get update
 sudo apt-get install gnuradio
@@ -49,7 +50,7 @@ sudo ldconfig
 grgsm_scanner --band=GSM900  --gain=34 --speed=5 --args=rtl=0
 
 #HackRF
-grgsm_scanner --band=GSM900  --gain=40 --args=hackrf=0 
+grgsm_scanner --band=GSM900  --gain=40 --args=hackrf=0
 
 ```
 
@@ -73,6 +74,6 @@ grgsm_livemon_headless --fc 949.8M --gain 40 --args hackrf=0
 
 ![Wireshark і GSM пакети перехоплені з lo інтерфейсу по udp порту 4729](./img/qCdGTpd.png)
 
-Тепер можете шукати пакет `e212.imsi` і там все буде. 
+Тепер можете шукати пакет `e212.imsi` і там все буде.
 
 Також можна запустити `python3 simple_IMSI-catcher.py` з пакету https://github.com/Oros42/IMSI-catcher

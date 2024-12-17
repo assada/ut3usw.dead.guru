@@ -1,6 +1,7 @@
 ---
 title: Flipper Zero Українською
 description: Загалні відомості про Flipper Zero
+tags: [hardware, flipper-zero, bad]
 ---
 
 # Flipper Zero

@@ -1,6 +1,7 @@
 ---
 title: LILYGO T-TWR Plus
 description: Прошиваємо OpenRTX на LILYGO T-TWR Plus
+tags: [ham, lilygo, ttwrplus, openrtx]
 ---
 
 # LILYGO T-TWR Plus
@@ -47,7 +48,7 @@ UART_RTS o----|<|------o T-TWR_RR
 
 ![dongle](./img/dongle_ttwr.png)
 
-Нас цікавить верхній JST пін позаду плати. 
+Нас цікавить верхній JST пін позаду плати.
 
 ![img.png](./img/ttwr_UART_port.png)
 
@@ -84,7 +85,7 @@ UART_RTS o----|<|------o T-TWR_RR
 ### Корпус
 
 Найкращий корпус що я знайшов: https://github.com/OpenRTX/ttwrplus-case
-Друкується без підтримок і на максимальній швидкості. 
+Друкується без підтримок і на максимальній швидкості.
 
 
 Це все. Далі - більше! =)

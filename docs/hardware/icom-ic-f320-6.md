@@ -1,6 +1,7 @@
 ---
 title: Icom IC-F310/320
 description: Прошивка рації Icom IC-F320 та Icom IC-F310 на Windows 11
+tags: [ham, icom, f310, f320, reverse]
 ---
 
 :::warning

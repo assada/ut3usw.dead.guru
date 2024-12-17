@@ -1,6 +1,7 @@
 ---
 title: AnyTone D878UVII PLUS
 description: Трохи цікавої інформації про рацію AnyTone D878UVII PLUS
+tags: [ham, anytone, radio, dmr]
 ---
 
 # AnyTone D878UVII PLUS

@@ -1,6 +1,7 @@
 ---
 title: Icom IC-F300 - Реверс
 description: Розбір прошивок для рацій серії Icom IC-F300
+tags: [ham, icom, f300, reverse]
 ---
 
 # Icom IC F300 reverse engineering project
