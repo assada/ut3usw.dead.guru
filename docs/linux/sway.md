@@ -1,7 +1,7 @@
 ---
 Author: UT3USW
 Title: sway
-Description: Sway на Debian 12 - мої страждання
+Description: Sway на Debian 12 — мої страждання
 ---
 
 # Sway
