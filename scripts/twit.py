@@ -192,7 +192,7 @@ def main():
     cleaned_data.reverse()
     
     try:
-        with open("prepared.json", "w", encoding="utf-8") as f:
+        with open("../static/pprepared.json", "w", encoding="utf-8") as f:
             json.dump(cleaned_data, f, ensure_ascii=False, indent=2)
         print("Successfully created prepared.json")
     except Exception as e:
