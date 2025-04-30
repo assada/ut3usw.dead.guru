@@ -1,0 +1,259 @@
+.tweetCard {
+  background-color: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.tweetCard:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.tweetHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.profileImage {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nameContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--ifm-font-color-base);
+}
+
+.screenName {
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.tweetLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ifm-color-emphasis-700);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.tweetLink:hover {
+  color: #1DA1F2;
+}
+
+.twitterIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tweetBody {
+  margin-bottom: 1.25rem;
+}
+
+.tweetText {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.readMoreButton {
+  background: none;
+  border: none;
+  color: #1DA1F2;
+  padding: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  display: block;
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.readMoreButton:hover {
+  color: #0c7abf;
+  text-decoration: underline;
+}
+
+.tweetText a {
+  color: #1DA1F2;
+  text-decoration: none;
+}
+
+.tweetText a:hover {
+  text-decoration: underline;
+}
+
+.mediaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.singleMedia {
+  margin-top: 0.5rem;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.mediaContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.tweetMedia {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.tweetMedia:hover {
+  transform: scale(1.02);
+}
+
+.videoPlaceholder {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+  background-color: #000;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.videoContainer {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.videoPlayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  border-radius: 8px;
+}
+
+.playButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.videoPlaceholder:hover .playButton {
+  background-color: rgba(29, 161, 242, 0.8);
+}
+
+.tweetFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-600);
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  padding-top: 1rem;
+}
+
+.tweetDate {
+  font-size: 0.85rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tweetCard {
+    padding: 1rem;
+  }
+  
+  .mediaGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Quoted Tweet Styles */
+.quotedTweet {
+  display: block;
+  margin: 0.5rem 0 1rem;
+  padding: 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.2s ease;
+}
+
+.quotedTweet:hover {
+  background-color: var(--ifm-color-emphasis-100);
+  text-decoration: none;
+  color: inherit;
+}
+
+.quotedTweetHeader {
+  margin-bottom: 0.5rem;
+}
+
+.quotedTweetAuthor {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.quotedTweetAuthorName {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.quotedTweetAuthorHandle {
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.85rem;
+}
+
+.quotedTweetText {
+  font-size: 0.95rem;
+  line-height: 1.4;
+} 

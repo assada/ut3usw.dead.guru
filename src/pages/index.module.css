@@ -21,3 +21,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.exampleCode {
+  margin-top: 20px;
+  text-align: left;
+}

@@ -15,6 +15,10 @@
     "message": "Блог",
     "description": "Navbar item with label Блог"
   },
+  "item.label.Закладки": {
+    "message": "Закладки",
+    "description": "Navbar item with label Закладки"
+  },
   "item.label.GitHub": {
     "message": "GitHub",
     "description": "Navbar item with label GitHub"

@@ -31,7 +31,7 @@ const config = {
   // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'uk',
-    locales: ['uk'],
+    locales: ['uk', 'en'],
   },
 
   plugins: [
@@ -94,7 +94,7 @@ const config = {
       docs: {
         sidebar: {
           autoCollapseCategories: false,
-          hideable: true,
+          hideable: false,
         },
       },
       navbar: {
@@ -109,9 +109,10 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Документація',
+            label: 'Нотатки',
           },
           {to: '/blog', label: 'Блог', position: 'left'},
+          {to: '/bookmarks', label: 'Закладки', position: 'left'},
           {
             href: 'https://github.com/assada/ut3usw.dead.guru',
             label: 'GitHub',
