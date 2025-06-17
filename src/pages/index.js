@@ -77,32 +77,35 @@ function HomepageHeader() {
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <Layout title={`${siteConfig.title}`} description="Documentation for the C# .NET SpotifyAPI-NET Library">
-    <header className={clsx('hero', styles.heroBanner)}>
-      <div className="container">
-        <div className="row">
-          <div className="col col--5">
-            <img src="/img/animation_logo.gif" width="120" height="120" />
-            <Heading as="h1" className="hero__title">
-            {siteConfig.title}
-            </Heading>
-            <p className="hero__subtitle">{siteConfig.tagline}</p>
-            <div className={styles.buttons}>
-              <Link
-              className="button button--secondary button--lg"
-              to="/docs/intro">
-              Continue exploring?
-            </Link>
+      <Layout title={`Персоналні нотатки UT3USW. ut3usw.dead.guru`} Add commentMore actions
+              description="Персональні нотатки про радіо, програмування та інженерію від однієї людини.">
+        <header className={clsx('hero', styles.heroBanner)}>
+          <div className="container">
+            <div className="row">
+              <div className="col col--5">
+                <img src="/img/animation_logo.gif" width="120" height="120"/>
+                <Heading as="h1" className="hero__title">
+                  {siteConfig.title}
+                </Heading>
+                <p className="hero__subtitle">{siteConfig.tagline}</p>
+                <div className={styles.buttons}>
+                  <Link
+                      className="button button--secondary button--lg"
+                      to="/docs/intro">
+                    Continue exploring?
+                  </Link>
+                </div>
+              </div>
+              <div className={classnames('col col--7', styles.exampleCode)}>
+                <CodeBlock language="cpp" className="cpp">
+                  {codeExamples[Math.floor(Math.random() * codeExamples.length)].code}
+                </CodeBlock>
+              </div>
             </div>
           </div>
-          <div className={classnames('col col--7', styles.exampleCode)}>
-            <CodeBlock language="cpp" className="cpp">
-              {codeExamples[Math.floor(Math.random() * codeExamples.length)].code}
-            </CodeBlock>
-          </div>
-        </div>
-      </div>
-    </header>
-  </Layout>
+        </header>
+        <iframe height="500" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"
+                src="https://irc.dead.guru/"></iframe>
+      </Layout>
   );
 }
