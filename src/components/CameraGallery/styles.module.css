@@ -1,0 +1,320 @@
+/* Gallery Modal */
+.galleryModal {
+    display: block;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(5px);
+}
+
+.galleryContent {
+    position: relative;
+    background-color: var(--ifm-background-color);
+    margin: 2% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 95%;
+    height: 90%;
+    max-width: 1200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.galleryClose {
+    color: var(--ifm-color-emphasis-600);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.galleryClose:hover,
+.galleryClose:focus {
+    color: var(--ifm-color-primary);
+    text-decoration: none;
+}
+
+.galleryGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.noPhotos {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--ifm-color-emphasis-600);
+    padding: 60px 20px;
+}
+
+/* Gallery Item */
+.galleryItem {
+    background: var(--ifm-card-background-color);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.galleryItem:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Video Container */
+.videoContainer {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.videoContainer.loading {
+    background: var(--ifm-color-emphasis-200);
+}
+
+.galleryVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.playButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 3rem;
+    pointer-events: none;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Image Container */
+.imageContainer {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ifm-color-emphasis-200);
+}
+
+.imageContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Loading Spinner */
+.loadingSpinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--ifm-color-emphasis-300);
+    border-top: 4px solid var(--ifm-color-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Media Error */
+.mediaError {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--ifm-color-danger);
+    text-align: center;
+    font-size: 0.9rem;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Gallery Info */
+.galleryInfo {
+    padding: 15px;
+}
+
+.galleryTimestamp {
+    font-size: 0.85rem;
+    color: var(--ifm-color-emphasis-700);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.systemInfo {
+    font-size: 0.8rem;
+    color: var(--ifm-color-emphasis-600);
+}
+
+.infoRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    padding: 2px 0;
+}
+
+.infoRow span {
+    font-weight: 600;
+    color: var(--ifm-color-emphasis-800);
+}
+
+/* Photo Modal */
+.photoModal {
+    display: block;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(5px);
+}
+
+.photoModalContent {
+    position: relative;
+    background-color: var(--ifm-background-color);
+    margin: 2% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 95%;
+    max-width: 1000px;
+    max-height: 95vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photoClose {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: var(--ifm-color-emphasis-600);
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.photoClose:hover,
+.photoClose:focus {
+    color: var(--ifm-color-primary);
+    text-decoration: none;
+}
+
+.modalInfo {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .galleryContent {
+        margin: 1% auto;
+        width: 98%;
+        height: 95%;
+        padding: 15px;
+    }
+    
+    .galleryGrid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+    }
+    
+    .galleryItem {
+        margin-bottom: 0;
+    }
+    
+    .videoContainer,
+    .imageContainer {
+        height: 180px;
+    }
+    
+    .playButton {
+        font-size: 2.5rem;
+    }
+    
+    .photoModalContent {
+        margin: 1% auto;
+        width: 98%;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .galleryGrid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .videoContainer,
+    .imageContainer {
+        height: 160px;
+    }
+    
+    .galleryInfo {
+        padding: 12px;
+    }
+    
+    .infoRow {
+        flex-direction: column;
+        margin-bottom: 6px;
+    }
+    
+    .infoRow span {
+        margin-bottom: 2px;
+    }
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .galleryModal {
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
+[data-theme='dark'] .photoModal {
+    background-color: rgba(0, 0, 0, 0.98);
+}
+
+[data-theme='dark'] .mediaError {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--ifm-color-danger);
+}
+
+/* Animation for new items */
+.galleryItem {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.galleryItem.entering {
+    opacity: 0;
+    transform: scale(0.95);
+}

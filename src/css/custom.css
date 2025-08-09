@@ -291,3 +291,43 @@ div[role="tabpanel"] .margin-vert--md {
   display: block;
   height: 15px;
 }
+
+#bouncing-image {
+  position: fixed;
+  z-index: 1000;
+  pointer-events: none;
+  touch-action: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  left: 0;
+  top: 0;
+  transform: translate(0px, 0px);
+  will-change: transform;
+  cursor: none;
+  opacity: 0;
+}
+
+#bouncing-image.active {
+  opacity: 1;
+}
+
+#static-logo.hidden {
+  opacity: 0;
+}
+
+#bouncing-image:hover {
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+}
+
+body {
+  cursor: auto;
+}
+
+@media (hover: hover) {
+  body:hover {
+    cursor: crosshair;
+  }
+}
+
+

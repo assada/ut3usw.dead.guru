@@ -182,7 +182,7 @@ def clean_tweet_new_format(tweet):
 
 def main():
     try:
-        with open("twitter.json", "r", encoding="utf-8") as f:
+        with open("twitter-Bookmarks-1754738301351.json", "r", encoding="utf-8") as f:
             data = json.load(f)
     except (json.JSONDecodeError, FileNotFoundError) as e:
         print(f"Error loading twitter.json: {e}")

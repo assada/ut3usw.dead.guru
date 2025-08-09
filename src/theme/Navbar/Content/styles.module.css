@@ -1,0 +1,84 @@
+/*
+Hide color mode toggle in small viewports
+ */
+@media (max-width: 996px) {
+  .colorModeToggle {
+    display: none;
+  }
+}
+
+/*
+Restore some Infima style that broke with CSS Cascade Layers
+See https://github.com/facebook/docusaurus/pull/11142
+ */
+:global(.navbar__items--right) > :last-child {
+  padding-right: 0;
+}
+
+/* Camera Button Styles */
+.cameraButton {
+  background: var(--ifm-footer-background-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cameraButton:hover {
+  background: var(--docusaurus-highlighted-code-line-bg);
+}
+
+.cameraButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cameraButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.cameraButton.processing {
+  background: var(--ifm-color-warning);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--ifm-color-primary-rgb), 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(var(--ifm-color-primary-rgb), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--ifm-color-primary-rgb), 0);
+  }
+}
+
+/* Dark mode adjustments for camera button */
+.darkNavbarColorModeToggle.cameraButton {
+  background: var(--ifm-color-primary-lighter);
+  color: var(--ifm-color-emphasis-900);
+}
+
+.darkNavbarColorModeToggle.cameraButton:hover {
+  background: var(--ifm-color-primary-light);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .cameraButton {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    margin-right: 8px;
+  }
+}

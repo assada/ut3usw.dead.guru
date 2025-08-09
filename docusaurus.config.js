@@ -18,6 +18,15 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
+  future: {
+    v4: {
+      removeLegacyPostBuildHeadAttribute: true, // required
+    },
+    experimental_faster: {
+      ssgWorkerThreads: true,
+    },
+  },
+
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'assada', // Usually your GitHub org/user name.
@@ -74,6 +83,8 @@ const config = {
       }),
     ],
   ],
+
+
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
