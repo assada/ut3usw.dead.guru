@@ -21,6 +21,7 @@
     "@mdx-js/react": "^3.0.0",
     "classnames": "^2.5.1",
     "clsx": "^2.0.0",
+    "js-yaml-loader": "^1.2.2",
     "plugin-image-zoom": "github:flexanalytics/plugin-image-zoom",
     "prism-react-renderer": "^2.1.0",
     "react": "^19.0.0",

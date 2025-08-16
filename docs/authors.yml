@@ -1,0 +1,22 @@
+ut3ums:
+  name: ut3ums
+  title: radio-amateur
+  url: https://github.com/ut3ums
+  imageURL: https://github.com/ut3ums.png
+  socials:
+    github: https://github.com/ut3ums
+ut3usw:
+  name: ut3usw
+  title: Oleksii
+  url: https://github.com/assada
+  imageURL: https://github.com/assada.png
+  socials:
+    github: https://github.com/assada
+    twitter: https://x.com/speed_shit
+vk7zja:
+  name: vk7zja
+  title: Jason Reilly
+  url: https://www.qrz.com/db/VK7ZJA
+  imageURL: https://cdn-bio.qrz.com/a/vk7zja/vk7zja.jpg
+  socials:
+    github: https://github.com/vk7zja

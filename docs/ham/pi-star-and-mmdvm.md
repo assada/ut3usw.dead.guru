@@ -1,5 +1,4 @@
 ---
-Author: UT3USW
 Title: Що таке MMDVM та PI-Star?
 Description: Опис MMDVM та PI-Star
 sidebar_class_name: pistar-sidebar

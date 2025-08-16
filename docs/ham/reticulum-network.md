@@ -1,9 +1,10 @@
 ---
-Author: UT3UMS
+authors: [ut3ums]
 Title: Reticulum Network
 Description: Що таке Reticulum?
 tags: [ham, mesh, reticulum, network, ut3ums]
 comments: true
+
 ---
 
 # Reticulum Network

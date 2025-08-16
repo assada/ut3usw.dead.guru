@@ -1,5 +1,4 @@
 ---
-Author: UT3USW
 Title: Репорти про сигнали
 Description: Що таке 59 і як працювати з репортами радіозв'язку
 tags: [ham, radio, signal-reports]

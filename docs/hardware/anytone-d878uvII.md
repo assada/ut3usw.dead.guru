@@ -3,7 +3,7 @@ title: Корисне для AnyTone 878
 description: Модифікації, поради та технічна інформація для AnyTone AT-D878UV AT-D878UV-II AT-D878UV-II PLUS AT-D868UV та BTech DMR-6X2
 tags: [ham, anytone, radio, dmr]
 comments: true
-author: vk7zja, ut3usw
+authors: [vk7zja, ut3usw]
 ---
 
 > Перекладено, доповнено і адаптовано ut3usw з [статті](https://anytonetechzone.byethost7.com/878techmods.htm?) vk7zja

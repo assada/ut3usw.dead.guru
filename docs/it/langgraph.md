@@ -1,5 +1,4 @@
 ---
-Author: UT3USW
 Title: LangGraph
 Description: LangGraph — Опис, швидкий старт і думки.
 comments: true
