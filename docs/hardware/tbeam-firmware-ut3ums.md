@@ -2,6 +2,7 @@
 title: Meshtastic для TBEAM
 description: Прошивка TBEAM модему для роботи з Meshtastic
 tags: [ham, meshtastic, tbeam]
+comments: true
 ---
 :::caution
 

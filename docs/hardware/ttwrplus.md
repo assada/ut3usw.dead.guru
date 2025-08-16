@@ -2,6 +2,7 @@
 title: LILYGO T-TWR Plus
 description: Прошиваємо OpenRTX на LILYGO T-TWR Plus
 tags: [ham, lilygo, ttwrplus, openrtx]
+comments: true
 ---
 
 # LILYGO T-TWR Plus

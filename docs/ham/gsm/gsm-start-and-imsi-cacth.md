@@ -2,6 +2,7 @@
 title: Працюємо з gr-gsm і збираєм IMSI поряд
 description: Короткий опис роботи з gr-gsm для перехоплення трафіку GSM і збору IMSI
 tags: [ham, gsm, gr-gsm, imsi]
+comments: true
 ---
 
 # Працюємо з gr-gsm і збираєм IMSI поряд

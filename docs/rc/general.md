@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+comments: true
 ---
 
 # RC General

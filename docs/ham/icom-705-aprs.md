@@ -2,6 +2,7 @@
 title: APRS на ICOM IC-705
 description: Налаштування SoundModem та PinPoint APRS для роботи з ICOM IC-705 в Windows.
 tags: [ham, icom, aprs, soundmodem]
+comments: true
 ---
 
 # APRS на ICOM IC-705
@@ -26,7 +27,7 @@ tags: [ham, icom, aprs, soundmodem]
 
 ![Common > Connections](./img/2023-07-0821.49.50.jpg)
 
-Також додаткові відомості і трабшутінг описаний тут: [h_r_d_trouble.pdf](https://assada.dead.guru/storage/images/h_r_d_trouble.pdf)
+Також додаткові відомості і трабшутінг описаний тут: [h_r_d_trouble.pdf](https://up1.dead.guru/#c6QDhQtx7veYuEQzDAlESA)
 
 Теоритично на цьому етапі ваш трансивер може передавати і приймати аудіо прямо з ПК. Типу після "нажимання" тангенти можна транслювати ютьюб в ефір. Але нашо нам це? Давайте налаштуємо APRS.
 
@@ -38,9 +39,9 @@ tags: [ham, icom, aprs, soundmodem]
 
 ![Схема](./img/download(1).png)
 
-1. Качаєм і встановлюємо PinPoint APRS. [Скачати](https://assada.dead.guru/storage/images/pin_point_v2_build_230511.zip)
-2. Качаєм і встановлюємо SoundModem. [Скачати](https://assada.dead.guru/storage/images/soundmodem114.zip) (Це буде наш KISS TNC сервер для роботи між рацією і PinPoint)
-3. Качаєм PTT бібліотеку для SoundModem [Скачати](https://assada.dead.guru/storage/images/ptt-dll.zip) цей архів розпаковуємо в папку з SoundModem.
+1. Качаєм і встановлюємо PinPoint APRS. [pin_point_v2_build_230511.zip](https://up1.dead.guru/#YpdWux9Yx6NE00AKdCkODg)
+2. Качаєм і встановлюємо SoundModem. [soundmodem114.zip](https://up1.dead.guru/#GEr6nhfW8tb_3Ls7uC2YMQ) (Це буде наш KISS TNC сервер для роботи між рацією і PinPoint)
+3. Качаєм PTT бібліотеку для SoundModem [ptt-dll.zip](https://up1.dead.guru/#Z4KMserUxQY5VVImoeiVrA) цей архів розпаковуємо в папку з SoundModem.
 
 ![SoundModem має виглядати приблизно так. Конфігураційні файли можуть бути відсутні! Вони створяться автоматично при першому старті програми](./img/2023-07-0822.09.32.jpg)
 

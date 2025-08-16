@@ -92,6 +92,15 @@ export default function NavbarContent() {
           // TODO stop hardcoding items?
           // Ask the user to add the respective navbar items => more flexible
             <>
+                {/*<button
+                    className={clsx(
+                        styles.cameraButton,
+                        navbarStyle === 'dark' ? styles.darkNavbarColorModeToggle : undefined,
+                        isProcessing && styles.processing
+                    )}
+                    onClick={() => {setGalleryVisible(!galleryVisible)}}>
+                    View
+                </button>*/}
                 <button 
                   id="cameraBtn" 
                   className={clsx(

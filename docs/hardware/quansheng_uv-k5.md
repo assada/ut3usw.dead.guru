@@ -2,6 +2,7 @@
 title: Quansheng UV-K5
 description: Quansheng UV-K5 кастомні прошивки і загальна інформація. Як прошити рацію Quansheng UV-K5. Розблокування частот Quansheng UV-K5. Anysecu UV-K5.
 tags: [ham, quansheng, uv-k5, radio]
+comments: true
 ---
 
 # Quansheng UV-K5

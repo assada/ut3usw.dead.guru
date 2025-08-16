@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 tags: [intro]
+comments: true
 ---
 
 # Хто тут?

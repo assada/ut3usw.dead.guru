@@ -4,6 +4,7 @@ Title: Що таке MMDVM та PI-Star?
 Description: Опис MMDVM та PI-Star
 sidebar_class_name: pistar-sidebar
 tags: [ham, mmdvm, pistar, dmr, dstar, ysf, p25]
+comments: true
 ---
 
 # Що за MMDVM та PI-Star?

@@ -3,6 +3,7 @@ title: Meshtastic в Україні
 description: Meshtastic — LoRa Mesh Network в Україні
 sidebar_class_name: meshtastic-sidebar
 tags: [meshtastic, hardware, ham, mesh]
+comments: true
 ---
 
 # Meshtastic в Україні

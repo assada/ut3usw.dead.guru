@@ -3,6 +3,7 @@ slug: under-asphalt
 title: Під люком в асфальті. Річки.
 authors: ut3usw
 tags: [life, personal]
+comments: true
 ---
 
 # Під люком в асфальті. Частина 1. Річки.

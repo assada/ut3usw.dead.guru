@@ -3,6 +3,7 @@ slug: ham-in-ukraine
 title: Радіоаматарство в Україні його стан зараз і перспективи
 authors: ut3usw
 tags: [ham, personal]
+comments: true
 ---
 
 # Радіоаматарство в Україні його стан зараз і перспективи

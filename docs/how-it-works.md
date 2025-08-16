@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 tags: [intro]
+comments: true
 ---
 
 # Як працює цей сайт і трохи про мережу "dead.guru"

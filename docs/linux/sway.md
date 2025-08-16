@@ -2,6 +2,7 @@
 Author: UT3USW
 Title: sway
 Description: Sway, hyprland і шо ваще по wayland?
+comments: true
 ---
 
 # Sway
