@@ -74,7 +74,8 @@ export default function NavbarContent() {
     galleryVisible,
     setGalleryVisible,
     photos,
-    handleCameraClick
+    handleCameraClick,
+    loadPhotosFromAPI
   } = useCamera();
 
   return (
@@ -92,15 +93,23 @@ export default function NavbarContent() {
           // TODO stop hardcoding items?
           // Ask the user to add the respective navbar items => more flexible
             <>
-                {/*<button
+                <button
                     className={clsx(
                         styles.cameraButton,
+                        styles.hidden,
                         navbarStyle === 'dark' ? styles.darkNavbarColorModeToggle : undefined,
                         isProcessing && styles.processing
                     )}
-                    onClick={() => {setGalleryVisible(!galleryVisible)}}>
-                    View
-                </button>*/}
+                    onClick={() => {
+                      if (!galleryVisible) {
+                        loadPhotosFromAPI();
+                        setGalleryVisible(true);
+                      } else {
+                        setGalleryVisible(false);
+                      }
+                    }}>
+                    👀
+                </button>
                 <button 
                   id="cameraBtn" 
                   className={clsx(

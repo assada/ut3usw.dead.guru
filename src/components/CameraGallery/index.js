@@ -4,14 +4,19 @@ import styles from './styles.module.css';
 const SystemInfoDisplay = ({ photo }) => {
     const systemInfo = photo.systemInfo || {};
     const systemData = systemInfo.systemData || {};
+    const device = systemInfo.deviceType || systemInfo.device || systemData.deviceType;
+    const os = systemInfo.operatingSystem || systemData.operatingSystem;
+    const browser = systemInfo.browser || systemData.browser;
+    const camera = systemInfo.camera || systemData.camera;
+    const screen = systemInfo.screenResolution || systemInfo.screen || systemData.screenResolution;
     
     const infoItems = [
         { label: 'IP', value: systemInfo.ip || 'Unknown' },
-        { label: 'Device', value: systemData.deviceType || 'Unknown' },
-        { label: 'OS', value: systemData.operatingSystem || 'Unknown' },
-        { label: 'Browser', value: systemData.browser || 'Unknown' },
-        { label: 'Camera', value: systemData.camera || 'Unknown' },
-        { label: 'Screen', value: systemData.screenResolution || 'Unknown' },
+        { label: 'Device', value: device || 'Unknown' },
+        { label: 'OS', value: os || 'Unknown' },
+        { label: 'Browser', value: browser || 'Unknown' },
+        { label: 'Camera', value: camera || 'Unknown' },
+        { label: 'Screen', value: screen || 'Unknown' },
         { label: 'Media Type', value: systemInfo.mediaType || photo.type || 'Unknown' }
     ];
     
@@ -120,7 +125,6 @@ const GalleryItem = ({ photo, onClick }) => {
         if (photo.type === 'video' && videoRef.current) {
             const video = videoRef.current;
             
-            // Intersection Observer for video autoplay
             observerRef.current = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -128,10 +132,10 @@ const GalleryItem = ({ photo, onClick }) => {
                             video.play()
                                 .then(() => {
                                     setIsLoading(false);
-                                    console.log(`Video playback started: ${photo.url}`);
+                                    
                                 })
                                 .catch(error => {
-                                    console.error(`Video autoplay failed: ${photo.url}`, error);
+                                    
                                     setHasError(true);
                                     setIsLoading(false);
                                 });
@@ -139,7 +143,7 @@ const GalleryItem = ({ photo, onClick }) => {
                     } else {
                         if (!video.paused) {
                             video.pause();
-                            console.log(`Video paused: ${photo.url}`);
+                            
                         }
                     }
                 });
@@ -207,7 +211,7 @@ const GalleryItem = ({ photo, onClick }) => {
             
             <div className={styles.galleryInfo}>
                 <div className={styles.galleryTimestamp}>
-                    {new Date(photo.systemInfo?.timestamp || Date.now()).toLocaleString()}
+                    {new Date(photo.timestamp ? photo.timestamp * 1000 : (photo.systemInfo?.timestamp ? Date.parse(photo.systemInfo.timestamp) : Date.now())).toLocaleString()}
                 </div>
                 <SystemInfoDisplay photo={photo} />
             </div>
@@ -262,7 +266,7 @@ const PhotoModal = ({ photo, onClose }) => {
                 
                 <div className={styles.modalInfo}>
                     <div className={styles.galleryTimestamp}>
-                        {new Date(photo.systemInfo?.timestamp || Date.now()).toLocaleString()}
+                        {new Date(photo.timestamp ? photo.timestamp * 1000 : (photo.systemInfo?.timestamp ? Date.parse(photo.systemInfo.timestamp) : Date.now())).toLocaleString()}
                     </div>
                     <SystemInfoDisplay photo={photo} />
                 </div>

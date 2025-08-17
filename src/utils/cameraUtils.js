@@ -242,3 +242,55 @@ export function getLocationValue(location) {
         return `${location.city}, ${location.region}, ${location.country_name}`;
     return "N/A";
 }
+
+export function gatherRequestContext() {
+    const protocol = window.location.protocol;
+    const port = window.location.port || (protocol === 'https:' ? '443' : '80');
+    const href = window.location.href;
+    const entryUrl = `${window.location.pathname}${window.location.search}`;
+    const ref = document.referrer || '';
+    let transport = 'Unknown';
+    try {
+        const nav = performance.getEntriesByType && performance.getEntriesByType('navigation');
+        const nextHop = nav && nav[0] && nav[0].nextHopProtocol ? nav[0].nextHopProtocol.toLowerCase() : '';
+        if (nextHop === 'h2' || nextHop === 'http/2') transport = 'HTTP/2.0';
+        else if (nextHop === 'h3' || nextHop === 'http/3') transport = 'HTTP/3.0';
+        else if (nextHop === 'http/1.1') transport = 'HTTP/1.1';
+        else if (nextHop) transport = nextHop.toUpperCase();
+    } catch (_) {}
+    let referrerType = 'No referrer';
+    let referrerHost = '';
+    let referrerPath = 'No referrer';
+    let referrerQuery = 'None';
+    if (ref) {
+        try {
+            const u = new URL(ref);
+            referrerHost = u.host;
+            referrerPath = u.pathname || '/';
+            referrerQuery = u.search ? u.search : 'None';
+            referrerType = u.host === window.location.host ? 'Internal' : 'External';
+        } catch (_) {
+            referrerType = 'External';
+            referrerHost = '';
+            referrerPath = 'No referrer';
+            referrerQuery = 'None';
+        }
+    }
+    return {
+        method: 'GET',
+        scheme: protocol.replace(':', '').toUpperCase(),
+        https: protocol === 'https:' || window.isSecureContext ? 'Yes' : 'No',
+        protocol: transport,
+        port,
+        host: window.location.host,
+        entryUrl,
+        fullUrl: href,
+        referrer: {
+            type: referrerType,
+            host: referrerHost,
+            fullUrl: ref || 'No referrer',
+            path: referrerPath,
+            query: referrerQuery
+        }
+    };
+}

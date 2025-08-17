@@ -82,3 +82,7 @@ See https://github.com/facebook/docusaurus/pull/11142
     margin-right: 8px;
   }
 }
+
+.hidden {
+  display: none;
+}
