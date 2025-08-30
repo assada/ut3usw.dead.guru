@@ -2,14 +2,14 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import classnames from 'classnames';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import CodeBlock from '@theme/CodeBlock';
 import { useEffect } from 'react';
 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
+
+import TerminalCard from '@site/src/components/TerminalCard';
 
 const exampleCode = `#include <iostream>
 #include <random>
@@ -429,9 +429,11 @@ export default function Home() {
                 </div>
               </div>
               <div className={classnames('col col--7', styles.exampleCode)}>
+                <TerminalCard title="Terminal" glowing>
                 <CodeBlock language="cpp" className="cpp">
                   {codeExamples[Math.floor(Math.random() * codeExamples.length)].code}
                 </CodeBlock>
+                </TerminalCard>
               </div>
             </div>
           </div>

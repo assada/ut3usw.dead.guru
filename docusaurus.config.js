@@ -12,6 +12,8 @@ const config = {
   tagline: 'Персональні нотатки радіогубителя',
   favicon: 'img/favicon.svg',
 
+  stylesheets: ['./src/css/docusaurus-cyberpunk-theme.css'],
+
   // Set the production url of your site here
   url: 'https://ut3usw.dead.guru',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -89,7 +91,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: false,
+      },
       image: 'img/docusaurus-social-card.png',
       imageZoom: {
         // CSS selector to apply the plugin to, defaults to '.markdown img'
@@ -174,7 +180,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Щось-там © ${new Date().getFullYear()} UT3USW. Це частина dead.guru.`,
+        copyright: `© ${new Date().getFullYear()} частина dead.guru.`,
       },
       prism: {
         theme: prismThemes.github,

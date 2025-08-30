@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './styles.module.css';
 import Link from '@docusaurus/Link';
+import TerminalCard from '../TerminalCard';
 
 export default function TwitterBookmark({ bookmark }) {
   const { 
@@ -19,12 +20,9 @@ export default function TwitterBookmark({ bookmark }) {
     quoted_tweet_author_name
   } = bookmark;
   
-  // State to track which videos are playing
   const [playingVideos, setPlayingVideos] = useState({});
-  // State to track if the full note text is shown
   const [showFullNote, setShowFullNote] = useState(false);
 
-  // Format date to display in a readable format
   const formattedDate = new Date(tweeted_at).toLocaleDateString('uk-UA', {
     year: 'numeric',
     month: 'short',
@@ -33,17 +31,13 @@ export default function TwitterBookmark({ bookmark }) {
     minute: '2-digit'
   });
 
-  // Replace URL mentions with clickable links
   const renderText = (text) => {
     if (!text) return null;
     
-    // Replace URLs with clickable links
     const urlRegex = /(https?:\/\/[^\s]+)/g;
     
-    // Replace Twitter handles with clickable links
     const handleRegex = /@(\w+)/g;
     
-    // Replace hashtags with clickable links
     const hashtagRegex = /#(\w+)/g;
 
     let processedText = text
@@ -59,7 +53,6 @@ export default function TwitterBookmark({ bookmark }) {
     return <span dangerouslySetInnerHTML={{ __html: processedText }} />;
   };
 
-  // Function to play a video
   const playVideo = (index, videoUrl) => {
     setPlayingVideos(prev => ({
       ...prev,
@@ -67,13 +60,12 @@ export default function TwitterBookmark({ bookmark }) {
     }));
   };
 
-  // Toggle showing the full note text
   const toggleFullNote = () => {
     setShowFullNote(!showFullNote);
   };
 
   return (
-    <div className={styles.tweetCard}>
+    <TerminalCard title={`${name} on Twitter`}>
       <div className={styles.tweetHeader}>
         <div className={styles.userInfo}>
           <img 
@@ -125,7 +117,6 @@ export default function TwitterBookmark({ bookmark }) {
           )}
         </div>
         
-        {/* Quoted Tweet */}
         {is_quote && quoted_tweet_text && (
           <Link 
             to={quoted_tweet_url} 
@@ -198,6 +189,6 @@ export default function TwitterBookmark({ bookmark }) {
       <div className={styles.tweetFooter}>
         <div className={styles.tweetDate}>{formattedDate}</div>
       </div>
-    </div>
+    </TerminalCard>
   );
 } 

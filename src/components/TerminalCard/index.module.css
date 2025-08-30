@@ -1,0 +1,40 @@
+.card {
+    background: var(--terminal-bg);
+    border: 1px solid var(--terminal-border);
+    border-radius: 4px;
+    box-shadow: var(--glow-green);
+  }
+  
+  .card.glowing {
+    box-shadow: var(--glow-green), 0 0 2px rgba(64,255,64,0.3);
+  }
+  
+  .titleBar {
+    padding: 8px;
+    border-bottom: 1px solid var(--terminal-border);
+    background: var(--terminal-bg);
+  }
+  
+  .titleInner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .lights { display: flex; gap: 4px; }
+  .light { width: 8px; height: 8px; border-radius: 50%; }
+  .light.red { background: var(--terminal-warning); box-shadow: 0 0 8px var(--terminal-warning); }
+  .light.yellow { background: var(--terminal-accent); box-shadow: 0 0 8px var(--terminal-accent); }
+  .light.green { background: var(--terminal-success); box-shadow: 0 0 8px var(--terminal-success); }
+  
+  .title {
+    font-family: var(--ifm-font-family-monospace);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--terminal-fg);
+  }
+  
+  .body { padding: 16px; color: var(--terminal-fg); font-family: var(--ifm-font-family-monospace); }
+  
+  
