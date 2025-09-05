@@ -983,14 +983,14 @@ body {
 .glitch-soft { animation: glitch .25s ease-in-out 1; }
 .glitch-hover:hover { animation: glitch .3s ease-in-out infinite; }
 
-.navbar__brand:hover, .menu__link:hover{
+.navbar__brand:hover{
   animation: glitch .25s ease-in-out 1;
 }
 
 #static-logo {
-  animation: glitch .1s linear infinite;
+  animation: glitch .1s linear 1;
 }
 
-.button--secondary.button--lg:hover {
-  animation: glitch .25s ease-in-out 1;
-}
+/*.button--secondary.button--lg:hover {*/
+/*  animation: glitch .25s ease-in-out 1;*/
+/*}*/
