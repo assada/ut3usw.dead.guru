@@ -408,7 +408,7 @@ export default function Home() {
   }, []);
 
   return (
-      <Layout title={`Персоналні нотатки UT3USW. ut3usw.dead.guru`} Add commentMore actions
+      <Layout title={`Персоналні нотатки UT3USW. dead.md`} Add commentMore actions
               description="Персональні нотатки про радіо, програмування та інженерію від однієї людини.">
         <img id={"bouncing-image"} alt={"dead!"} src={"/img/animation_logo.gif"} width="120" height="120"/>
         <header className={clsx('hero', styles.heroBanner)}>

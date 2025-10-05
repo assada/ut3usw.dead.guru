@@ -8,14 +8,14 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'UT3USW',
+  title: 'dead.md',
   tagline: 'Персональні нотатки радіогубителя',
   favicon: 'img/favicon.svg',
 
   stylesheets: ['./src/css/docusaurus-cyberpunk-theme.css'],
 
   // Set the production url of your site here
-  url: 'https://ut3usw.dead.guru',
+  url: 'https://dead.md',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -115,9 +115,9 @@ const config = {
         },
       },
       navbar: {
-        title: 'UT3USW',
+        title: 'DEAD.md',
         logo: {
-          alt: 'UT3USW Логотип',
+          alt: 'DEAD Логотип',
           src: 'img/logo.svg',
           srcDark: "img/logo-white.svg",
         },

@@ -35,7 +35,7 @@ function HomepageHeader() {
 export default function Home() {
     return (
         <Layout
-            title={`Персоналні нотатки UT3USW. ut3usw.dead.guru`}
+            title={`Персоналні нотатки UT3USW. dead.md`}
             description="Персональні нотатки про радіо, програмування та інженерію від однієї людини.">
             <HomepageHeader />
             <div className="container">

@@ -1,10 +1,10 @@
 {
   "title": {
-    "message": "UT3USW",
+    "message": "dead.md",
     "description": "The title in the navbar"
   },
   "logo.alt": {
-    "message": "UT3USW Логотип",
+    "message": "dead.md Логотип",
     "description": "The alt text of navbar logo"
   },
   "item.label.Документація": {
