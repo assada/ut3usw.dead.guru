@@ -110,7 +110,7 @@ export default function NavbarContent() {
                     }}>
                     👀
                 </button>
-                <button 
+                {/* <button 
                   id="cameraBtn" 
                   className={clsx(
                     styles.cameraButton,
@@ -121,7 +121,7 @@ export default function NavbarContent() {
                   disabled={isProcessing}
                 >
                     {isProcessing ? 'FUCK YOU!' : '📷'}
-                </button>
+                </button> */}
                 <NavbarItems items={rightItems}/>
                 <NavbarColorModeToggle className={styles.colorModeToggle}/>
                 {!searchBarItem && (
