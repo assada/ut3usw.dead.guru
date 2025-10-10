@@ -95,7 +95,7 @@ Meshtastic **не є** LoRaWAN. Meshtastic використовує повний
 
 ![LILYGO® TTGO LoRa32 V2.1_1.6 T-Lora](./img/1690055311_image.png)
 
-* **LILYGO® T-Beam** — самий популярний пристрій. Вже з GPS і з більшою потужністю передачі. https://www.aliexpress.com/item/4001286458852.html
+* **LILYGO® T-Beam** — самий популярний пристрій. Вже з GPS і з більшою потужністю передачі. https://lilygo.cc/products/t-beam
 
 ![LILYGO® T-Beam](./img/1690055673_image.png)
 
