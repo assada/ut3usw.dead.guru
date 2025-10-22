@@ -5,6 +5,10 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
+import { remarkDefinitionList, defListHastHandlers } from 'remark-definition-list';
+import { remarkExtendedTable, extendedTableHandlers } from 'remark-extended-table';
+import remarkGfm from 'remark-gfm'
+
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -48,6 +52,15 @@ const config = {
   plugins: [
     'plugin-image-zoom'
   ],
+  
+  markdown: {
+    remarkRehypeOptions: {
+      handlers: {
+        ...defListHastHandlers,
+        ...extendedTableHandlers
+      }
+    },
+  },
 
   presets: [
     [
@@ -56,11 +69,19 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
+          remarkPlugins: [
+            remarkGfm,
+            remarkExtendedTable,
+            remarkDefinitionList,
+          ],
+          rehypePlugins: [
+            
+          ],
           //sidebarCollapsed: false,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/assada/ut3usw.dead.guru/edit/master/',
+              'https://github.com/assada/ut3usw.dead.guru/edit/master/',
         },
         sitemap: {
           changefreq: 'weekly',
@@ -74,10 +95,18 @@ const config = {
         },
         blog: {
           showReadingTime: true,
+          remarkPlugins: [
+            remarkGfm,
+            remarkExtendedTable,
+            remarkDefinitionList,
+          ],
+          rehypePlugins: [
+              
+          ],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/assada/ut3usw.dead.guru/edit/master/',
+              'https://github.com/assada/ut3usw.dead.guru/edit/master/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -89,105 +118,105 @@ const config = {
 
 
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-      colorMode: {
-        defaultMode: 'dark',
-        disableSwitch: false,
-        respectPrefersColorScheme: false,
-      },
-      image: 'img/docusaurus-social-card.png',
-      imageZoom: {
-        // CSS selector to apply the plugin to, defaults to '.markdown img'
-        selector: '.markdown img',
-        // Optional medium-zoom options
-        // see: https://www.npmjs.com/package/medium-zoom#options
-        options: {
-          margin: 24,
-          background: 'rgba(0,0,0,0.71)',
-          scrollOffset: 0,
+  /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+      ({
+        colorMode: {
+          defaultMode: 'dark',
+          disableSwitch: false,
+          respectPrefersColorScheme: false,
         },
-      },
-      docs: {
-        sidebar: {
-          autoCollapseCategories: false,
-          hideable: false,
+        image: 'img/docusaurus-social-card.png',
+        imageZoom: {
+          // CSS selector to apply the plugin to, defaults to '.markdown img'
+          selector: '.markdown img',
+          // Optional medium-zoom options
+          // see: https://www.npmjs.com/package/medium-zoom#options
+          options: {
+            margin: 24,
+            background: 'rgba(0,0,0,0.71)',
+            scrollOffset: 0,
+          },
         },
-      },
-      navbar: {
-        title: 'DEAD.md',
-        logo: {
-          alt: 'DEAD Логотип',
-          src: 'img/logo.svg',
-          srcDark: "img/logo-white.svg",
+        docs: {
+          sidebar: {
+            autoCollapseCategories: false,
+            hideable: false,
+          },
         },
-        items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Нотатки',
+        navbar: {
+          title: 'DEAD.md',
+          logo: {
+            alt: 'DEAD Логотип',
+            src: 'img/logo.svg',
+            srcDark: "img/logo-white.svg",
           },
-          {to: '/blog', label: 'Блог', position: 'left'},
-          {to: '/bookmarks', label: 'Закладки', position: 'left'},
-          {
-            href: 'https://github.com/assada/ut3usw.dead.guru',
-            label: 'GitHub',
-            position: 'right',
-          },
-        ],
-      },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Корисні сервіси',
-            items: [
-              {
-                label: 'APRS Мапа',
-                href: 'https://aprs.dead.guru',
-              },
-            ],
-          },
-          {
-            title: 'Контакти',
-            items: [
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/speed_shit',
-              },
-              {
-                label: 'IRC',
-                href: 'https://irc.dead.guru',
-              },
-              {
-                label: 'Telegram',
-                href: 'https://t.me/figushki',
-              },
-            ],
-          },
-          {
-            title: 'Більше',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/assada',
-              },
-            ],
-          },
-        ],
-        copyright: `© ${new Date().getFullYear()} частина dead.guru.`,
-      },
-      prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
-        additionalLanguages: ['powershell', 'nginx', 'java', 'csharp', 'cpp', 'c', 'ini', 'bash'],
-      },
-    }),
+          items: [
+            {
+              type: 'docSidebar',
+              sidebarId: 'tutorialSidebar',
+              position: 'left',
+              label: 'Нотатки',
+            },
+            {to: '/blog', label: 'Блог', position: 'left'},
+            {to: '/bookmarks', label: 'Закладки', position: 'left'},
+            {
+              href: 'https://github.com/assada/ut3usw.dead.guru',
+              label: 'GitHub',
+              position: 'right',
+            },
+          ],
+        },
+        footer: {
+          style: 'dark',
+          links: [
+            {
+              title: 'Корисні сервіси',
+              items: [
+                {
+                  label: 'APRS Мапа',
+                  href: 'https://aprs.dead.guru',
+                },
+              ],
+            },
+            {
+              title: 'Контакти',
+              items: [
+                {
+                  label: 'Twitter',
+                  href: 'https://twitter.com/speed_shit',
+                },
+                {
+                  label: 'IRC',
+                  href: 'https://irc.dead.guru',
+                },
+                {
+                  label: 'Telegram',
+                  href: 'https://t.me/figushki',
+                },
+              ],
+            },
+            {
+              title: 'Більше',
+              items: [
+                {
+                  label: 'Blog',
+                  to: '/blog',
+                },
+                {
+                  label: 'GitHub',
+                  href: 'https://github.com/assada',
+                },
+              ],
+            },
+          ],
+          copyright: `© ${new Date().getFullYear()} частина dead.guru.`,
+        },
+        prism: {
+          theme: prismThemes.github,
+          darkTheme: prismThemes.dracula,
+          additionalLanguages: ['powershell', 'nginx', 'java', 'csharp', 'cpp', 'c', 'ini', 'bash'],
+        },
+      }),
 };
 
 export default config;
