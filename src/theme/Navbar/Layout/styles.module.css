@@ -5,3 +5,36 @@
 .navbarHidden {
   transform: translate3d(0, calc(-100% - 2px), 0);
 }
+
+/* Glass/blur effect for the navbar */
+:global(.navbar) {
+  background: color-mix(in srgb, var(--ifm-navbar-background-color) 72%, transparent);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  backdrop-filter: saturate(140%) blur(14px);
+  border-bottom: 1px solid color-mix(in srgb, var(--terminal-border) 60%, transparent);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+:global(html[data-theme='dark'] .navbar) {
+  background: color-mix(in srgb, var(--ifm-navbar-background-color) 65%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--terminal-border) 30%, transparent);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+:global(.navbar.navbar--fixed-top) {
+  top: 12px;
+  margin-left: max(env(safe-area-inset-left), 12px);
+  margin-right: max(env(safe-area-inset-right), 12px);
+  width: auto;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+@media (max-width: 996px) {
+  :global(.navbar.navbar--fixed-top) {
+    top: 8px;
+    margin-left: max(env(safe-area-inset-left), 8px);
+    margin-right: max(env(safe-area-inset-right), 8px);
+    border-radius: 16px;
+  }
+}
