@@ -11,6 +11,8 @@
    --ifm-color-primary-lighter: hsl(120, 100%, 40%);
    --ifm-color-primary-lightest: hsl(120, 100%, 45%);
 
+   --ifm-heading-color: var(--ifm-color-primary-dark);
+
    --ifm-footer-title-color: var(--ifm-color-primary-darkest) !important;
 
    --ifm-toc-border-color: var(--ifm-color-primary-light) !important;
@@ -241,10 +243,74 @@
    letter-spacing: 0.05em;
  }
  
- .theme-doc-sidebar-container {
-   border-right: 1px solid var(--terminal-border);
-   background: var(--ifm-background-color);
- }
+.theme-doc-sidebar-container {
+   border-right: none !important;
+   background: transparent !important;
+}
+
+@media (min-width: 997px) {
+  .theme-doc-sidebar-container {
+    padding: 12px 12px 12px 0 !important;
+  }
+  
+  .menu {
+    background: transparent !important;
+    /* backdrop-filter: saturate(140%) blur(14px) !important; */
+    /* -webkit-backdrop-filter: saturate(140%) blur(14px) !important; */
+    /* border: 1px solid color-mix(in srgb, var(--terminal-border) 60%, transparent) !important; */
+    /* box-shadow: var(--glow-green) !important; */
+    /* border-radius: 16px !important; */
+    padding: 1rem !important;
+  }
+  
+  html[data-theme='dark'] .menu {
+    background: transparent !important;
+    /* background: color-mix(in srgb, var(--ifm-background-surface-color) 75%, transparent) !important; */
+    /* border-color: color-mix(in srgb, var(--terminal-border) 30%, transparent) !important; */
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important; */
+  }
+  
+  .menu__link {
+    border-radius: 12px !important;
+    transition: all 0.2s ease !important;
+  }
+  
+  .menu__link:hover {
+    background: color-mix(in srgb, var(--terminal-accent) 15%, transparent) !important;
+    transform: translateX(1px) !important;
+  }
+  
+  .menu__link--active {
+    background: color-mix(in srgb, var(--terminal-success) 20%, transparent) !important;
+  }
+  
+  .table-of-contents__link {
+    border-radius: 12px !important;
+    padding: 0.4rem 0.8rem !important;
+    display: block !important;
+    transition: all 0.1s ease !important;
+    font-family: var(--ifm-font-family-monospace) !important;
+  }
+  
+  .table-of-contents__link:hover {
+    background: color-mix(in srgb, var(--terminal-accent) 15%, transparent) !important;
+    transform: translateX(1px) !important;
+    color: var(--terminal-accent) !important;
+    border-right: 1px solid var(--ifm-color-primary);
+    box-shadow: inset -3px 0 0 var(--terminal-success);
+  }
+  
+  .table-of-contents__link.table-of-contents__link--active {
+    background: color-mix(in srgb, var(--terminal-success) 20%, transparent) !important;
+    border-left: 3px solid var(--terminal-success) !important;
+    font-weight: bold !important;
+    transform: translateX(2px) !important;
+  }
+
+  .table-of-contents__left-border {
+    border-left: none !important;
+  }
+}
  
  .button--primary {
    background: var(--terminal-success);
@@ -388,8 +454,22 @@
  
 
 .footer {
-   background-color: var(--terminal-bg) !important;
+   background: color-mix(in srgb, var(--terminal-bg) 85%, transparent) !important;
+   backdrop-filter: saturate(140%) blur(14px) !important;
+   -webkit-backdrop-filter: saturate(140%) blur(14px) !important;
+   border-top: 1px solid color-mix(in srgb, var(--terminal-border) 60%, transparent) !important;
+   box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.06) !important;
+   border-radius: 20px 20px 0 0 !important;
+   position: relative !important;
+   z-index: 100 !important;
 }
+
+html[data-theme='dark'] .footer {
+   background: color-mix(in srgb, var(--terminal-bg) 75%, transparent) !important;
+   border-top-color: color-mix(in srgb, var(--terminal-border) 30%, transparent) !important;
+   box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.35) !important;
+}
+
 
 .meshtastic-sidebar > a {
    color: var(--terminal-success) !important;
@@ -896,7 +976,7 @@ body {
 
 .card {
   background-color: var(--terminal-bg) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ifm-global-radius) !important;
   box-shadow: var(--glow-green) !important;
   border: 1px solid var(--terminal-border) !important;
   display: flex;
@@ -952,8 +1032,8 @@ body {
   display: flex;
   border-radius: var(--ifm-global-radius);
   color: var(--terminal-fg);
-  border: 1px solid transparent;
-  background: transparent;
+  border: 0px solid transparent !important;
+  background: transparent !important;
   transition: color var(--ifm-transition-fast) var(--ifm-transition-timing-default), border-color .2s ease;
 }
 
@@ -962,7 +1042,7 @@ body {
 }
 
 .menu__caret:hover {
-  background: transparent;
+  background: transparent !important;
   border-color: transparent;
   color: color-mix(in oklab, var(--terminal-fg) 85%, var(--terminal-accent) 15%);
 }
@@ -994,3 +1074,25 @@ body {
 /*.button--secondary.button--lg:hover {*/
 /*  animation: glitch .25s ease-in-out 1;*/
 /*}*/
+
+@media (max-width: 996px) {
+  .navbar__toggle {
+    background-color: transparent !important;
+  }
+
+  .navbar-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 100vh !important;
+    z-index: 9999 !important;
+    border-top-left-radius: 16px !important;
+    border-bottom-left-radius: 16px !important;
+    border-top-right-radius: 16px !important;
+    overflow: hidden !important;
+  }
+}
+
+.menu__link.menu__link--sublist {
+  color: var(--ifm-heading-color);
+}

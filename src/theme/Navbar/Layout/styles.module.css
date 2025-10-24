@@ -6,7 +6,6 @@
   transform: translate3d(0, calc(-100% - 2px), 0);
 }
 
-/* Glass/blur effect for the navbar */
 :global(.navbar) {
   background: color-mix(in srgb, var(--ifm-navbar-background-color) 72%, transparent);
   -webkit-backdrop-filter: saturate(140%) blur(14px);
@@ -27,7 +26,6 @@
   margin-right: max(env(safe-area-inset-right), 12px);
   width: auto;
   border-radius: 20px;
-  overflow: hidden;
 }
 
 @media (max-width: 996px) {
@@ -36,5 +34,9 @@
     margin-left: max(env(safe-area-inset-left), 8px);
     margin-right: max(env(safe-area-inset-right), 8px);
     border-radius: 16px;
+  }
+
+  :global(.navbar-sidebar__backdrop) {
+    background-color: rgb(251 7 7 / 0%) !important;
   }
 }
