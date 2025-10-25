@@ -5,6 +5,7 @@ import Layout from '@theme/Layout';
 import classnames from 'classnames';
 import CodeBlock from '@theme/CodeBlock';
 import { useEffect } from 'react';
+import confetti from 'canvas-confetti';
 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
@@ -94,13 +95,19 @@ export default function Home() {
     let isActive = false;
     let isAnimating = false;
     
-    const baseSpeed = 2;
-    const maxSpeed = 19;
-    const hitForceMultiplier = 0.4;
-    const friction = 0.99;
-    const hitRadius = Math.max(imageWidth, imageHeight) * 0.8;
+    const baseSpeed = 15;
+    const maxSpeed = 25;
+    const repelForce = 100;
+    const friction = 0.72;
+    const detectionRadius = 30;
+    const cornerEscapeDistance = 100;
+    const cornerEscapeForce = 80;
+    const predictionMultiplier = 6;
     let lastTime = performance.now();
     let animationId;
+    let currentMousePos = { x: -1000, y: -1000 };
+    let lastMousePos = { x: -1000, y: -1000 };
+    let mouseVelocity = { x: 0, y: 0 };
 
     function positionAtLogo() {
       const logoRect = staticLogo.getBoundingClientRect();
@@ -143,20 +150,20 @@ export default function Home() {
         const distance = Math.sqrt(dirX * dirX + dirY * dirY);
         
         if (distance > 0) {
-          pushDirection.x = (dirX / distance) * 1;
-          pushDirection.y = (dirY / distance) * 1;
+          pushDirection.x = (dirX / distance) * 8;
+          pushDirection.y = (dirY / distance) * 8;
         }
       }
       
       if (Math.abs(pushDirection.x) < 0.1 && Math.abs(pushDirection.y) < 0.1) {
-        pushDirection.x = (Math.random() - 0.5) * 0.5;
-        pushDirection.y = -1.0;
+        pushDirection.x = (Math.random() - 0.5) * 6;
+        pushDirection.y = -4.0;
       }
       
       setTimeout(() => {
         if (isActive) {
-          velocityX = pushDirection.x;
-          velocityY = pushDirection.y;
+          velocityX = pushDirection.x * 40;
+          velocityY = pushDirection.y * 40;
           isAnimating = true;
           
           if (!animationId) {
@@ -182,41 +189,121 @@ export default function Home() {
       setTimeout(() => {
         staticLogo.classList.remove('hidden');
         bouncingImage.classList.remove('active');
+        bouncingImage.style.transition = '';
+        bouncingImage.style.opacity = '';
+        bouncingImage.style.transform = '';
         velocityX = 0;
         velocityY = 0;
       }, 300);
     }
     
-    let lastMousePos = { x: 0, y: 0 };
     let currentTouchId = null;
     let isMouseDown = false;
     
     const iframe = document.querySelector('iframe');
 
-    function checkImageHit(clientX, clientY, velocity) {
+    function applyRepelForce(mouseX, mouseY) {
       const imageCenter = {
         x: x + imageHalfWidth,
         y: y + imageHalfHeight
       };
       
-      const distance = Math.sqrt(
-        Math.pow(clientX - imageCenter.x, 2) +
-        Math.pow(clientY - imageCenter.y, 2)
+      const predictedMouseX = mouseX + mouseVelocity.x * predictionMultiplier;
+      const predictedMouseY = mouseY + mouseVelocity.y * predictionMultiplier;
+      
+      const distanceCurrent = Math.sqrt(
+        Math.pow(mouseX - imageCenter.x, 2) +
+        Math.pow(mouseY - imageCenter.y, 2)
       );
       
-      if (distance < hitRadius) {
-        velocityX += velocity.x * hitForceMultiplier;
-        velocityY += velocity.y * hitForceMultiplier;
+      const distancePredicted = Math.sqrt(
+        Math.pow(predictedMouseX - imageCenter.x, 2) +
+        Math.pow(predictedMouseY - imageCenter.y, 2)
+      );
+      
+      const effectiveMouseX = distancePredicted < distanceCurrent ? predictedMouseX : mouseX;
+      const effectiveMouseY = distancePredicted < distanceCurrent ? predictedMouseY : mouseY;
+      const effectiveDistance = Math.min(distanceCurrent, distancePredicted);
+      
+      if (effectiveDistance < detectionRadius && effectiveDistance > 0) {
+        const repelX = imageCenter.x - effectiveMouseX;
+        const repelY = imageCenter.y - effectiveMouseY;
         
-        const currentSpeed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
-        if (currentSpeed > maxSpeed) {
-          const scale = maxSpeed / currentSpeed;
-          velocityX *= scale;
-          velocityY *= scale;
+        const normalizedX = repelX / effectiveDistance;
+        const normalizedY = repelY / effectiveDistance;
+        
+        if (effectiveDistance < 100) {
+          velocityX = normalizedX * maxSpeed * 0.9;
+          velocityY = normalizedY * maxSpeed * 0.9;
+        } else {
+          const distanceFactor = 1 - (effectiveDistance / detectionRadius);
+          let forceMagnitude = repelForce * Math.pow(distanceFactor, 4);
+          
+          if (effectiveDistance < 150) {
+            forceMagnitude *= 4;
+          } else if (effectiveDistance < 250) {
+            forceMagnitude *= 2.5;
+          } else if (effectiveDistance < 400) {
+            forceMagnitude *= 1.5;
+          }
+          
+          velocityX += normalizedX * forceMagnitude;
+          velocityY += normalizedY * forceMagnitude;
+          
+          const currentSpeed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
+          if (currentSpeed > maxSpeed) {
+            const scale = maxSpeed / currentSpeed;
+            velocityX *= scale;
+            velocityY *= scale;
+          }
         }
-        return true;
       }
-      return false;
+    }
+
+    function avoidCorners() {
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+      
+      const imageCenter = {
+        x: x + imageHalfWidth,
+        y: y + imageHalfHeight
+      };
+      
+      const distanceToLeft = x;
+      const distanceToRight = screenWidth - (x + imageWidth);
+      const distanceToTop = y;
+      const distanceToBottom = screenHeight - (y + imageHeight);
+      
+      const minDistanceX = Math.min(distanceToLeft, distanceToRight);
+      const minDistanceY = Math.min(distanceToTop, distanceToBottom);
+      
+      if (minDistanceX < cornerEscapeDistance) {
+        const distanceFactor = 1 - (minDistanceX / cornerEscapeDistance);
+        const force = cornerEscapeForce * distanceFactor * distanceFactor * distanceFactor;
+        if (distanceToLeft < distanceToRight) {
+          velocityX += force * 3;
+        } else {
+          velocityX -= force * 3;
+        }
+      }
+      
+      if (minDistanceY < cornerEscapeDistance) {
+        const distanceFactor = 1 - (minDistanceY / cornerEscapeDistance);
+        const force = cornerEscapeForce * distanceFactor * distanceFactor * distanceFactor;
+        if (distanceToTop < distanceToBottom) {
+          velocityY += force * 3;
+        } else {
+          velocityY -= force * 3;
+        }
+      }
+      
+      if (minDistanceX < cornerEscapeDistance && minDistanceY < cornerEscapeDistance) {
+        const escapeAngle = Math.atan2(screenHeight / 2 - imageCenter.y, screenWidth / 2 - imageCenter.x);
+        const cornerFactor = 1 - Math.min(minDistanceX, minDistanceY) / cornerEscapeDistance;
+        const cornerForce = cornerEscapeForce * Math.pow(cornerFactor, 3) * 8;
+        velocityX += Math.cos(escapeAngle) * cornerForce;
+        velocityY += Math.sin(escapeAngle) * cornerForce;
+      }
     }
 
     function animateBounce(currentTime) {
@@ -224,6 +311,12 @@ export default function Home() {
       
       const deltaTime = (currentTime - lastTime) / 16.67;
       lastTime = currentTime;
+
+      mouseVelocity.x *= 0.85;
+      mouseVelocity.y *= 0.85;
+
+      applyRepelForce(currentMousePos.x, currentMousePos.y);
+      avoidCorners();
 
       x += velocityX * deltaTime;
       y += velocityY * deltaTime;
@@ -263,27 +356,35 @@ export default function Home() {
       
       if (x + imageWidth > window.innerWidth) {
         x = window.innerWidth - imageWidth;
-        velocityX = -Math.abs(velocityX) * 0.8;
+        velocityX = -Math.abs(velocityX) * 0.9;
       }
       if (x < 0) {
         x = 0;
-        velocityX = Math.abs(velocityX) * 0.8;
+        velocityX = Math.abs(velocityX) * 0.9;
       }
       if (y + imageHeight > window.innerHeight) {
         y = window.innerHeight - imageHeight;
-        velocityY = -Math.abs(velocityY) * 0.8;
+        velocityY = -Math.abs(velocityY) * 0.9;
       }
       if (y < 0) {
         y = 0;
-        velocityY = Math.abs(velocityY) * 0.8;
+        velocityY = Math.abs(velocityY) * 0.9;
       }
 
-      velocityX *= friction;
-      velocityY *= friction;
-      
       const currentSpeed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
-      if (currentSpeed < baseSpeed && currentSpeed > 0.1) {
+      
+      if (currentSpeed > baseSpeed) {
+        velocityX *= friction;
+        velocityY *= friction;
+      } else if (currentSpeed > 1) {
         const scale = baseSpeed / currentSpeed;
+        velocityX *= scale;
+        velocityY *= scale;
+      }
+      
+      const clampedSpeed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
+      if (clampedSpeed > maxSpeed) {
+        const scale = maxSpeed / clampedSpeed;
         velocityX *= scale;
         velocityY *= scale;
       }
@@ -293,64 +394,121 @@ export default function Home() {
     }
     
     function handleMouseMove(e) {
-      if (!isActive) return;
+      const newX = e.clientX;
+      const newY = e.clientY;
       
-      const clientX = e.clientX;
-      const clientY = e.clientY;
-      const velocity = {
-        x: (clientX - lastMousePos.x) * 0.5,
-        y: (clientY - lastMousePos.y) * 0.5
-      };
+      mouseVelocity.x = newX - lastMousePos.x;
+      mouseVelocity.y = newY - lastMousePos.y;
       
-      checkImageHit(clientX, clientY, velocity);
-      lastMousePos.x = clientX;
-      lastMousePos.y = clientY;
+      lastMousePos.x = currentMousePos.x;
+      lastMousePos.y = currentMousePos.y;
+      currentMousePos.x = newX;
+      currentMousePos.y = newY;
     }
 
     function handleMouseDown(e) {
-      if (!isActive) return;
-      
       isMouseDown = true;
-      lastMousePos.x = e.clientX;
-      lastMousePos.y = e.clientY;
-      checkImageHit(e.clientX, e.clientY, { x: 0, y: 0 });
+      lastMousePos.x = currentMousePos.x;
+      lastMousePos.y = currentMousePos.y;
+      currentMousePos.x = e.clientX;
+      currentMousePos.y = e.clientY;
     }
 
     function handleMouseUp() {
       isMouseDown = false;
     }
     
+    function handleImageClick(e) {
+      if (!isActive) return;
+      
+      e.stopPropagation();
+      
+      const rect = bouncingImage.getBoundingClientRect();
+      const centerX = (rect.left + rect.right) / 2;
+      const centerY = (rect.top + rect.bottom) / 2;
+      
+      const xPos = centerX / window.innerWidth;
+      const yPos = centerY / window.innerHeight;
+      
+      confetti({
+        particleCount: 200,
+        spread: 120,
+        origin: { x: xPos, y: yPos },
+        colors: ['#8B0000', '#A50000', '#C00000', '#DC143C', '#FF0000'],
+        startVelocity: 50,
+        gravity: 1.2,
+        scalar: 1.4,
+        ticks: 120,
+      });
+      
+      confetti({
+        particleCount: 120,
+        spread: 180,
+        origin: { x: xPos, y: yPos },
+        colors: ['#8B0000', '#B22222', '#DC143C', '#FF4444'],
+        startVelocity: 70,
+        gravity: 0.8,
+        scalar: 1.0,
+        ticks: 140,
+      });
+      
+      confetti({
+        particleCount: 80,
+        spread: 360,
+        origin: { x: xPos, y: yPos },
+        colors: ['#A50000', '#C00000', '#DC143C'],
+        startVelocity: 80,
+        gravity: 1.5,
+        scalar: 0.7,
+        shapes: ['circle'],
+        ticks: 100,
+      });
+      
+      bouncingImage.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      bouncingImage.style.opacity = '0';
+      bouncingImage.style.transform = `translate(${x}px, ${y}px) scale(0)`;
+      
+      setTimeout(() => {
+        deactivateBouncing();
+      }, 300);
+    }
+    
     function handleTouchStart(e) {
-      if (!isActive || currentTouchId || e.touches.length === 0) return;
+      if (currentTouchId || e.touches.length === 0) return;
       
       const touch = e.touches[0];
       currentTouchId = touch.identifier;
-      lastMousePos.x = touch.clientX;
-      lastMousePos.y = touch.clientY;
-      checkImageHit(touch.clientX, touch.clientY, { x: 0, y: 0 });
+      lastMousePos.x = currentMousePos.x;
+      lastMousePos.y = currentMousePos.y;
+      currentMousePos.x = touch.clientX;
+      currentMousePos.y = touch.clientY;
     }
 
     function handleTouchMove(e) {
-      if (!isActive) return;
-      
       const touch = Array.from(e.touches).find(t => t.identifier === currentTouchId);
       if (touch) {
-        const clientX = touch.clientX;
-        const clientY = touch.clientY;
-        const velocity = {
-          x: (clientX - lastMousePos.x) * 0.5,
-          y: (clientY - lastMousePos.y) * 0.5
-        };
+        const newX = touch.clientX;
+        const newY = touch.clientY;
         
-        checkImageHit(clientX, clientY, velocity);
-        lastMousePos.x = clientX;
-        lastMousePos.y = clientY;
+        mouseVelocity.x = newX - lastMousePos.x;
+        mouseVelocity.y = newY - lastMousePos.y;
+        
+        lastMousePos.x = currentMousePos.x;
+        lastMousePos.y = currentMousePos.y;
+        currentMousePos.x = newX;
+        currentMousePos.y = newY;
       }
     }
 
     function handleTouchEnd(e) {
       if (e.touches.length === 0 || !Array.from(e.touches).some(t => t.identifier === currentTouchId)) {
         currentTouchId = null;
+        currentMousePos.x = -1000;
+        currentMousePos.y = -1000;
+        lastMousePos.x = -1000;
+        lastMousePos.y = -1000;
+        mouseVelocity.x = 0;
+        mouseVelocity.y = 0;
       }
     }
     
@@ -360,6 +518,13 @@ export default function Home() {
     document.addEventListener('touchstart', handleTouchStart, { passive: true });
     document.addEventListener('touchmove', handleTouchMove, { passive: true });
     document.addEventListener('touchend', handleTouchEnd, { passive: true });
+    
+    bouncingImage.addEventListener('click', handleImageClick);
+    bouncingImage.addEventListener('touchend', (e) => {
+      if (e.target === bouncingImage) {
+        handleImageClick(e);
+      }
+    });
 
     staticLogo.addEventListener('mouseenter', (e) => {
       activateBouncing(e);
@@ -370,6 +535,12 @@ export default function Home() {
     
     let deactivateTimeout;
     document.addEventListener('mouseleave', () => {
+      currentMousePos.x = -1000;
+      currentMousePos.y = -1000;
+      lastMousePos.x = -1000;
+      lastMousePos.y = -1000;
+      mouseVelocity.x = 0;
+      mouseVelocity.y = 0;
       deactivateTimeout = setTimeout(deactivateBouncing, 2000);
     });
     
@@ -401,6 +572,7 @@ export default function Home() {
       document.removeEventListener('touchstart', handleTouchStart);
       document.removeEventListener('touchmove', handleTouchMove);
       document.removeEventListener('touchend', handleTouchEnd);
+      bouncingImage.removeEventListener('click', handleImageClick);
       staticLogo.removeEventListener('mouseenter', activateBouncing);
       staticLogo.removeEventListener('touchstart', activateBouncing);
       window.removeEventListener('resize', positionAtLogo);
