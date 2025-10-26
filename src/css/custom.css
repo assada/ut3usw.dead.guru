@@ -60,7 +60,7 @@
    --ifm-color-emphasis-800: #777;
    --ifm-color-emphasis-900: var(--color-light);
  
-   --ifm-navbar-background-color: color-mix(in srgb, #f8f8f629 72%, transparent);
+   --ifm-navbar-background-color: var(--color-bg);
    --ifm-navbar-link-color: var(--color-base);
    --ifm-navbar-link-hover-color: var(--color-accent);
  
@@ -125,7 +125,7 @@
    --ifm-color-emphasis-800: #777;
    --ifm-color-emphasis-900: #999;
  
-   --ifm-navbar-background-color: color-mix(in srgb, #0f121480 65%, transparent);
+   --ifm-navbar-background-color: var(--color-bg);
    --ifm-navbar-link-color: var(--color-base);
    --ifm-navbar-link-hover-color: var(--color-accent);
  
@@ -1185,12 +1185,12 @@ article > div.theme-doc-markdown.markdown > header > h1:after, article > header 
      padding-left: 2px
  }
 
-.clean-btn {
-    border-radius: 25px !important;
-    background-color: transparent !important;
-}
+ .clean-btn {
+     border-radius: 25px !important;
+     background-color: transparent !important;
+ }
 
-.clean-btn:hover {
-    background-color: transparent !important;
-    color: var(--color-accent) !important;
-}
+ .clean-btn:hover {
+     background-color: transparent !important;
+     color: var(--color-accent) !important;
+ }
