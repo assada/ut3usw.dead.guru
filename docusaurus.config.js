@@ -13,7 +13,7 @@ import remarkGfm from 'remark-gfm'
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'dead.md',
-  tagline: 'Персональні нотатки радіогубителя',
+  tagline: 'Персональний журнал ut3usw',
   favicon: 'img/favicon.svg',
 
   stylesheets: ['./src/css/docusaurus-cyberpunk-theme.css'],

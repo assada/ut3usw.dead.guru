@@ -10,6 +10,12 @@ import confetti from 'canvas-confetti';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
+import Float from "../components/float";
+
+import ScrambleIn, {
+  ScrambleInHandle,
+} from "@site/src/components/scramble-in"
+
 import TerminalCard from '@site/src/components/TerminalCard';
 
 const exampleCode = `#include <iostream>
@@ -580,8 +586,8 @@ export default function Home() {
   }, []);
 
   return (
-      <Layout title={`Персоналні нотатки UT3USW. dead.md`} Add commentMore actions
-              description="Персональні нотатки про радіо, програмування та інженерію від однієї людини.">
+      <Layout title={`Журнал UT3USW. dead.md`} Add commentMore actions
+              description="Персональний журнал про радіо, програмування та інженерію від людини.">
         <img id={"bouncing-image"} alt={"dead!"} src={"/img/animation_logo.gif"} width="120" height="120"/>
         <header className={clsx('hero', styles.heroBanner)}>
           <div className="container">
@@ -589,24 +595,24 @@ export default function Home() {
               <div className="col col--5">
                 <img id={"static-logo"} src={"/img/animation_logo.gif"} alt={"dead!"} width="120" height="120"/>
                 <Heading as="h1" className="hero__title">
-                  {siteConfig.title}
+                  <ScrambleIn scrambledLetterCount={8} text={siteConfig.title} autoStart={true} />
                 </Heading>
                 <p className="hero__subtitle">{siteConfig.tagline}</p>
                 <div className={styles.buttons}>
                   <Link
                       className="button button--secondary button--lg"
                       to="/docs/intro">
-                    Continue exploring?
+                    <ScrambleIn scrambledLetterCount={8} text={"Continue exploring?"} autoStart={true} />
                   </Link>
                 </div>
               </div>
-              <div className={classnames('col col--7', styles.exampleCode)}>
-                <TerminalCard title="Terminal" glowing>
-                <CodeBlock language="cpp" className="cpp">
-                  {codeExamples[Math.floor(Math.random() * codeExamples.length)].code}
-                </CodeBlock>
-                </TerminalCard>
-              </div>
+                <div className={classnames('col col--7', styles.exampleCode)}>
+                  <TerminalCard title="Terminal" glowing>
+                  <CodeBlock language="cpp" className="cpp">
+                    {codeExamples[Math.floor(Math.random() * codeExamples.length)].code}
+                  </CodeBlock>
+                  </TerminalCard>
+                </div>
             </div>
           </div>
         </header>
