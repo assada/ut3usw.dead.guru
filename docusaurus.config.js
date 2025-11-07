@@ -77,6 +77,10 @@ const config = {
           rehypePlugins: [
             
           ],
+
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
+          
           //sidebarCollapsed: false,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -133,7 +137,7 @@ const config = {
           // see: https://www.npmjs.com/package/medium-zoom#options
           options: {
             margin: 24,
-            background: 'rgba(0,0,0,0.71)',
+            background: 'rgba(0,0,0,0.51)',
             scrollOffset: 0,
           },
         },

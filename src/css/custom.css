@@ -1194,3 +1194,7 @@ article > div.theme-doc-markdown.markdown > header > h1:after, article > header 
      background-color: transparent !important;
      color: var(--color-accent) !important;
  }
+
+ .markdown img {
+     width: 60% !important;
+ }
