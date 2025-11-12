@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@docusaurus/core": "^3.9",
+    "@docusaurus/plugin-ideal-image": "^3.9.2",
     "@docusaurus/plugin-sitemap": "^3.9",
     "@docusaurus/preset-classic": "^3.9",
     "@giscus/react": "^3.1.0",
@@ -28,6 +29,7 @@
     "prism-react-renderer": "^2.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-medium-image-zoom": "^5.4.0",
     "rehype-code-group": "^0.2.4",
     "remark-code-title": "^0.2.5",
     "remark-definition-list": "^2.0.0",

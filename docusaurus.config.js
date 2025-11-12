@@ -40,17 +40,24 @@ const config = {
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
+  
   i18n: {
     defaultLocale: 'uk',
-    locales: ['uk', 'en'],
+    locales: ['uk'],
   },
 
   plugins: [
-    'plugin-image-zoom'
+    [
+      '@docusaurus/plugin-ideal-image',
+      {
+        quality: 50,
+        size: 640,
+        max: 4096, // max resized image's size.
+        min: 640, // min resized image's size. if original is lower, use that size.
+        steps: 5, // the max number of images generated between min and max (inclusive)
+        disableInDev: false,
+      },
+    ],
   ],
   
   markdown: {

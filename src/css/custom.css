@@ -569,10 +569,6 @@ html[data-theme='dark'] .footer {
    filter: grayscale(0%);
 }
 
-.markdown img.medium-zoom-image {
-  width: 60%;
-}
-
 .medium-zoom-overlay {
   z-index: 200 !important;
    background: var(--terminal-bg) !important;
@@ -1195,6 +1191,10 @@ article > div.theme-doc-markdown.markdown > header > h1:after, article > header 
      color: var(--color-accent) !important;
  }
 
- .markdown img {
-     width: 60% !important;
+img.medium-zoom-image {
+     margin-bottom: 20px !important;
  }
+ 
+ /*.markdown img {*/
+ /*    max-width: 60% !important;*/
+ /*}*/
