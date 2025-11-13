@@ -16,8 +16,6 @@ const config = {
   tagline: 'Персональний журнал ut3usw',
   favicon: 'img/favicon.svg',
 
-  stylesheets: ['./src/css/docusaurus-cyberpunk-theme.css'],
-
   // Set the production url of your site here
   url: 'https://dead.md',
   // Set the /<baseUrl>/ pathname under which your site is served
