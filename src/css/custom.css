@@ -142,8 +142,16 @@
    --glow-green: 0 0 20px hsla(30, 20%, 70%, 0.2);
    --glow-yellow: 0 0 20px hsla(30, 65%, 65%, 0.3);
 }
- 
- 
+
+ iframe {
+     display: block;
+     max-width: 100%;
+     min-width: 100%;
+     margin: 0;
+     padding: 0;
+     border: 0 none;
+     box-sizing: border-box;
+ }
  code, pre, .prism-code {
    font-family: var(--ifm-font-family-monospace) !important;
    box-shadow: none !important;

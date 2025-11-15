@@ -8,6 +8,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import { remarkDefinitionList, defListHastHandlers } from 'remark-definition-list';
 import { remarkExtendedTable, extendedTableHandlers } from 'remark-extended-table';
 import remarkGfm from 'remark-gfm'
+// import { nativeIdealImageRemarkPlugin } from 'docusaurus-plugin-native-ideal-image';
 
 
 /** @type {import('@docusaurus/types').Config} */
@@ -38,24 +39,15 @@ const config = {
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  
+
   i18n: {
     defaultLocale: 'uk',
     locales: ['uk'],
   },
 
   plugins: [
-    [
-      '@docusaurus/plugin-ideal-image',
-      {
-        quality: 50,
-        size: 640,
-        max: 4096, // max resized image's size.
-        min: 640, // min resized image's size. if original is lower, use that size.
-        steps: 5, // the max number of images generated between min and max (inclusive)
-        disableInDev: false,
-      },
-    ],
+      'native-ideal-image',
+      'docusaurus-plugin-image-zoom',
   ],
   
   markdown: {
@@ -78,6 +70,7 @@ const config = {
             remarkGfm,
             remarkExtendedTable,
             remarkDefinitionList,
+              // nativeIdealImageRemarkPlugin
           ],
           rehypePlugins: [
             
@@ -146,6 +139,14 @@ const config = {
             scrollOffset: 0,
           },
         },
+          zoom: {
+              selector: '.markdown > p > img',
+              // selector: '.markdown > picture > img',
+              background: {
+                  light: 'rgb(255, 255, 255)',
+                  dark: 'rgb(50, 50, 50)'
+              }
+          },
         docs: {
           sidebar: {
             autoCollapseCategories: false,
