@@ -143,7 +143,7 @@
    --glow-yellow: 0 0 20px hsla(30, 65%, 65%, 0.3);
 }
 
- iframe {
+ .markdown iframe {
      display: block;
      max-width: 100%;
      min-width: 100%;
@@ -1199,8 +1199,8 @@ article > div.theme-doc-markdown.markdown > header > h1:after, article > header 
      color: var(--color-accent) !important;
  }
 
-img.medium-zoom-image {
-     margin-bottom: 20px !important;
+img.medium-zoom-image, .native-ideal-img {
+    border-radius: 8px !important;
  }
  
  /*.markdown img {*/

@@ -6,11 +6,9 @@ tags: [meshtastic, hardware, ham, mesh]
 comments: true
 ---
 
-import TurboImage from "../../src/components/TurboImage";
-
 # Meshtastic в Україні
 
-<TurboImage alt={"Meshtastic модем"} img={require('./img/1690058736_image.png')} />
+![Meshtastic модем](./img/1690058736_image.png)
 
 **Meshtastic** — це проект, який дозволяє використовувати недорогі трансивери на базі LoRa як дальньобійну комунікаційну платформу в зонах без наявної або ненадійної комунікаційної інфраструктури.
 
@@ -33,7 +31,7 @@ import TurboImage from "../../src/components/TurboImage";
 
 На початку 2015 року [Semtech Corporation](https://www.semtech.com/) та дослідницький центр [IBM Research](https://research.ibm.com/) представили новий відкритий енергоефективний мережевий протокол LoRaWAN (Long Range Wide Area Networks), що забезпечує значні переваги перед Wi-Fi та стільниковими мережами завдяки можливості розгортання міжмашинних (M2M) комунікацій, чим сколихнули ринок IoT.
 
-<TurboImage title={"IBM Research і Semtech Corporation"} img={require('./img/1690048845_image.png')} />
+![IBM Research і Semtech Corporation](./img/1690048845_image.png)
 
 Технологія **LoRa** з’явилася на світ під егідою некомерційної організації [LoRa Alliance](https://lora-alliance.org/), заснованої такими компаніями, як IBM, Semtech, Cisco та ін., з метою прийняття та просування протоколу LoRaWAN як єдиного стандарту для глобальних мереж з низьким енергоспоживанням (LPWAN — від англ. Low Power Wide Area ).
 
@@ -47,7 +45,7 @@ import TurboImage from "../../src/components/TurboImage";
 Meshtastic **не є** LoRaWAN. Meshtastic використовує повний спектр частот, призначений для технології LoRa для кожного регіону. Це дозволяє використовувати кілька сотень можливих частотних каналів.
 :::
 
-<TurboImage title={"Архітектура LoRaWAN"} img={require('./img/1690049019_image.png')} />
+![Архітектура LoRaWAN](./img/1690049019_image.png)
 
 ## Що таке Meshtastic?
 
@@ -57,18 +55,17 @@ Meshtastic **не є** LoRaWAN. Meshtastic використовує повний
 Хочу зауважити, що ніхто не забороняє виставити fixed позицію вашої mesh ноди і взагалі не підключати GPS до неї
 :::
 
-<TurboImage title={"Meshtastic схема"} img={require('./img/mesh_comm.png')} />
+![Meshtastic схема](./img/mesh_comm.png)
 
 Радіостанції автоматично створюють і підтримують мережу LoRa для пересилання пакетів у разі потреби (до 7 хопів), тому кожен у групі може отримувати повідомлення навіть від найвіддаленішого учасника. Радіостанції за бажанням працюватимуть із вашим телефоном, але телефон не є обов'язковим.
 
-<TurboImage title={"Мапа мережі в Укріїні"} img={require('./img/1690049900_image.png')} />
-
+![Мапа мережі в Україні](./img/1690049900_image.png)
 
 **Основна функція проекту:** передача тексту та ваших координат через смартфон без використання стільникового зв’язку та інтернету.
 
 Тобто, на ваш смартфон Android або iOS, встановлюється програма Meshtastic. Це програма-чат на зразок Telegram або Viber. Телефон з’єднується з радіомодемом через Bluetooth. Через радіомодем здійснюється зв’язок з іншими абонентами, у яких встановлена така сама програма і такий же модем. На екрані смартфона ви можете бачити список абонентів та карту їх розташування. Ви бачите груповий чат та p2p чати з учасниками мережі.
 
-<TurboImage title={"Додаток Meshtastic для IOS"} img={require('./img/1690054367_meshtastic_app.png')} />
+![Додаток Meshtastic для Android](./img/1690054367_meshtastic_app.png)
 
 **Варіанти сценаріїв застосування:**
 
@@ -101,20 +98,19 @@ Meshtastic **не є** LoRaWAN. Meshtastic використовує повний
 
 * **LILYGO® TTGO LoRa32 V2.1_1.6 T-Lora** — найдешевший, без GPS і з не великою потужністю передачі. https://a.aliexpress.com/_Ev5JaUT
 
-<TurboImage title={"LILYGO® TTGO LoRa32 V2.1_1.6 T-Lora"} img={require('./img/1690055311_image.png')} />
-
+![LILYGO® TTGO LoRa32 V2.1_1.6 T-Lora](./img/1690055311_image.png)
 
 * **LILYGO® T-Beam** — самий популярний пристрій. Вже з GPS і з більшою потужністю передачі. https://lilygo.cc/products/t-beam
 
-<TurboImage title={"LILYGO® T-Beam"} img={require('./img/1690055673_image.png')} />
+![LILYGO® T-Beam](./img/1690055673_image.png)
 
 * **LILYGO® TTGO Meshtastic T-Echo** — лакшері варіант. Найкраща потужність, енергоефективний дисплей, вбудований датчик температури і вологості. https://www.aliexpress.com/item/1005003026107533.html
 
-<TurboImage title={"LILYGO® TTGO Meshtastic T-Echo"} img={require('./img/1690055583_image.png')} />
+![LILYGO® TTGO Meshtastic T-Echo](./img/1690055583_image.png)
 
 * **Heltec Wireless Stick V3** - Це, мабуть, один з найпопулярніших та найзручніших варіантів на сьогодні, особливо якщо вам не потрібен вбудований GPS. Купити можна наприклад тут: https://muzi.works/products/h1-complete-device-with-upgraded-whip-antenna-heltec-v3-running-meshtastic. Або, зібрати повністю самостійно, придбавши плату, екран і інші компоненти окремо. https://heltec.org/project/wireless-stick-v3/
 
-<TurboImage title={"Heltec Wireless Stick V3"} img={require('./img/Heltec_Wireless_Stick_V3.png')} />
+![Heltec Wireless Stick V3](./img/Heltec_Wireless_Stick_V3.png)
 
 ### Прошивка пристроїв
 
@@ -169,7 +165,7 @@ T-Beam та інші модеми з підтримкою Bluetooth можуть
 
 Якщо ви **новачок** і подальші пункти цієї статті для вас складні, то вам краще використовувати web-клієнт! Просто підєднайте модем по USB до комп’ютера і відкрийте веб конфігуратор! **Все просто!**
 
-<TurboImage title={"client.meshtastic.org"} img={require('./img/1690280646_image.png')} />
+![client.meshtastic.org](./img/1690280646_image.png)
 
 #### Встановлення meshtastic-cli
 
@@ -237,7 +233,7 @@ meshtastic --set-owner 'your node name' --set-owner-short  'NODE' --set lora.reg
 
 Для IOS використовуйте QR сканер в додатку камери, а для Android - вбудований в додаток Meshtastic сканер в налаштуваннях каналів.
 
-<TurboImage title={"QR код з налаштуваннями мережі"} img={require('./img/1690058019_image.png')} />
+![QR код з налаштуваннями мережі](./img/1690058019_image.png)
 
 Вітаю! Ви в мережі! Спробуйте написати щось в чат і ви обов`язково отримаєте відповідь, якщо ваш пакет хтось "почув". Якщо ні, то спробуйте змінити місцезнаходження або використати антену з більшим коефіцієнтом підсилення. Приклади антен наведені тут: [https://wikimesh.pp.ua/uk/Рекомендовані_антени](https://wikimesh.pp.ua/uk/%D0%A0%D0%B5%D0%BA%D0%BE%D0%BC%D0%B5%D0%BD%D0%B4%D0%BE%D0%B2%D0%B0%D0%BD%D1%96_%D0%B0%D0%BD%D1%82%D0%B5%D0%BD%D0%B8)
 
@@ -246,7 +242,7 @@ meshtastic --set-owner 'your node name' --set-owner-short  'NODE' --set lora.reg
 
 Якщо вам не пощастило з умовами, то антену можна поступово покращувати! Базова антена продається в Україні на OLX за умовні 300-500 грн. Це все траба пробувати. Якщо ви не знаєте які антени краще, то можете звернутися до нас в телеграм чаті і ми вам допоможемо з вибором. Але спочатку перевірте чи працює з базовою антеною.
 
-<TurboImage title={"Направлена антена типу хвильовий канал для 433МГц"} img={require('./img/1690371627_image.png')} />
+![Антена типу хвильовий канал для 433МГц](./img/1690371627_image.png)
 
 ## TLDR;
 
@@ -271,7 +267,7 @@ meshtastic --set-owner 'your node name' --set-owner-short  'NODE' --set lora.reg
 
 ### Заміна SplashScreen на власний для T-Beam і подібних екранів
 
-<TurboImage title={"Мій SplashScreen на T-Echo"} img={require('./img/image_2023_08_12_16_49_14.png')} />
+![Мій SplashScreen на T-Beam](./img/image_2023_08_12_16_49_14.png)
 
 Файл XBM для заміни: `/firmware/src/graphics/img/icon.xbm`
 
@@ -302,7 +298,7 @@ upload_speed = 921600
 
 Додатково всі тексти екрану можна замінити на українську мову в файлі `/firmware/src/graphics/Screen.cpp`. Але часто вистачає підтримки української мови в шрифті. Якщо ви вирішите повністю перекласти прошивку, будьте уважні до кількості символів. Я намагався перекладати так, щоб кількість символів збігалася з англійським варіантом. Іноді виходять не дуже зручні переклади.
 
-<TurboImage title={"Приклад перекладу"} img={require('./img/1690316764_image.png')} />
+![Приклад перекладу](./img/1690316764_image.png)
 
 #### Підтримка української мови для T-Echo
 
@@ -344,7 +340,7 @@ lib_deps =
 
 Зміни в `/firmware/src/graphics/Screen.cpp` ми не робимо. Лише додаємо флаг збірки `-D OLED_UA` в файл `/firmware/variants/t-echo/platformio.ini` (описано вище)
 
-<TurboImage title={"Приклад перекладу"} img={require('./img/image_2023_08_12_16_40_51.png')} />
+![Приклад перекладу 2](./img/image_2023_08_12_16_40_51.png)
 
 ## Корисні посилання
 

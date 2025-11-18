@@ -8,7 +8,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import { remarkDefinitionList, defListHastHandlers } from 'remark-definition-list';
 import { remarkExtendedTable, extendedTableHandlers } from 'remark-extended-table';
 import remarkGfm from 'remark-gfm'
-// import { nativeIdealImageRemarkPlugin } from 'docusaurus-plugin-native-ideal-image';
+import { nativeIdealImageRemarkPlugin } from 'docusaurus-plugin-native-ideal-image';
 
 
 /** @type {import('@docusaurus/types').Config} */
@@ -70,7 +70,7 @@ const config = {
             remarkGfm,
             remarkExtendedTable,
             remarkDefinitionList,
-              // nativeIdealImageRemarkPlugin
+            [nativeIdealImageRemarkPlugin, {}]
           ],
           rehypePlugins: [
             
@@ -101,6 +101,7 @@ const config = {
             remarkGfm,
             remarkExtendedTable,
             remarkDefinitionList,
+            [nativeIdealImageRemarkPlugin, {}]
           ],
           rehypePlugins: [
               
@@ -128,25 +129,14 @@ const config = {
           respectPrefersColorScheme: false,
         },
         image: 'img/docusaurus-social-card.png',
-        imageZoom: {
-          // CSS selector to apply the plugin to, defaults to '.markdown img'
-          selector: '.markdown img',
-          // Optional medium-zoom options
-          // see: https://www.npmjs.com/package/medium-zoom#options
-          options: {
-            margin: 24,
-            background: 'rgba(0,0,0,0.51)',
-            scrollOffset: 0,
-          },
+        zoom: {
+            selector: '.markdown picture img',
+            // selector: '.markdown > picture > img',
+            background: {
+                light: 'rgba(255, 255, 255, 0.8)',
+                dark: 'rgba(50, 50, 50, 0.8)',
+            }
         },
-          zoom: {
-              selector: '.markdown > p > img',
-              // selector: '.markdown > picture > img',
-              background: {
-                  light: 'rgb(255, 255, 255)',
-                  dark: 'rgb(50, 50, 50)'
-              }
-          },
         docs: {
           sidebar: {
             autoCollapseCategories: false,
