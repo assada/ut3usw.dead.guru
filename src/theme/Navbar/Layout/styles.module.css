@@ -26,7 +26,6 @@
   margin-right: max(env(safe-area-inset-right), 12px);
   width: auto;
   border-radius: 20px;
-  corner-shape: superellipse(3);
 }
 
 @media (max-width: 996px) {
@@ -35,7 +34,6 @@
     margin-left: max(env(safe-area-inset-left), 8px);
     margin-right: max(env(safe-area-inset-right), 8px);
     border-radius: 16px;
-    corner-shape: superellipse(3);
   }
 
   :global(.navbar-sidebar__backdrop) {
