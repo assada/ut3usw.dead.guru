@@ -2,6 +2,7 @@
     background: var(--terminal-bg);
     border: 1px solid var(--terminal-border);
     border-radius: 4px;
+    corner-shape: superellipse(3);
     box-shadow: var(--glow-green);
   }
   

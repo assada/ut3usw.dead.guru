@@ -177,7 +177,7 @@ code, pre, .prism-code {
     font-family: var(--ifm-font-family-monospace) !important;
     box-shadow: none !important;
     border-radius: 0 !important;
-    
+    corner-shape: superellipse(3);
 }
 
 .theme-code-block {
@@ -186,12 +186,12 @@ code, pre, .prism-code {
 
 .alert {
     border-radius: var(--ifm-global-radius) !important;
-    
+    corner-shape: superellipse(3);
 }
 
 .button, button {
     border-radius: var(--ifm-global-radius) !important;
-    
+    corner-shape: superellipse(3);
     background: var(--terminal-bg) !important;
 }
 
@@ -213,7 +213,7 @@ code, pre, .prism-code {
     border: none;
     box-shadow: none;
     border-radius: var(--ifm-global-radius) !important;
-    
+    corner-shape: superellipse(3);
 }
 
 .terminal-title {
@@ -252,7 +252,7 @@ code, pre, .prism-code {
 
 .menu__list-item-collapsible {
     border-radius: var(--ifm-global-radius) !important;
-    
+    corner-shape: superellipse(3);
 }
 
 .menu__list {
@@ -352,7 +352,7 @@ code, pre, .prism-code {
 
     .menu__link {
         border-radius: var(--ifm-small-radius) !important;
-        
+        corner-shape: superellipse(3);
         transition: all 0.2s ease !important;
     }
 
@@ -367,7 +367,7 @@ code, pre, .prism-code {
 
     .table-of-contents__link {
         border-radius: var(--ifm-small-radius) !important;
-        
+        corner-shape: superellipse(3);
         padding: 0.4rem 0.8rem !important;
         display: block !important;
         transition: all 0.1s ease !important;
@@ -472,7 +472,7 @@ code, pre, .prism-code {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    
+    corner-shape: superellipse(3);
     margin-right: 8px;
 }
 
@@ -504,7 +504,7 @@ code, pre, .prism-code {
     background: var(--terminal-bg);
     border: 1px solid var(--terminal-border);
     border-radius: 4px;
-    
+    corner-shape: superellipse(3);
     padding: 1rem;
     font-family: var(--ifm-font-family-monospace);
     color: var(--terminal-fg);
@@ -530,7 +530,7 @@ code, pre, .prism-code {
 ::-webkit-scrollbar-thumb {
     background: var(--terminal-accent);
     border-radius: var(--ifm-global-radius);
-    
+    corner-shape: superellipse(3);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -545,7 +545,7 @@ code, pre, .prism-code {
     border-top: 1px solid color-mix(in srgb, var(--terminal-border) 60%, transparent) !important;
     box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.06) !important;
     border-radius: 20px 20px 0 0 !important;
-    
+    corner-shape: superellipse(3);
     position: relative !important;
     z-index: 100 !important;
 }
@@ -718,7 +718,7 @@ html[data-theme='dark'] .footer {
     margin-bottom: 20px;
     border: 2px solid var(--terminal-border);
     border-radius: 8px;
-    
+    corner-shape: superellipse(3);
     filter: grayscale(100%) drop-shadow(0 0 10px var(--terminal-success));
     transition: filter 0.6s ease-in-out;
 }
@@ -894,7 +894,7 @@ td > pre {
     background: var(--terminal-warning);
     display: block;
     border-radius: 50%;
-    
+    corner-shape: superellipse(3);
     position: absolute;
     top: 12px;
     left: 12px;
@@ -908,7 +908,7 @@ td > pre {
     background: var(--terminal-accent);
     display: block;
     border-radius: 50%;
-    
+    corner-shape: superellipse(3);
     position: absolute;
     top: 12px;
     left: 32px;
@@ -926,7 +926,7 @@ td > pre {
     height: 12px;
     background: var(--terminal-success);
     border-radius: 50%;
-    
+    corner-shape: superellipse(3);
     position: absolute;
     top: 12px;
     left: 52px;
@@ -1035,7 +1035,7 @@ body {
 
 .breadcrumbs__link {
     border-radius: var(--ifm-global-radius) !important;
-    
+    corner-shape: superellipse(3);
     color: var(--terminal-fg);
     display: inline-block;
     font-family: var(--ifm-font-family-monospace);
@@ -1082,7 +1082,7 @@ body {
 .card {
     background-color: var(--color-code-bg) !important;
     border-radius: var(--ifm-global-radius) !important;
-    
+    corner-shape: superellipse(3);
     box-shadow: var(--glow-green) !important;
     border: 1px solid var(--color-border) !important;
     display: flex;
@@ -1098,7 +1098,7 @@ body {
 .pagination-nav__link {
     border: 1px solid var(--color-border);
     border-radius: var(--ifm-global-radius);
-    
+    corner-shape: superellipse(3);
     display: block;
     height: 100%;
     line-height: var(--ifm-heading-line-height);
@@ -1120,7 +1120,7 @@ body {
 
 .menu__list-item-collapsible {
     border-radius: var(--ifm-global-radius);
-    
+    corner-shape: superellipse(3);
     transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
 }
 
@@ -1139,7 +1139,7 @@ body {
     align-items: center;
     display: flex;
     border-radius: var(--ifm-global-radius);
-    
+    corner-shape: superellipse(3);
     color: var(--terminal-fg);
     border: 0px solid transparent !important;
     background: transparent !important;
@@ -1236,7 +1236,7 @@ article > div.theme-doc-markdown.markdown > header > h1:after, article > header 
 
 .clean-btn {
     border-radius: 25px !important;
-    
+    corner-shape: superellipse(3);
     background-color: transparent !important;
 }
 
