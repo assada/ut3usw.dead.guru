@@ -34,6 +34,7 @@
     background-color: #237951;
     color: #ffffff;
     border-radius: 4px;
+    corner-shape: superellipse(3);
     padding: 10px 20px;
     margin: 0 10px;
     font-size: 1.2rem;

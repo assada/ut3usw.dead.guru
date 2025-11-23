@@ -1,9 +1,9 @@
 {
-  "label": "IT Other",
-  "position": 5,
-  "collapsed": false,
+  "label": "Other",
+  "position": 6,
+  "collapsed": true,
   "link": {
     "type": "generated-index",
-    "description": "Різне про IT"
+    "description": "Різне, що не підходить до інших категорій"
   }
 }

@@ -47,7 +47,7 @@ const config = {
 
   plugins: [
       'native-ideal-image',
-      'docusaurus-plugin-image-zoom',
+      'docusaurus-plugin-zooming',
   ],
   
   markdown: {
@@ -129,13 +129,16 @@ const config = {
           respectPrefersColorScheme: false,
         },
         image: 'img/docusaurus-social-card.png',
-        zoom: {
-            selector: '.markdown picture img',
-            // selector: '.markdown > picture > img',
-            background: {
-                light: 'rgba(255, 255, 255, 0.8)',
-                dark: 'rgba(50, 50, 50, 0.8)',
-            }
+        zooming: {
+          selector: '.markdown > picture > img, .markdown img',
+          delay: 0,
+          background: {
+            light: 'rgba(101,108,133,0.8)',
+            dark: 'rgba(9,10,17,0.8)'
+          },
+          options: {
+            enableGrab: false,
+          }
         },
         docs: {
           sidebar: {

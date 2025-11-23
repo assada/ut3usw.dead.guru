@@ -1,6 +1,6 @@
 ---
-Title: LangGraph
-Description: LangGraph — Опис, швидкий старт і думки.
+title: LangGraph
+description: LangGraph — Опис, швидкий старт і думки.
 comments: true
 ---
 

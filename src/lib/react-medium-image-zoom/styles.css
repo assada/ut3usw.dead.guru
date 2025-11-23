@@ -6,6 +6,7 @@
 [data-rmiz-btn-unzoom] {
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 50%;
+  corner-shape: superellipse(3);
   border: none;
   box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
   color: #fff;
