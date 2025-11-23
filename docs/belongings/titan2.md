@@ -5,7 +5,7 @@ comments: true
 tags: [personal, belongings, smartphone]
 ---
 
-![Unihertz Titan 2](./img/photo_2025-11-23 22.59.43.jpeg)
+![Unihertz Titan 2](./img/titan2.jpeg)
 
 https://www.unihertz.com/products/titan-2
 
