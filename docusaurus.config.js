@@ -4,24 +4,29 @@
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
-import {themes as prismThemes} from 'prism-react-renderer';
-import { remarkDefinitionList, defListHastHandlers } from 'remark-definition-list';
-import { remarkExtendedTable, extendedTableHandlers } from 'remark-extended-table';
-import remarkGfm from 'remark-gfm'
-import { nativeIdealImageRemarkPlugin } from 'docusaurus-plugin-native-ideal-image';
-
+import { themes as prismThemes } from "prism-react-renderer";
+import {
+  remarkDefinitionList,
+  defListHastHandlers,
+} from "remark-definition-list";
+import {
+  remarkExtendedTable,
+  extendedTableHandlers,
+} from "remark-extended-table";
+import remarkGfm from "remark-gfm";
+import { nativeIdealImageRemarkPlugin } from "docusaurus-plugin-native-ideal-image";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'dead.md',
-  tagline: 'Персональний журнал ut3usw',
-  favicon: 'img/favicon.svg',
+  title: "dead.md",
+  tagline: "Персональний журнал ut3usw",
+  favicon: "img/favicon.svg",
 
   // Set the production url of your site here
-  url: 'https://dead.md',
+  url: "https://dead.md",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: "/",
 
   future: {
     v4: {
@@ -34,65 +39,59 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'assada', // Usually your GitHub org/user name.
-  projectName: 'ut3usw.dead.guru', // Usually your repo name.
+  organizationName: "assada", // Usually your GitHub org/user name.
+  projectName: "ut3usw.dead.guru", // Usually your repo name.
 
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
 
   i18n: {
-    defaultLocale: 'uk',
-    locales: ['uk'],
+    defaultLocale: "uk",
+    locales: ["uk"],
   },
 
-  plugins: [
-      'native-ideal-image',
-      'docusaurus-plugin-zooming',
-  ],
-  
+  plugins: ["native-ideal-image", "docusaurus-plugin-zooming"],
+
   markdown: {
     remarkRehypeOptions: {
       handlers: {
         ...defListHastHandlers,
-        ...extendedTableHandlers
-      }
+        ...extendedTableHandlers,
+      },
     },
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: './sidebars.js',
+          sidebarPath: "./sidebars.js",
           remarkPlugins: [
             remarkGfm,
             remarkExtendedTable,
             remarkDefinitionList,
-            [nativeIdealImageRemarkPlugin, {}]
+            [nativeIdealImageRemarkPlugin, {}],
           ],
-          rehypePlugins: [
-            
-          ],
+          rehypePlugins: [],
 
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
-          
+
           //sidebarCollapsed: false,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-              'https://github.com/assada/ut3usw.dead.guru/edit/master/',
+          editUrl: "https://github.com/assada/ut3usw.dead.guru/edit/master/",
         },
         sitemap: {
-          changefreq: 'weekly',
+          changefreq: "weekly",
           priority: 0.5,
-          ignorePatterns: ['/tags/**'],
-          filename: 'sitemap.xml',
+          ignorePatterns: ["/tags/**"],
+          filename: "sitemap.xml",
         },
         gtag: {
-          trackingID: 'G-YT3JZ6ZGEP',
+          trackingID: "G-YT3JZ6ZGEP",
           anonymizeIP: true,
         },
         blog: {
@@ -101,125 +100,127 @@ const config = {
             remarkGfm,
             remarkExtendedTable,
             remarkDefinitionList,
-            [nativeIdealImageRemarkPlugin, {}]
+            [nativeIdealImageRemarkPlugin, {}],
           ],
-          rehypePlugins: [
-              
-          ],
+          rehypePlugins: [],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-              'https://github.com/assada/ut3usw.dead.guru/edit/master/',
+          editUrl: "https://github.com/assada/ut3usw.dead.guru/edit/master/",
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: "./src/css/custom.css",
         },
       }),
     ],
   ],
 
-
-
   themeConfig:
-  /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-      ({
-        colorMode: {
-          defaultMode: 'dark',
-          disableSwitch: false,
-          respectPrefersColorScheme: false,
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      colorMode: {
+        defaultMode: "dark",
+        disableSwitch: false,
+        respectPrefersColorScheme: false,
+      },
+      image: "img/docusaurus-social-card.png",
+      zooming: {
+        selector: ".markdown > picture > img, .markdown img",
+        delay: 0,
+        background: {
+          light: "rgba(101,108,133,0.8)",
+          dark: "rgba(9,10,17,0.8)",
         },
-        image: 'img/docusaurus-social-card.png',
-        zooming: {
-          selector: '.markdown > picture > img, .markdown img',
-          delay: 0,
-          background: {
-            light: 'rgba(101,108,133,0.8)',
-            dark: 'rgba(9,10,17,0.8)'
+        options: {
+          enableGrab: false,
+        },
+      },
+      docs: {
+        sidebar: {
+          autoCollapseCategories: false,
+          hideable: false,
+        },
+      },
+      navbar: {
+        title: "DEAD.md",
+        logo: {
+          alt: "DEAD Логотип",
+          src: "img/logo.svg",
+          srcDark: "img/logo-white.svg",
+        },
+        items: [
+          {
+            type: "docSidebar",
+            sidebarId: "tutorialSidebar",
+            position: "left",
+            label: "Нотатки",
           },
-          options: {
-            enableGrab: false,
-          }
-        },
-        docs: {
-          sidebar: {
-            autoCollapseCategories: false,
-            hideable: false,
+          { to: "/blog", label: "Блог", position: "left" },
+          { to: "/bookmarks", label: "Закладки", position: "left" },
+          {
+            href: "https://github.com/assada/ut3usw.dead.guru",
+            label: "GitHub",
+            position: "right",
           },
-        },
-        navbar: {
-          title: 'DEAD.md',
-          logo: {
-            alt: 'DEAD Логотип',
-            src: 'img/logo.svg',
-            srcDark: "img/logo-white.svg",
+        ],
+      },
+      footer: {
+        style: "dark",
+        links: [
+          {
+            title: "Корисні сервіси",
+            items: [
+              {
+                label: "APRS Мапа",
+                href: "https://aprs.dead.guru",
+              },
+            ],
           },
-          items: [
-            {
-              type: 'docSidebar',
-              sidebarId: 'tutorialSidebar',
-              position: 'left',
-              label: 'Нотатки',
-            },
-            {to: '/blog', label: 'Блог', position: 'left'},
-            {to: '/bookmarks', label: 'Закладки', position: 'left'},
-            {
-              href: 'https://github.com/assada/ut3usw.dead.guru',
-              label: 'GitHub',
-              position: 'right',
-            },
-          ],
-        },
-        footer: {
-          style: 'dark',
-          links: [
-            {
-              title: 'Корисні сервіси',
-              items: [
-                {
-                  label: 'APRS Мапа',
-                  href: 'https://aprs.dead.guru',
-                },
-              ],
-            },
-            {
-              title: 'Контакти',
-              items: [
-                {
-                  label: 'Twitter',
-                  href: 'https://twitter.com/speed_shit',
-                },
-                {
-                  label: 'IRC',
-                  href: 'https://irc.dead.guru',
-                },
-                {
-                  label: 'Telegram',
-                  href: 'https://t.me/figushki',
-                },
-              ],
-            },
-            {
-              title: 'Більше',
-              items: [
-                {
-                  label: 'Blog',
-                  to: '/blog',
-                },
-                {
-                  label: 'GitHub',
-                  href: 'https://github.com/assada',
-                },
-              ],
-            },
-          ],
-          copyright: `© ${new Date().getFullYear()} частина dead.guru.`,
-        },
-        prism: {
-          theme: prismThemes.github,
-          darkTheme: prismThemes.dracula,
-          additionalLanguages: ['powershell', 'nginx', 'java', 'csharp', 'cpp', 'c', 'ini', 'bash'],
-        },
-      }),
+          {
+            title: "Контакти",
+            items: [
+              {
+                label: "Twitter",
+                href: "https://twitter.com/speed_shit",
+              },
+              {
+                label: "IRC",
+                href: "https://irc.dead.guru",
+              },
+            ],
+          },
+          {
+            title: "Більше",
+            items: [
+              {
+                label: "Blog",
+                to: "/blog",
+              },
+              {
+                label: "GitHub",
+                href: "https://github.com/assada",
+              },
+            ],
+          },
+        ],
+        copyright: `© ${new Date().getFullYear()} частина dead.guru.`,
+      },
+      prism: {
+        theme: prismThemes.github,
+        darkTheme: prismThemes.dracula,
+        additionalLanguages: [
+          "powershell",
+          "nginx",
+          "java",
+          "csharp",
+          "cpp",
+          "c",
+          "ini",
+          "bash",
+          "toml",
+          "ini",
+        ],
+      },
+    }),
 };
 
 export default config;
