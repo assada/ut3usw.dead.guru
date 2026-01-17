@@ -52,6 +52,29 @@ const config = {
 
   plugins: ["native-ideal-image", "docusaurus-plugin-zooming"],
 
+  headTags: [
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preload",
+        href: "/fonts/TX-02-Regular.woff2",
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preload",
+        href: "/fonts/TX-02-Bold.woff2",
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
+      },
+    },
+  ],
+
   markdown: {
     remarkRehypeOptions: {
       handlers: {
