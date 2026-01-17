@@ -304,8 +304,13 @@ code, pre, .prism-code {
     }
 }
 
+/* INP_OPTIMIZATION: infinite animation disabled
 .glitch {
     animation: glitch 0.3s ease-in-out infinite;
+}
+*/
+.glitch {
+    animation: glitch 0.3s ease-in-out 1;
 }
 
 .navbar {
@@ -1175,8 +1180,13 @@ body {
     animation: glitch .25s ease-in-out 1;
 }
 
+/* INP_OPTIMIZATION: infinite animation disabled
 .glitch-hover:hover {
     animation: glitch .3s ease-in-out infinite;
+}
+*/
+.glitch-hover:hover {
+    animation: glitch .3s ease-in-out 1;
 }
 
 .navbar__logo:hover {

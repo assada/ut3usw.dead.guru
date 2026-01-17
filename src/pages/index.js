@@ -5,12 +5,14 @@ import Layout from '@theme/Layout';
 import classnames from 'classnames';
 import CodeBlock from '@theme/CodeBlock';
 import { useEffect } from 'react';
-import confetti from 'canvas-confetti';
+// INP_OPTIMIZATION: confetti disabled for performance
+// import confetti from 'canvas-confetti';
 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
-import Float from "../components/float";
+// INP_OPTIMIZATION: Float disabled for performance
+// import Float from "../components/float";
 
 import ScrambleIn, {
   ScrambleInHandle,
@@ -321,8 +323,9 @@ export default function Home() {
       mouseVelocity.x *= 0.85;
       mouseVelocity.y *= 0.85;
 
-      applyRepelForce(currentMousePos.x, currentMousePos.y);
-      avoidCorners();
+      // INP_OPTIMIZATION: simplified animation - complex physics disabled
+      // applyRepelForce(currentMousePos.x, currentMousePos.y);
+      // avoidCorners();
 
       x += velocityX * deltaTime;
       y += velocityY * deltaTime;
@@ -429,6 +432,7 @@ export default function Home() {
       
       e.stopPropagation();
       
+      /* INP_OPTIMIZATION: confetti disabled for performance
       const rect = bouncingImage.getBoundingClientRect();
       const centerX = (rect.left + rect.right) / 2;
       const centerY = (rect.top + rect.bottom) / 2;
@@ -469,6 +473,7 @@ export default function Home() {
         shapes: ['circle'],
         ticks: 100,
       });
+      */
       
       bouncingImage.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
       bouncingImage.style.opacity = '0';
@@ -602,7 +607,10 @@ export default function Home() {
                   <Link
                       className="button button--secondary button--lg"
                       to="/docs/intro">
+                    {/* INP_OPTIMIZATION: ScrambleIn disabled for button
                     <ScrambleIn scrambledLetterCount={8} text={"Continue exploring?"} autoStart={true} />
+                    */}
+                    Continue exploring?
                   </Link>
                 </div>
               </div>

@@ -131,7 +131,8 @@ const config = {
         image: 'img/docusaurus-social-card.png',
         zooming: {
           selector: '.markdown > picture > img, .markdown img',
-          delay: 0,
+          // INP_OPTIMIZATION: delay increased from 0 to 500
+          delay: 500,
           background: {
             light: 'rgba(101,108,133,0.8)',
             dark: 'rgba(9,10,17,0.8)'
@@ -217,7 +218,8 @@ const config = {
         prism: {
           theme: prismThemes.github,
           darkTheme: prismThemes.dracula,
-          additionalLanguages: ['powershell', 'nginx', 'java', 'csharp', 'cpp', 'c', 'ini', 'bash'],
+          // INP_OPTIMIZATION: unused languages commented out (java, csharp, c)
+          additionalLanguages: ['powershell', 'nginx', /* 'java', 'csharp', */ 'cpp', /* 'c', */ 'ini', 'bash'],
         },
       }),
 };

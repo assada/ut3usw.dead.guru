@@ -4,7 +4,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import {isRegexpStringMatch} from '@docusaurus/theme-common';
 import IconExternalLink from '@theme/Icon/ExternalLink';
-import ScrambleHover from "../../components/scramble-hover";
+// INP_OPTIMIZATION: ScrambleHover disabled for performance
+// import ScrambleHover from "../../components/scramble-hover";
 export default function NavbarNavLink({
   activeBasePath,
   activeBaseRegex,
@@ -16,18 +17,16 @@ export default function NavbarNavLink({
   prependBaseUrlToHref,
   ...props
 }) {
-  // TODO all this seems hacky
-  // {to: 'version'} should probably be forbidden, in favor of {to: '/version'}
   const toUrl = useBaseUrl(to);
   const activeBaseUrl = useBaseUrl(activeBasePath);
   const normalizedHref = useBaseUrl(href, {forcePrependBaseUrl: true});
   const isExternalLink = label && href && !isInternalUrl(href);
-  // Link content is set through html XOR label
   const linkContentProps = html
     ? {dangerouslySetInnerHTML: {__html: html}}
     : {
         children: (
           <>
+            {/* INP_OPTIMIZATION: ScrambleHover disabled for performance
             <ScrambleHover
                 text={label}
                 scrambleSpeed={50}
@@ -35,6 +34,8 @@ export default function NavbarNavLink({
                 useOriginalCharsOnly={true}
                 className="cursor-pointer"
             />
+            */}
+            {label}
             {isExternalLink && (
               <IconExternalLink
                 {...(isDropdownLink && {width: 12, height: 12})}
