@@ -125,7 +125,7 @@ const config = {
       image: "img/docusaurus-social-card.png",
       zooming: {
         selector: ".markdown > picture > img, .markdown img",
-        delay: 0,
+        delay: 500,
         background: {
           light: "rgba(101,108,133,0.8)",
           dark: "rgba(9,10,17,0.8)",
@@ -210,10 +210,10 @@ const config = {
         additionalLanguages: [
           "powershell",
           "nginx",
-          "java",
-          "csharp",
+          // "java",
+          // "csharp",
           "cpp",
-          "c",
+          // "c",
           "ini",
           "bash",
           "toml",
