@@ -8,10 +8,10 @@ export default function BlogPostItemWrapper(props) {
     const { metadata, isBlogPostPage } = useBlogPost();
     const { comments = true } = metadata.frontMatter;
     return (
-        <>
+        <div {...(isBlogPostPage ? {'data-pagefind-body': ''} : {'data-pagefind-ignore': ''})}>
             <BlogPostItem {...props} />
-            <hr />
+            {isBlogPostPage && <hr />}
             {comments && isBlogPostPage && <Comments />}
-        </>
+        </div>
     );
 }

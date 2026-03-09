@@ -43,13 +43,13 @@ export default function DocItemLayout({children}) {
         <ContentVisibility metadata={metadata} />
         <DocVersionBanner />
         <div className={styles.docItemContainer}>
-          <article>
-            <DocBreadcrumbs />
+          <article data-pagefind-body>
+            <div data-pagefind-ignore><DocBreadcrumbs /></div>
             <DocVersionBadge />
-            {docTOC.mobile}
+            <div data-pagefind-ignore>{docTOC.mobile}</div>
             <Authors authors={authors} />
             <DocItemContent>{children}</DocItemContent>
-            <DocItemFooter />
+            <div data-pagefind-ignore><DocItemFooter /></div>
           </article>
           <DocItemPaginator />
         </div>

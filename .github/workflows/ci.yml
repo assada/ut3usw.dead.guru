@@ -7,37 +7,91 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
         with:
-          node-version: '21.x'
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+
       - name: Build
         run: npm run build
-      - name: Create package
-        run: zip -r release.zip build
-      - name: copy file via ssh
-        uses: appleboy/scp-action@v0.1.4
+
+      - name: Deploy
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-          source: "release.zip"
-          target: /home/assada/ut3usw.dead.guru/
-      - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@v0.1.10
+          source: "build/"
+          target: /home/assada/ut3usw.dead.guru/_deploy_tmp/
+          strip_components: 0
+
+      - name: Swap build atomically
+        uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            cd /home/assada/ut3usw.dead.guru/ && rm -rf /home/assada/ut3usw.dead.guru/build && unzip release.zip && rm release.zip && docker compose restart
+            cd /home/assada/ut3usw.dead.guru
+            rm -rf build_old
+            mv build build_old 2>/dev/null || true
+            mv _deploy_tmp/build build
+            rm -rf _deploy_tmp build_old
+            docker compose restart
+
+      - name: Detect changed content
+        if: success()
+        id: changes
+        run: |
+          # Get changed docs/blog files in this push
+          CHANGED=$(git diff --name-only --diff-filter=ACMR ${{ github.event.before }} ${{ github.sha }} -- 'docs/' 'blog/' | head -20)
+
+          if [ -z "$CHANGED" ]; then
+            echo "has_content=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "has_content=true" >> "$GITHUB_OUTPUT"
+
+          # Build a summary of changed pages
+          MSG=""
+          while IFS= read -r file; do
+            # Extract title from frontmatter or first heading
+            TITLE=$(grep -m1 -E '^title:|^# ' "$file" 2>/dev/null | sed 's/^title: *//;s/^# *//' | tr -d '"' | head -c 80)
+            [ -z "$TITLE" ] && TITLE="$file"
+
+            # Determine URL path
+            URL_PATH=$(echo "$file" | sed 's|^docs/|/docs/|;s|^blog/[0-9-]*|/blog/|;s|\.mdx\?$||;s|/index$||')
+
+            # Detect if new or modified
+            if git diff --name-only --diff-filter=A ${{ github.event.before }} ${{ github.sha }} -- "$file" | grep -q .; then
+              BADGE="NEW"
+            else
+              BADGE="UPD"
+            fi
+
+            MSG="${MSG}[${BADGE}] ${TITLE}
+          https://dead.md${URL_PATH}
+          "
+          done <<< "$CHANGED"
+
+          # Store multiline output
+          {
+            echo "content<<CONTENT_EOF"
+            echo "$MSG"
+            echo "CONTENT_EOF"
+          } >> "$GITHUB_OUTPUT"
 
       - name: IRC notification
+        if: success()
         uses: Gottox/irc-message-action@v2
         with:
           channel: '#dead'
@@ -48,17 +102,25 @@ jobs:
           message: |-
             ${{ github.actor }} pushed ${{ github.event.ref }} ${{ github.event.compare }}
 
-      - name: send telegram message on push
-        uses: appleboy/telegram-action@master
+      - name: Telegram — deploy notification
+        if: success()
+        uses: appleboy/telegram-action@v0.1.1
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: markdown
+          message: |
+            *dead.md* deployed
+
+            `${{ github.event.commits[0].message }}`
+
+            [View changes](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+
+      - name: Telegram — content updates
+        if: success() && steps.changes.outputs.has_content == 'true'
+        uses: appleboy/telegram-action@v0.1.1
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            ${{ github.actor }} created commit:
-            Commit message: ${{ github.event.commits[0].message }}
-            
-            Repository: ${{ github.repository }}
-            
-            ✅ VIEW: https://ut3usw.dead.guru
-            
-            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+            ${{ steps.changes.outputs.content }}

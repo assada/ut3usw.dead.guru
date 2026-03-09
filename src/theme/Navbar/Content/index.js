@@ -11,10 +11,10 @@ import {
 } from '@docusaurus/theme-common/internal';
 import NavbarItem from '@theme/NavbarItem';
 import NavbarColorModeToggle from '@theme/Navbar/ColorModeToggle';
-import SearchBar from '@theme/SearchBar';
 import NavbarMobileSidebarToggle from '@theme/Navbar/MobileSidebar/Toggle';
 import NavbarLogo from '@theme/Navbar/Logo';
 import NavbarSearch from '@theme/Navbar/Search';
+import Search from '../../../components/Search';
 import { useCamera } from '../../../hooks/useCamera';
 import CameraGallery from '../../../components/CameraGallery';
 import styles from './styles.module.css';
@@ -122,13 +122,9 @@ export default function NavbarContent() {
                 >
                     {isProcessing ? 'FUCK YOU!' : '📷'}
                 </button> */}
+                <Search />
                 <NavbarItems items={rightItems}/>
                 <NavbarColorModeToggle className={styles.colorModeToggle}/>
-                {!searchBarItem && (
-                    <NavbarSearch>
-                        <SearchBar/>
-                    </NavbarSearch>
-                )}
             </>
         }
       />

@@ -26,3 +26,173 @@
   margin-top: 20px;
   text-align: left;
 }
+
+/* === Main Content === */
+.mainContent {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* === Sections === */
+.section {
+  padding: 2.5rem 0;
+}
+
+.section + .section {
+  border-top: 1px solid color-mix(in srgb, var(--color-base) 8%, transparent);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sectionTitle {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-light);
+  margin: 0 0 1.25rem;
+}
+
+.seeAll {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 12px;
+  color: var(--color-accent) !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+
+.seeAll:hover {
+  opacity: 1;
+}
+
+/* === Topics Grid === */
+.topicsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 640px) {
+  .topicsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.topicCard {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 16px;
+  border: 1px solid color-mix(in srgb, var(--color-base) 8%, transparent);
+  border-radius: 10px;
+  text-decoration: none !important;
+  color: var(--color-base) !important;
+  transition: all 0.15s ease;
+}
+
+.topicCard:hover {
+  border-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 4%, transparent);
+}
+
+.topicIcon {
+  font-size: 20px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.topicLabel {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.topicDesc {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 11px;
+  color: var(--color-light);
+  opacity: 0.7;
+}
+
+/* === Posts Grid === */
+.postsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.postCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  text-decoration: none !important;
+  color: var(--color-base) !important;
+  transition: background-color 0.1s ease;
+}
+
+.postCard:hover {
+  background: color-mix(in srgb, var(--color-accent) 6%, transparent);
+}
+
+.postDate {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 12px;
+  color: var(--color-light);
+  opacity: 0.6;
+  min-width: 75px;
+  flex-shrink: 0;
+}
+
+.postTitle {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 14px;
+  font-weight: 500;
+  flex: 1;
+}
+
+.postCard:hover .postTitle {
+  color: var(--color-accent);
+}
+
+.postTags {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.postTag {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--color-base) 6%, transparent);
+  color: var(--color-light);
+}
+
+@media (max-width: 640px) {
+  .postCard {
+    flex-wrap: wrap;
+    gap: 4px 12px;
+  }
+
+  .postTags {
+    width: 100%;
+    margin-top: 2px;
+  }
+
+  .postDate {
+    min-width: auto;
+  }
+}

@@ -2,11 +2,8 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import classnames from 'classnames';
 import CodeBlock from '@theme/CodeBlock';
-import { useEffect } from 'react';
-// INP_OPTIMIZATION: confetti disabled for performance
-// import confetti from 'canvas-confetti';
+import { useEffect, useState, useRef } from 'react';
 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
@@ -40,26 +37,170 @@ const codeExamples = [
     language: 'cpp',
     code: `#include <iostream>
 
-template<int N>
-struct H { static void go() { std::cout << "Hello, World!\\n"; } };
-
-int main() {
-    constexpr int magic = __LINE__;
-    H<magic>::go();
-}    
-`,
-  },
-  {
-    language: 'cpp',
-    code: `#include <iostream>
-
-template<int N> struct F { static constexpr int val = F<N-1>::val + F<N-2>::val; };
+template<int N> struct F {
+  static constexpr int val = F<N-1>::val + F<N-2>::val;
+};
 template<> struct F<0>{static constexpr int val=0;};
 template<> struct F<1>{static constexpr int val=1;};
 
 int main() { std::cout << F<10>::val; }`,
   },
+  {
+    language: 'haskell',
+    code: `fix :: (a -> a) -> a
+fix f = let x = f x in x
+
+Y :: (a -> a) -> a
+Y f = (\\x -> f (x x)) (\\x -> f (x x))
+
+fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
+primes = sieve [2..] where
+  sieve (p:xs) = p : sieve [x | x<-xs, mod x p /= 0]`,
+  },
+  {
+    language: 'erlang',
+    code: `-module(ring).
+-export([start/2]).
+
+start(N, M) ->
+    Pids = [spawn(fun() -> node(I) end)
+            || I <- lists:seq(1, N)],
+    link(Pids),
+    hd(Pids) ! {msg, M, self()},
+    receive done -> ok end.
+
+link([A,B|T]) -> A ! {next, B}, link([B|T]);
+link([Last])  -> Last ! {next, self()}.
+
+node(Id) ->
+    receive {next, Pid} ->
+        receive
+            {msg, 0, Origin} -> Origin ! done;
+            {msg, M, Origin} -> Pid ! {msg, M-1, Origin}
+        end
+    end.`,
+  },
+  {
+    language: 'rust',
+    code: `use std::fmt;
+
+enum Tree<T> { Leaf(T), Node(Box<Tree<T>>, Box<Tree<T>>) }
+
+impl<T: fmt::Display> fmt::Display for Tree<T> {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            Tree::Leaf(v) => write!(f, "{v}"),
+            Tree::Node(l, r) => write!(f, "({l} {r})"),
+        }
+    }
+}
+
+fn depths<T>(t: &Tree<T>, d: usize) -> usize {
+    match t {
+        Tree::Leaf(_) => d,
+        Tree::Node(l, r) => depths(l, d+1).max(depths(r, d+1)),
+    }
+}`,
+  },
+  {
+    language: 'ocaml',
+    code: `type _ expr =
+  | Int  : int -> int expr
+  | Bool : bool -> bool expr
+  | Add  : int expr * int expr -> int expr
+  | If   : bool expr * 'a expr * 'a expr -> 'a expr
+  | Eq   : int expr * int expr -> bool expr
+
+let rec eval : type a. a expr -> a = function
+  | Int n       -> n
+  | Bool b      -> b
+  | Add (a, b)  -> eval a + eval b
+  | If (c, t, e) -> if eval c then eval t else eval e
+  | Eq (a, b)   -> eval a = eval b`,
+  },
+  {
+    language: 'coq',
+    code: `Fixpoint merge (l1 l2 : list nat) : list nat :=
+  match l1, l2 with
+  | [], _ => l2
+  | _, [] => l1
+  | h1::t1, h2::t2 =>
+      if h1 <=? h2
+      then h1 :: merge t1 l2
+      else h2 :: merge l1 t2
+  end.
+
+Theorem merge_preserves_length :
+  forall l1 l2,
+    length (merge l1 l2) = length l1 + length l2.
+Proof.
+  induction l1; intros; simpl; auto.
+  destruct l2; simpl; auto.
+  destruct (a <=? n); simpl; auto.
+Qed.`,
+  },
+  {
+    language: 'lisp',
+    code: `(defmacro aif (test then &optional else)
+  \`(let ((it ,test))
+     (if it ,then ,else)))
+
+(defun Y (f)
+  ((lambda (x) (funcall x x))
+   (lambda (x)
+     (funcall f (lambda (&rest args)
+                  (apply (funcall x x) args))))))
+
+(defvar *fact*
+  (Y (lambda (f)
+       (lambda (n)
+         (if (zerop n) 1
+             (* n (funcall f (1- n))))))))`,
+  },
 ];
+
+function IrcEmbed() {
+  const [activated, setActivated] = useState(false);
+  const containerRef = useRef(null);
+
+  return (
+    <div
+      ref={containerRef}
+      style={{ width: '100%', height: 500, position: 'relative', overflow: 'hidden' }}
+    >
+      {!activated ? (
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 12,
+            cursor: 'pointer',
+            background: 'var(--color-code-bg)',
+            border: '1px solid var(--color-border)',
+            fontFamily: 'var(--ifm-font-family-monospace)',
+            color: 'var(--color-light)',
+          }}
+          onClick={() => setActivated(true)}
+        >
+          <span style={{ fontSize: 28 }}>💬</span>
+          <span style={{ fontSize: 14 }}>IRC чат — натисніть щоб завантажити</span>
+          <span style={{ fontSize: 11, opacity: 0.5 }}>irc.dead.guru</span>
+        </div>
+      ) : (
+        <iframe
+          style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
+          scrolling="no"
+          src="https://irc.dead.guru/"
+          tabIndex={-1}
+        />
+      )}
+    </div>
+  );
+}
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -614,7 +755,7 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-                <div className={classnames('col col--7', styles.exampleCode)}>
+                <div className={clsx('col col--7', styles.exampleCode)}>
                   <TerminalCard title="Terminal" glowing>
                   <CodeBlock language="cpp" className="cpp">
                     {codeExamples[Math.floor(Math.random() * codeExamples.length)].code}
@@ -624,8 +765,70 @@ export default function Home() {
             </div>
           </div>
         </header>
-        <iframe height="500" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"
-                src="https://irc.dead.guru/"></iframe>
+        <main className={styles.mainContent}>
+          {/* Topics */}
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>Нотатки</h2>
+            <div className={styles.topicsGrid}>
+              {[
+                { label: 'HAM', desc: 'Радіоаматорство', href: '/docs/category/ham', icon: '📡' },
+                { label: 'Hardware', desc: 'Залізо та девайси', href: '/docs/category/hardware', icon: '🔧' },
+                { label: 'Radio Control', desc: 'RC моделі', href: '/docs/category/radio-control', icon: '🛩' },
+                { label: 'Belongings', desc: 'Особисті речі', href: '/docs/belongings/', icon: '🎒' },
+                { label: 'IT', desc: 'Софт та AI', href: '/docs/category/other', icon: '💻' },
+                { label: 'Linux', desc: 'Нотатки про Linux', href: '/docs/category/linux', icon: '🐧' },
+              ].map((t) => (
+                <Link key={t.href} to={t.href} className={styles.topicCard}>
+                  <span className={styles.topicIcon}>{t.icon}</span>
+                  <span className={styles.topicLabel}>{t.label}</span>
+                  <span className={styles.topicDesc}>{t.desc}</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* Recent posts */}
+          <section className={styles.section}>
+            <div className={styles.sectionHeader}>
+              <h2 className={styles.sectionTitle}>Останні пости</h2>
+              <Link to="/blog" className={styles.seeAll}>всі пости &rarr;</Link>
+            </div>
+            <div className={styles.postsGrid}>
+              {[
+                {
+                  title: 'Декада ШІ агентів',
+                  date: '22.10.2025',
+                  tags: ['ai'],
+                  href: '/blog/ai-decade',
+                },
+                {
+                  title: 'ШІ-бульбашка на стероїдах',
+                  date: '10.10.2025',
+                  tags: ['ai', 'openai'],
+                  href: '/blog/ai-shit',
+                },
+                {
+                  title: 'Нотатки',
+                  date: '17.06.2025',
+                  tags: ['productivity'],
+                  href: '/blog/notetaker',
+                },
+              ].map((p) => (
+                <Link key={p.href} to={p.href} className={styles.postCard}>
+                  <span className={styles.postDate}>{p.date}</span>
+                  <span className={styles.postTitle}>{p.title}</span>
+                  <span className={styles.postTags}>
+                    {p.tags.map((t) => (
+                      <span key={t} className={styles.postTag}>{t}</span>
+                    ))}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        </main>
+
+        <IrcEmbed />
       </Layout>
   );
 }
