@@ -14,7 +14,7 @@ import {
   extendedTableHandlers,
 } from "remark-extended-table";
 import remarkGfm from "remark-gfm";
-import { nativeIdealImageRemarkPlugin } from "docusaurus-plugin-native-ideal-image";
+import { deadImageRemarkPlugin } from "./plugins/dead-image/index.js";
 import remarkShiki from "./plugins/remark-shiki.mjs";
 
 /** @type {import('@docusaurus/types').Config} */
@@ -51,7 +51,13 @@ const config = {
     locales: ["uk"],
   },
 
-  plugins: ["native-ideal-image", "docusaurus-plugin-zooming"],
+  plugins: [
+    ["./plugins/dead-image/index.js", {
+      sizes: [480, 768, 1200, 2160],
+      formats: ['avif', 'webp', 'jpeg'],
+      lqip: true,
+    }],
+  ],
 
   headTags: [
     {
@@ -96,7 +102,7 @@ const config = {
             remarkGfm,
             remarkExtendedTable,
             remarkDefinitionList,
-            [nativeIdealImageRemarkPlugin, {}],
+            deadImageRemarkPlugin,
             remarkShiki,
           ],
           rehypePlugins: [],
@@ -125,7 +131,7 @@ const config = {
             remarkGfm,
             remarkExtendedTable,
             remarkDefinitionList,
-            [nativeIdealImageRemarkPlugin, {}],
+            deadImageRemarkPlugin,
             remarkShiki,
           ],
           rehypePlugins: [],
@@ -149,17 +155,6 @@ const config = {
         respectPrefersColorScheme: false,
       },
       image: "img/docusaurus-social-card.png",
-      zooming: {
-        selector: ".markdown > picture > img, .markdown img",
-        delay: 500,
-        background: {
-          light: "rgba(101,108,133,0.8)",
-          dark: "rgba(9,10,17,0.8)",
-        },
-        options: {
-          enableGrab: false,
-        },
-      },
       docs: {
         sidebar: {
           autoCollapseCategories: false,

@@ -1,0 +1,79 @@
+/* === DeadImage: responsive picture with LQIP === */
+.dead-image {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  max-width: 60%;
+  margin: 1rem auto;
+}
+
+.dead-image > img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  cursor: zoom-in;
+}
+
+/* LQIP blurred placeholder */
+.dead-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--lqip);
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(10px);
+  transform: scale(1.1);
+  z-index: -1;
+  transition: opacity 300ms ease;
+}
+
+.dead-image--lqip::after {
+  z-index: 1;
+}
+
+.dead-image--lqip.dead-image--loaded::after {
+  opacity: 0;
+}
+
+/* === Zoom overlay === */
+.dead-zoom-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: color-mix(in srgb, var(--ifm-background-color, #1b1b1d) 92%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 300ms cubic-bezier(0.2, 0, 0.2, 1);
+  cursor: zoom-out;
+  will-change: opacity;
+}
+
+.dead-zoom-overlay--active {
+  opacity: 1;
+}
+
+/* === Zoomed clone === */
+.dead-zoom-clone {
+  position: absolute;
+  z-index: 201;
+  cursor: zoom-out;
+  will-change: transform;
+  transform-origin: center center;
+  border-radius: 4px;
+  image-rendering: high-quality;
+}
+
+.dead-zoom-clone--active {
+  border-radius: 0;
+}
+
+/* === Reduced motion === */
+@media (prefers-reduced-motion: reduce) {
+  .dead-zoom-overlay,
+  .dead-zoom-clone {
+    transition-duration: 0.01ms !important;
+  }
+}
