@@ -1,11 +1,17 @@
 name: CI
 on:
   push:
-    branches: [ "master" ]
+    branches: [master]
   workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -14,6 +20,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22.x'
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
@@ -21,7 +28,43 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy
+      - name: Detect changed content
+        id: changes
+        run: |
+          CHANGED=$(git diff --name-only --diff-filter=ACMR ${{ github.event.before }} ${{ github.sha }} -- 'docs/' 'blog/' | head -20)
+
+          if [ -z "$CHANGED" ]; then
+            echo "has_content=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "has_content=true" >> "$GITHUB_OUTPUT"
+
+          MSG=""
+          while IFS= read -r file; do
+            TITLE=$(grep -m1 -E '^title:|^# ' "$file" 2>/dev/null | sed 's/^title: *//;s/^# *//' | tr -d '"' | head -c 80)
+            [ -z "$TITLE" ] && TITLE="$file"
+
+            URL_PATH=$(echo "$file" | sed 's|^docs/|/docs/|;s|^blog/[0-9-]*|/blog/|;s|\.mdx\?$||;s|/index$||')
+
+            if git diff --name-only --diff-filter=A ${{ github.event.before }} ${{ github.sha }} -- "$file" | grep -q .; then
+              BADGE="NEW"
+            else
+              BADGE="UPD"
+            fi
+
+            MSG="${MSG}[${BADGE}] ${TITLE}
+          https://dead.md${URL_PATH}
+          "
+          done <<< "$CHANGED"
+
+          {
+            echo "content<<CONTENT_EOF"
+            echo "$MSG"
+            echo "CONTENT_EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Upload build to server
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
@@ -47,49 +90,6 @@ jobs:
             rm -rf _deploy_tmp build_old
             docker compose restart
 
-      - name: Detect changed content
-        if: success()
-        id: changes
-        run: |
-          # Get changed docs/blog files in this push
-          CHANGED=$(git diff --name-only --diff-filter=ACMR ${{ github.event.before }} ${{ github.sha }} -- 'docs/' 'blog/' | head -20)
-
-          if [ -z "$CHANGED" ]; then
-            echo "has_content=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          echo "has_content=true" >> "$GITHUB_OUTPUT"
-
-          # Build a summary of changed pages
-          MSG=""
-          while IFS= read -r file; do
-            # Extract title from frontmatter or first heading
-            TITLE=$(grep -m1 -E '^title:|^# ' "$file" 2>/dev/null | sed 's/^title: *//;s/^# *//' | tr -d '"' | head -c 80)
-            [ -z "$TITLE" ] && TITLE="$file"
-
-            # Determine URL path
-            URL_PATH=$(echo "$file" | sed 's|^docs/|/docs/|;s|^blog/[0-9-]*|/blog/|;s|\.mdx\?$||;s|/index$||')
-
-            # Detect if new or modified
-            if git diff --name-only --diff-filter=A ${{ github.event.before }} ${{ github.sha }} -- "$file" | grep -q .; then
-              BADGE="NEW"
-            else
-              BADGE="UPD"
-            fi
-
-            MSG="${MSG}[${BADGE}] ${TITLE}
-          https://dead.md${URL_PATH}
-          "
-          done <<< "$CHANGED"
-
-          # Store multiline output
-          {
-            echo "content<<CONTENT_EOF"
-            echo "$MSG"
-            echo "CONTENT_EOF"
-          } >> "$GITHUB_OUTPUT"
-
       - name: IRC notification
         if: success()
         uses: Gottox/irc-message-action@v2
@@ -102,9 +102,9 @@ jobs:
           message: |-
             ${{ github.actor }} pushed ${{ github.event.ref }} ${{ github.event.compare }}
 
-      - name: Telegram — deploy notification
+      - name: Telegram — deploy
         if: success()
-        uses: appleboy/telegram-action@v0.1.1
+        uses: appleboy/telegram-action@v1.0.1
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
@@ -118,7 +118,7 @@ jobs:
 
       - name: Telegram — content updates
         if: success() && steps.changes.outputs.has_content == 'true'
-        uses: appleboy/telegram-action@v0.1.1
+        uses: appleboy/telegram-action@v1.0.1
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
