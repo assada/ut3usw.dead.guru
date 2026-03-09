@@ -344,62 +344,58 @@ code, pre, .prism-code {
 
     .menu {
         background: transparent !important;
-        /* backdrop-filter: saturate(140%) blur(14px) !important; */
-        /* -webkit-backdrop-filter: saturate(140%) blur(14px) !important; */
-        /* border: 1px solid color-mix(in srgb, var(--terminal-border) 60%, transparent) !important; */
-        /* box-shadow: var(--glow-green) !important; */
-        /* border-radius: 16px !important; */
         padding: 1rem !important;
     }
 
     html[data-theme='dark'] .menu {
         background: transparent !important;
-        /* background: color-mix(in srgb, var(--ifm-background-surface-color) 75%, transparent) !important; */
-        /* border-color: color-mix(in srgb, var(--terminal-border) 30%, transparent) !important; */
-        /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important; */
     }
 
     .menu__link {
-        border-radius: var(--ifm-small-radius) !important;
-        corner-shape: superellipse(3);
-        transition: all 0.2s ease !important;
+        border-radius: 6px !important;
+        transition: background 0.15s ease, color 0.15s ease !important;
+        padding: 6px 8px !important;
+        font-size: 0.85rem !important;
     }
 
     .menu__link:hover {
-        background: color-mix(in srgb, var(--terminal-accent) 15%, transparent) !important;
-        transform: translateX(1px) !important;
+        background: color-mix(in srgb, var(--color-base) 6%, transparent) !important;
+        transform: none !important;
     }
 
-    .menu__link--active {
-        background: color-mix(in srgb, var(--terminal-success) 20%, transparent) !important;
+    .menu__link--active:not(.menu__link--sublist) {
+        background: color-mix(in srgb, var(--color-accent) 10%, transparent) !important;
+        color: var(--color-accent) !important;
     }
 
     .table-of-contents__link {
-        border-radius: var(--ifm-small-radius) !important;
-        corner-shape: superellipse(3);
-        padding: 0.4rem 0.8rem !important;
+        border-radius: 6px !important;
+        padding: 4px 8px !important;
         display: block !important;
-        transition: all 0.1s ease !important;
+        transition: background 0.15s ease, color 0.15s ease !important;
         font-family: var(--ifm-font-family-monospace) !important;
+        font-size: 0.8rem !important;
+        color: var(--color-light) !important;
     }
 
     .table-of-contents__link:hover {
-        background: color-mix(in srgb, var(--terminal-accent) 15%, transparent) !important;
-        transform: translateX(1px) !important;
-        color: var(--terminal-accent) !important;
-        border-right: 1px solid var(--ifm-color-primary);
-        box-shadow: inset -3px 0 0 var(--terminal-success);
+        background: color-mix(in srgb, var(--color-base) 6%, transparent) !important;
+        color: var(--color-base) !important;
+        transform: none !important;
+        border-right: none;
+        box-shadow: none;
     }
 
     .table-of-contents__link.table-of-contents__link--active {
-        background: color-mix(in srgb, var(--terminal-success) 20%, transparent) !important;
-        border-left: 3px solid var(--terminal-success) !important;
-        font-weight: bold !important;
-        transform: translateX(2px) !important;
+        background: color-mix(in srgb, var(--color-accent) 10%, transparent) !important;
+        color: var(--color-accent) !important;
+        border-left: none !important;
+        font-weight: 600 !important;
+        transform: none !important;
     }
 
     .table-of-contents__left-border {
-        border-left: none !important;
+        border-left: 1px solid color-mix(in srgb, var(--color-base) 10%, transparent) !important;
     }
 }
 
@@ -627,25 +623,40 @@ html[data-theme='dark'] .footer {
     box-shadow: var(--glow-green);
 }
 
+/* === Sidebar menu === */
 .menu__link {
-    font-weight: bold;
     font-family: var(--ifm-font-family-monospace);
-    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.85rem;
+    transition: background 0.15s ease, color 0.15s ease;
+    border-radius: 6px;
+    padding: 6px 8px;
 }
 
 .menu__link:hover {
-    color: var(--color-accent);
-    text-shadow: var(--glow-yellow);
-    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-accent) 10%, transparent));
+    color: var(--color-base);
+    background: color-mix(in srgb, var(--color-base) 6%, transparent);
+    text-shadow: none;
 }
 
-.menu__link {
-    font-size: 1em;
+.menu__link--active:not(.menu__link--sublist) {
+    font-weight: 600;
+    color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+    box-shadow: none;
+    border: none;
 }
 
 .menu__list .menu__list {
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding-left: 12px;
+    margin-left: 12px;
+    border-left: 1px solid color-mix(in srgb, var(--color-base) 10%, transparent);
+}
+
+[data-theme='dark'] .menu__list .menu__list {
+    border-left-color: color-mix(in srgb, var(--color-base) 12%, transparent);
 }
 
 .menu__list .menu__list .menu__list-item {
@@ -653,36 +664,25 @@ html[data-theme='dark'] .footer {
 }
 
 .menu__list .menu__list .menu__list-item .menu__link {
-    border-left: 1px solid transparent;
-    transition: all 0.3s ease;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--color-light);
 }
 
-.menu__list .menu__list .menu__list-item .menu__link:hover,
-.menu__list .menu__list .menu__list-item .menu__link--active {
-    border-left: 1px solid var(--color-accent);
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-    background: linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent);
-    box-shadow: inset 3px 0 0 var(--color-accent);
-}
-
-.menu__link--active {
-    border-left: 1px solid var(--color-accent);
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-    background: linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent);
-    box-shadow: inset 3px 0 0 var(--color-accent);
-}
-
-.menu__list .menu__list .menu__list-item .menu__link {
-    font-size: 0.9em;
-    font-weight: normal;
+.menu__list .menu__list .menu__list-item .menu__link:hover {
+    color: var(--color-base);
+    background: color-mix(in srgb, var(--color-base) 6%, transparent);
+    border: none;
+    box-shadow: none;
 }
 
 .menu__list .menu__list .menu__list-item .menu__link--active {
-    font-weight: bold;
+    font-weight: 600;
     color: var(--color-accent);
-    text-shadow: var(--glow-yellow);
+    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+    text-shadow: none;
+    border: none;
+    box-shadow: none;
 }
 
 .docusaurus-highlight-code-line {
@@ -693,6 +693,61 @@ html[data-theme='dark'] .footer {
     border-left: 3px solid var(--terminal-accent);
     box-shadow: inset 0 0 20px hsla(48, 100%, 60%, 0.1);
 }
+
+/* === Shiki dual-theme support === */
+/* Light mode */
+.shiki span {
+    color: var(--shiki-light) !important;
+    background-color: transparent !important;
+    font-style: var(--shiki-light-font-style, inherit) !important;
+    font-weight: var(--shiki-light-font-weight, inherit) !important;
+}
+
+/* Dark mode */
+[data-theme='dark'] .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: transparent !important;
+    font-style: var(--shiki-dark-font-style, inherit) !important;
+    font-weight: var(--shiki-dark-font-weight, inherit) !important;
+}
+
+/* Shiki pre block styling — always use site's code background */
+pre.shiki {
+    background: var(--color-code-bg) !important;
+    background-color: var(--color-code-bg) !important;
+    border: 1px solid var(--color-code-border);
+    border-radius: 6px;
+    padding: var(--ifm-pre-padding);
+    overflow-x: auto;
+    font-family: var(--ifm-font-family-monospace);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: var(--ifm-spacing-vertical);
+}
+
+pre.shiki code {
+    background: transparent !important;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+}
+
+/* Inline/transparent shiki (inside TerminalCard etc) */
+.shiki-inline > pre[class*="shiki"] {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.shiki-inline > pre[class*="shiki"] code,
+.shiki-inline > pre[class*="shiki"] span {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
 
 .footer__title {
     color: var(--ifm-color-primary) !important;
@@ -1127,57 +1182,71 @@ body {
     background: var(--color-accent);
 }
 
+/* === Collapsible categories === */
 .menu__list-item-collapsible {
-    border-radius: var(--ifm-global-radius);
-    corner-shape: superellipse(3);
-    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    border-radius: 6px;
+    transition: background 0.15s ease;
 }
 
-.menu__list-item-collapsible:hover, .menu__link:hover {
-    border-color: var(--color-accent);
-    background: linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 8%, transparent), transparent);
+.menu__list-item-collapsible:hover {
+    background: color-mix(in srgb, var(--color-base) 4%, transparent);
+    border-color: transparent;
 }
 
 .menu__list-item-collapsible:hover > .menu__link {
-    color: var(--color-accent);
-    text-shadow: var(--glow-yellow);
+    color: var(--color-base);
+    text-shadow: none;
 }
 
+/* === Caret (chevron) === */
 .menu__caret {
-    padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
-    align-items: center;
+    padding: 4px;
     display: flex;
-    border-radius: var(--ifm-global-radius);
-    corner-shape: superellipse(3);
-    color: var(--terminal-fg);
-    border: 0px solid transparent !important;
+    align-items: center;
+    border-radius: 4px;
+    color: var(--color-light);
+    border: none !important;
     background: transparent !important;
-    transition: color var(--ifm-transition-fast) var(--ifm-transition-timing-default), border-color .2s ease;
-}
-
-.menu__link, .menu__caret {
-    transition: background var(--ifm-transition-fast) var(--ifm-transition-timing-default), color var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+    transition: background 0.15s ease, color 0.15s ease;
 }
 
 .menu__caret:hover {
-    background: transparent !important;
-    border-color: transparent;
-    color: color-mix(in oklab, var(--terminal-fg) 85%, var(--terminal-accent) 15%);
+    background: color-mix(in srgb, var(--color-base) 8%, transparent) !important;
+    color: var(--color-base);
 }
 
 .menu__caret:focus-visible {
-    outline: 1px dashed var(--terminal-accent);
-    outline-offset: 2px;
+    outline: 1px solid var(--color-accent);
+    outline-offset: 1px;
 }
 
+/* Hide default Docusaurus caret arrow */
+.menu__caret::before,
 .menu__caret svg {
-    fill: currentColor;
-    opacity: .75;
-    transition: opacity .2s ease, transform .2s ease;
+    display: none !important;
 }
 
-.menu__caret:hover svg {
-    opacity: .95;
+/* Custom chevron via CSS */
+.menu__caret::after {
+    content: '';
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(-45deg);
+    transition: transform 0.2s ease;
+    opacity: 0.5;
+    flex-shrink: 0;
+}
+
+.menu__caret:hover::after {
+    opacity: 0.8;
+}
+
+/* Rotate when expanded */
+.menu__caret[aria-expanded='true']::after {
+    transform: rotate(45deg);
 }
 
 .glitch-soft {
@@ -1223,8 +1292,11 @@ body {
     }
 }
 
+/* === Category links (with sublist) === */
 .menu__link.menu__link--sublist {
-    color: var(--ifm-heading-color);
+    color: var(--color-base);
+    font-weight: 600;
+    font-size: 0.85rem;
 }
 
 @keyframes blink-animation {

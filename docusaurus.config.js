@@ -15,6 +15,7 @@ import {
 } from "remark-extended-table";
 import remarkGfm from "remark-gfm";
 import { nativeIdealImageRemarkPlugin } from "docusaurus-plugin-native-ideal-image";
+import remarkShiki from "./plugins/remark-shiki.mjs";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -96,6 +97,7 @@ const config = {
             remarkExtendedTable,
             remarkDefinitionList,
             [nativeIdealImageRemarkPlugin, {}],
+            remarkShiki,
           ],
           rehypePlugins: [],
 
@@ -124,6 +126,7 @@ const config = {
             remarkExtendedTable,
             remarkDefinitionList,
             [nativeIdealImageRemarkPlugin, {}],
+            remarkShiki,
           ],
           rehypePlugins: [],
           // Please change this to your repo.
@@ -229,21 +232,7 @@ const config = {
       },
       prism: {
         theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
-        additionalLanguages: [
-          "powershell",
-          "nginx",
-          "cpp",
-          "ini",
-          "bash",
-          "toml",
-          "haskell",
-          "erlang",
-          "rust",
-          "ocaml",
-          "lisp",
-          "coq",
-        ],
+        darkTheme: prismThemes.oneDark,
       },
     }),
 };
