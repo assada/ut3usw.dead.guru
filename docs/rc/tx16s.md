@@ -11,7 +11,7 @@ comments: true
 
 Існує 2 версії з двума типами вбудованих систем. MK1 і MK2 з системами ELRS і 4in1. Наприклад **RadioMaster TX16S MK2 ELRS**
 
-ELRS ([rc/general](/docs/rc/general)) версія має вбудований передавач ELRS, а так звана версія 4in1 має багато квазі протоколів типу FlySky (AFHDS2A), FrSky (ACCST), Futaba, Hubsan, Spectrum (DSM/DSMX), SYMA та інші. З моєї точки зору вигідно брати версію 4в1 бо тоді в пульті буде підтримка всіх оцих іграшкових протоколів, а ELRS можна в будь-який час докупити як зовшнішній TX модуль (все інші хз де брати потім).
+ELRS ([rc/general](/docs/rc/general), [ExpressLRS українською](/docs/rc/elrs)) версія має вбудований передавач ELRS, а так звана версія 4in1 має багато квазі протоколів типу FlySky (AFHDS2A), FrSky (ACCST), Futaba, Hubsan, Spectrum (DSM/DSMX), SYMA та інші. З моєї точки зору вигідно брати версію 4в1 бо тоді в пульті буде підтримка всіх оцих іграшкових протоколів, а ELRS можна в будь-який час докупити як зовшнішній TX модуль (все інші хз де брати потім).
 
 Пульт працює від двох 18650 (2S 7.4В LiPo), має USB-C та слот карт памʼяті. Працює на системі OpenTX https://github.com/opentx/opentx або EdgeTX https://github.com/EdgeTX/edgetx (умовно те саме що OpenTX, але Edge...)
 
@@ -30,6 +30,8 @@ ELRS ([rc/general](/docs/rc/general)) версія має вбудований �
 ## EdgeTX manual українською
 
 Для повної інструкції по меню EdgeTX, Model Setup, Inputs, Mixes, Outputs, Telemetry, Radio Setup, SD-карті та віджетах дивись окремий розділ: [EdgeTX українською для RadioMaster TX16S](/docs/rc/edgetx-tx16s/).
+
+Для ELRS на TX16S окремо корисні [ExpressLRS українською](/docs/rc/elrs), [binding phrase](/docs/rc/elrs/quick-start/binding), [WebUI](/docs/rc/elrs/quick-start/webui) і [Model Match](/docs/rc/elrs/software/model-config-match).
 
 ## Корисні посилання
 

@@ -12,18 +12,18 @@ slug: /rc/edgetx-tx16s/user-interface
 ### **Кнопки**
 
 *   **\[SYS]** - Системна кнопка\
-    \- Коротке натискання кнопки **\[SYS]** відкриває сторінку [Radio Settings](../radio-settings/).
+    \- Коротке натискання кнопки **\[SYS]** відкриває сторінку [Radio Settings](/docs/rc/edgetx-tx16s/radio-settings/).
 
-    \- Довге натискання кнопки **\[SYS]** відкриває сторінку [Radio Setup](../radio-settings/radio-setup/).
+    \- Довге натискання кнопки **\[SYS]** відкриває сторінку [Radio Setup](/docs/rc/edgetx-tx16s/radio-settings/radio-setup/).
 * **\[MDL]** - Кнопка моделі\
-  \- Коротке натискання кнопки **\[MDL]** відкриває сторінку [Model Settings](../model-settings/)\
+  \- Коротке натискання кнопки **\[MDL]** відкриває сторінку [Model Settings](/docs/rc/edgetx-tx16s/model-settings/)\
   \- Довге натискання кнопки **\[MDL]** відкриває сторінку [Select Model](../select-model.md)
 * **\[RTN] -** Повернення / Назад \
   \- Коротке натискання кнопки **\[RTN]** повертає до попередньої сторінки, попереднього меню або скасовує дію
 * **\[PAGE>] / \[PAGE&lt;]** - Наступна та попередня сторінка\
   \- Використовується для навігації між різними екранами, вкладками або налаштуваннями опцій, залежно від екрана.
 *   **\[TELE] -** Телеметрія \
-    \- Коротке натискання кнопки **\[TELE]** відкриває сторінку [Screen Settings](../screen-settings/)
+    \- Коротке натискання кнопки **\[TELE]** відкриває сторінку [Screen Settings](/docs/rc/edgetx-tx16s/screen-settings/)
 
      -Довге натискання кнопки **\[TELE]** відкриває сторінку [Channel Monitor](../channel-monitor.md)
 * **\[Roller]** або **\[Dial]** - Наступне та попереднє значення\

@@ -22,12 +22,12 @@ EdgeTX підтримує такі пульти з кольоровим екра
 
 | Що налаштовуєте | Розділ |
 | --- | --- |
-| Базові параметри моделі, RF-модуль, приймач, failsafe | [Model Setup](model-settings/model-setup/) |
-| Стіки, рейти, експоненти, мікси і виходи каналів | [Inputs, Mixes & Outputs](model-settings/inputs-mixes-and-outputs/) |
-| Телеметрія, сенсори, vario і логування | [Telemetry](model-settings/telemetry/) |
-| SD-карта, звуки, Lua-скрипти, теми, віджети | [Radio Settings](radio-settings/) |
-| Головні екрани і віджети EdgeTX | [Screen Settings](screen-settings/) |
-| Кнопки, сенсорний екран і навігація | [User Interface](user-interface/) |
+| Базові параметри моделі, RF-модуль, приймач, failsafe | [Model Setup](/docs/rc/edgetx-tx16s/model-settings/model-setup/) |
+| Стіки, рейти, експоненти, мікси і виходи каналів | [Inputs, Mixes & Outputs](/docs/rc/edgetx-tx16s/model-settings/inputs-mixes-and-outputs/) |
+| Телеметрія, сенсори, vario і логування | [Telemetry](/docs/rc/edgetx-tx16s/model-settings/telemetry/) |
+| SD-карта, звуки, Lua-скрипти, теми, віджети | [Radio Settings](/docs/rc/edgetx-tx16s/radio-settings/) |
+| Головні екрани і віджети EdgeTX | [Screen Settings](/docs/rc/edgetx-tx16s/screen-settings/) |
+| Кнопки, сенсорний екран і навігація | [User Interface](/docs/rc/edgetx-tx16s/user-interface/) |
 
 Якщо потрібна коротка сторінка саме про пульт, версії ELRS/4in1, SD-карту і модулі, дивіться також [RadioMaster TX16S](/docs/rc/tx16s).
 

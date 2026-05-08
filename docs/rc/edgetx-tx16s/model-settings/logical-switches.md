@@ -24,7 +24,7 @@ slug: /rc/edgetx-tx16s/model-settings/logical-switches
 
 Після вибору редагування логічного перемикача вам будуть доступні такі параметри налаштування:
 
-* **Func** — логічна функція, яку ви хочете використати. Дивіться розділ [Функції логічних перемикачів](logical-switches.md#logical_switches_judgment_conditions_and_logical_expressions) нижче для опису можливих функцій.
+* **Func** — логічна функція, яку ви хочете використати. Дивіться розділ [Функції логічних перемикачів](#logical_switches_judgment_conditions_and_logical_expressions) нижче для опису можливих функцій.
 * **V1** — перша змінна у виразі для обчислення.
 * **V2** — друга змінна у виразі для обчислення.
 * **AND switch** — перемикач, який має бути активним, щоб дозволити обчислення логічного перемикача для активації.
@@ -32,7 +32,7 @@ slug: /rc/edgetx-tx16s/model-settings/logical-switches
 * **Delay** — затримка між моментом виконання умов активації логічного перемикача та його переходом в активований стан (true).
 * **Persistence** **(тільки для Sticky Switch)** — зберігає значення "липкого" перемикача (sticky switch) під час вимкнення пульта або зміни моделі, та відновлює збережене значення після увімкнення живлення або повторного вибору моделі.
 
-### Функції логічних перемикачів <a href="#logical_switches_judgment_conditions_and_logical_expressions" id="logical_switches_judgment_conditions_and_logical_expressions"></a>
+### Функції логічних перемикачів {#logical_switches_judgment_conditions_and_logical_expressions}
 
 У виразі a та b представляють джерела (стіки, перемикачі тощо), а x представляє константи (значення) для порівняння.
 

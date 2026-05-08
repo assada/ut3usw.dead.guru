@@ -11,7 +11,7 @@ slug: /rc/edgetx-tx16s/radio-settings
 
 * [Tools](tools.md)
 * [SD Card](sd-card.md)
-* [Radio Setup](radio-setup/)
+* [Radio Setup](/docs/rc/edgetx-tx16s/radio-settings/radio-setup/)
 * [Themes](themes.md)
 * [Global Functions](global-functions.md)
 * [Trainer](../model-settings/model-setup/trainer.md)

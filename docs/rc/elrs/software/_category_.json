@@ -1,0 +1,9 @@
+{
+  "label": "Software",
+  "key": "elrs-software",
+  "position": 10,
+  "collapsed": false,
+  "link": {
+    "type": "generated-index"
+  }
+}

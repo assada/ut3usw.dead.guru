@@ -7,11 +7,11 @@ slug: /rc/edgetx-tx16s/model-settings
 ---
 ![Екран Model Setup](../img/color_model_setup-1.png)
 
-Екран **Model Settings** містить усі опції для налаштування вашої моделі. У верхній частині сторінки ви побачите іконки, які при виборі переведуть вас на різні сторінки налаштувань моделі. Екраном за замовчуванням для налаштувань моделі є екран [model-setup](model-setup/).
+Екран **Model Settings** містить усі опції для налаштування вашої моделі. У верхній частині сторінки ви побачите іконки, які при виборі переведуть вас на різні сторінки налаштувань моделі. Екраном за замовчуванням для налаштувань моделі є екран [model-setup](/docs/rc/edgetx-tx16s/model-settings/model-setup/).
 
 Іконки у верхній частині екрана включають (по порядку зліва направо):
 
-* [Model Setup](model-setup/)
+* [Model Setup](/docs/rc/edgetx-tx16s/model-settings/model-setup/)
 * [Heli Setup](heli-setup.md)
 * [Flight modes](flight-modes.md)
 * [Inputs](inputs-mixes-and-outputs/inputs.md)
@@ -22,7 +22,7 @@ slug: /rc/edgetx-tx16s/model-settings
 * [Logical Switches](logical-switches.md)
 * [Special Functions](special-functions.md)
 * Custom Scripts
-* [Telemetry](telemetry/)
+* [Telemetry](/docs/rc/edgetx-tx16s/model-settings/telemetry/)
 
 ---
 
