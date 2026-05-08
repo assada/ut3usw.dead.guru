@@ -1,0 +1,629 @@
+.wrap {
+    margin: 1.75rem 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: var(--ifm-color-content);
+    overflow: visible;
+}
+
+[data-theme='dark'] .wrap {
+    background: transparent;
+    box-shadow: none;
+}
+
+.svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.panelBg {
+    fill: transparent;
+}
+
+[data-theme='dark'] .panelBg {
+    fill: transparent;
+}
+
+.gridLine {
+    stroke: currentColor;
+    stroke-opacity: 0.07;
+}
+
+[data-theme='dark'] .gridLine {
+    stroke-opacity: 0.09;
+}
+
+.routerGlowStart {
+    stop-color: #10b981;
+    stop-opacity: 0.32;
+}
+
+.routerGlowMid {
+    stop-color: #10b981;
+    stop-opacity: 0.10;
+}
+
+.routerGlowEnd {
+    stop-color: #10b981;
+    stop-opacity: 0;
+}
+
+.shellHi {
+    stop-color: #f2f1ec;
+}
+
+.shellLow {
+    stop-color: #a8a29e;
+}
+
+[data-theme='dark'] .shellHi {
+    stop-color: #f4f1ea;
+}
+
+[data-theme='dark'] .shellLow {
+    stop-color: #737373;
+}
+
+.screenHi {
+    stop-color: #0b3b2e;
+}
+
+.screenLow {
+    stop-color: #051f19;
+}
+
+.routerHalo {
+    opacity: 0.9;
+}
+
+.links {
+    opacity: 0.92;
+}
+
+.visitedLinks {
+    pointer-events: none;
+}
+
+.packetLayer {
+    pointer-events: none;
+}
+
+.linkLora {
+  stroke: #10b981;
+  stroke-opacity: 0.18;
+  stroke-width: 1.4;
+  stroke-dasharray: 5 7;
+  stroke-linecap: round;
+}
+
+.visitedEdge {
+  stroke: #10b981;
+  stroke-opacity: 0.32;
+  stroke-width: 1.4;
+  stroke-dasharray: 5 7;
+  stroke-linecap: round;
+}
+
+.linkBt {
+  stroke: #3b82f6;
+  stroke-opacity: 0.58;
+  stroke-width: 1.8;
+    stroke-dasharray: 2 5;
+    stroke-linecap: round;
+}
+
+.linkUsb {
+    stroke: #94a3b8;
+    stroke-opacity: 0.62;
+    stroke-width: 1.8;
+    stroke-dasharray: 7 5;
+    stroke-linecap: round;
+}
+
+.toneLora {
+    --packet: #10b981;
+}
+
+.toneBt {
+    --packet: #3b82f6;
+}
+
+.toneUsb {
+    --packet: #94a3b8;
+}
+
+.activeEdge {
+    stroke: var(--packet);
+    stroke-opacity: 0.42;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.routeTrace {
+    fill: none;
+    stroke: var(--packet);
+    stroke-dasharray: 7 8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-opacity: 0.42;
+    stroke-width: 4.2;
+}
+
+.completedEdge {
+    stroke: var(--packet);
+    stroke-linecap: round;
+    stroke-opacity: 0.68;
+    stroke-width: 3.5;
+    filter: url(#mt-packet-glow);
+}
+
+.packetDot,
+.deliverySpark {
+    fill: currentColor;
+    filter: url(#mt-packet-glow);
+}
+
+.packetGlyph {
+    color: var(--packet);
+    filter: url(#mt-packet-glow);
+}
+
+.packetAura {
+    fill: currentColor;
+    fill-opacity: 0.16;
+}
+
+.packetCore {
+    fill: #f8fafc;
+}
+
+.packetBody {
+    fill: currentColor;
+    stroke: #f8fafc;
+    stroke-width: 2.2;
+}
+
+.packetFold {
+    fill: none;
+    stroke: #f8fafc;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+}
+
+.arrivalGlow,
+.originPulse {
+    fill: none;
+    stroke: var(--packet);
+    stroke-width: 2.5;
+}
+
+.externalBt,
+.externalUsb {
+    stroke: var(--packet);
+    stroke-opacity: 0.46;
+    stroke-linecap: round;
+    stroke-width: 2;
+}
+
+.externalBt {
+    stroke-dasharray: 4 6;
+}
+
+.externalUsb {
+    stroke-dasharray: 8 5;
+}
+
+.device {
+    color: #0f172a;
+}
+
+[data-theme='dark'] .device {
+    color: #e5e7eb;
+}
+
+.clientDevice {
+    opacity: 0.98;
+}
+
+.deviceActive {
+    opacity: 1;
+}
+
+.routerDevice {
+    color: #064e3b;
+}
+
+[data-theme='dark'] .routerDevice {
+    color: #d1fae5;
+}
+
+.nodeHalo {
+    fill: #10b981;
+    filter: url(#mt-packet-glow);
+}
+
+.deviceImage {
+    filter: url(#mt-soft-shadow);
+}
+
+.deviceRole {
+    fill: currentColor;
+    fill-opacity: 0.58;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.deviceLabel {
+    fill: currentColor;
+    fill-opacity: 0.78;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10px;
+}
+
+.terminalShell {
+    fill: #3f3f46;
+    stroke: rgba(226, 232, 240, 0.26);
+    stroke-width: 1.2;
+}
+
+.terminalScreen {
+    fill: #020617;
+    stroke: rgba(34, 211, 238, 0.18);
+}
+
+.terminalBase {
+    fill: #71717a;
+}
+
+.terminalRed {
+    fill: #ef4444;
+}
+
+.terminalAmber {
+    fill: #f59e0b;
+}
+
+.terminalGreen {
+    fill: #22c55e;
+}
+
+.terminalText,
+.terminalTextDim {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 9px;
+}
+
+.terminalText {
+    fill: #34d399;
+}
+
+.terminalTextDim {
+    fill: #67e8f9;
+    fill-opacity: 0.72;
+}
+
+.protocolIcon {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.iconWifi {
+    color: #0ea5e9;
+    filter: drop-shadow(0 0 3px rgba(14, 165, 233, 0.58));
+}
+
+.iconBt {
+    color: #3b82f6;
+    filter: drop-shadow(0 0 3px rgba(59, 130, 246, 0.58));
+}
+
+.iconUsb {
+    color: #9ca3af;
+    filter: drop-shadow(0 0 2px rgba(156, 163, 175, 0.52));
+}
+
+.phoneShell {
+    fill: url(#mt-phone-shell);
+    stroke: rgba(15, 23, 42, 0.22);
+    stroke-width: 1.2;
+}
+
+.phoneBezel {
+    fill: rgba(255, 255, 255, 0.72);
+}
+
+[data-theme='dark'] .phoneBezel {
+    fill: rgba(229, 231, 235, 0.76);
+}
+
+.phoneScreen,
+.glassScreen {
+    fill: url(#mt-screen);
+    stroke: rgba(110, 231, 183, 0.22);
+    stroke-width: 1;
+}
+
+.phoneSpeaker,
+.phoneCamera,
+.homeButton {
+    fill: rgba(15, 23, 42, 0.38);
+}
+
+.statusTime,
+.screenBrand,
+.screenSmallText,
+.routerScreenText {
+    fill: #34d399;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.statusTime {
+    font-size: 10px;
+}
+
+.screenBrand {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+}
+
+.screenSmallText {
+    font-size: 8.5px;
+    fill-opacity: 0.82;
+}
+
+.statusIcons rect,
+.statusIcons path {
+    fill: none;
+    stroke: #86efac;
+    stroke-width: 1.3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.statusIcons circle {
+    fill: none;
+    stroke: #86efac;
+    stroke-width: 1.3;
+}
+
+.chatBubbleIn {
+    fill: rgba(52, 211, 153, 0.18);
+    stroke: rgba(52, 211, 153, 0.28);
+}
+
+.chatBubbleOut {
+    fill: rgba(34, 211, 238, 0.16);
+    stroke: rgba(34, 211, 238, 0.28);
+}
+
+.incomingBubble rect {
+    fill: rgba(52, 211, 153, 0.34);
+    stroke: rgba(134, 239, 172, 0.48);
+}
+
+.incomingBubbleText {
+    fill: #d1fae5;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 7.5px;
+}
+
+.miniMap line {
+    stroke: #34d399;
+    stroke-opacity: 0.72;
+    stroke-width: 1.2;
+}
+
+.miniMap circle {
+    fill: #22d3ee;
+}
+
+.radioBody,
+.deckBody,
+.trackerShell,
+.walkieBody {
+    fill: #182033;
+    stroke: rgba(148, 163, 184, 0.42);
+    stroke-width: 1.1;
+}
+
+[data-theme='dark'] .radioBody,
+[data-theme='dark'] .deckBody,
+[data-theme='dark'] .trackerShell,
+[data-theme='dark'] .walkieBody {
+    fill: #111827;
+    stroke: rgba(148, 163, 184, 0.34);
+}
+
+.routerBody {
+    fill: #064e3b;
+    stroke: #10b981;
+    stroke-width: 1.5;
+}
+
+[data-theme='dark'] .routerBody {
+    fill: #043827;
+}
+
+.slimAntenna,
+.thickAntenna {
+    stroke: currentColor;
+    stroke-linecap: round;
+}
+
+.slimAntenna {
+    stroke-opacity: 0.60;
+    stroke-width: 1.7;
+}
+
+.thickAntenna {
+    stroke-opacity: 0.70;
+    stroke-width: 3;
+}
+
+.antennaCap,
+.blueLed {
+    fill: #22d3ee;
+}
+
+.orangeLed {
+    fill: #f59e0b;
+}
+
+.screenLine {
+    stroke: #34d399;
+    stroke-opacity: 0.76;
+    stroke-width: 1.2;
+    stroke-linecap: round;
+}
+
+.screenLineDim {
+    stroke: #6ee7b7;
+    stroke-opacity: 0.40;
+    stroke-width: 1.2;
+    stroke-linecap: round;
+}
+
+.navButton,
+.trackBall {
+    fill: rgba(148, 163, 184, 0.78);
+}
+
+.keyboardKey {
+    fill: rgba(148, 163, 184, 0.46);
+}
+
+.smallScrew {
+    fill: rgba(226, 232, 240, 0.42);
+}
+
+.trackerRing {
+    fill: rgba(20, 184, 166, 0.20);
+    stroke: rgba(45, 212, 191, 0.50);
+}
+
+.trackerHole {
+    fill: rgba(15, 23, 42, 0.75);
+}
+
+.trackerScreen {
+    fill: rgba(5, 31, 25, 0.84);
+    stroke: rgba(52, 211, 153, 0.22);
+}
+
+.routerScreenText {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+.routerLeds circle {
+    fill: #22d3ee;
+}
+
+.routerLeds circle:first-child {
+    fill: #34d399;
+}
+
+.routerLeds circle:last-child {
+    fill: #f59e0b;
+}
+
+.ventBar,
+.speakerSlots rect {
+    fill: rgba(148, 163, 184, 0.44);
+}
+
+.solarFrame {
+    fill: #0f172a;
+    stroke: rgba(148, 163, 184, 0.52);
+    stroke-width: 1.1;
+}
+
+.solarCell {
+    fill: #1d4ed8;
+    stroke: rgba(147, 197, 253, 0.52);
+    stroke-width: 0.8;
+}
+
+.solarMast {
+    stroke: rgba(148, 163, 184, 0.82);
+    stroke-width: 2;
+}
+
+.solarBox {
+    fill: #174236;
+    stroke: rgba(52, 211, 153, 0.48);
+}
+
+.boardPcb {
+    fill: #123d33;
+    stroke: rgba(52, 211, 153, 0.45);
+    stroke-width: 1.1;
+}
+
+.boardPin {
+    stroke: rgba(148, 163, 184, 0.70);
+    stroke-width: 1.2;
+    stroke-linecap: round;
+}
+
+.boardChip {
+    fill: #0f172a;
+    stroke: rgba(226, 232, 240, 0.18);
+}
+
+.usbPort {
+    fill: #d1d5db;
+    stroke: rgba(15, 23, 42, 0.38);
+}
+
+.legendLora,
+.legendBt,
+.legendWifi,
+.legendUsb {
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+
+.legendLora {
+    stroke: #10b981;
+    stroke-dasharray: 5 7;
+}
+
+.legendBt {
+    stroke: #3b82f6;
+    stroke-dasharray: 2 5;
+}
+
+.legendWifi {
+    stroke: #0ea5e9;
+}
+
+.legendUsb {
+    stroke: #94a3b8;
+}
+
+.legendLabel {
+    fill: currentColor;
+    fill-opacity: 0.72;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .activeEdge,
+    .packetDot,
+    .arrivalGlow,
+    .deliverySpark {
+        animation: none;
+    }
+}

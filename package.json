@@ -25,6 +25,7 @@
     "clsx": "^2.0.0",
     "js-yaml-loader": "^1.2.2",
     "loader-utils": "^3.2.1",
+    "lucide-react": "^1.14.0",
     "motion": "^12.23.24",
     "pagefind": "^1.4.0",
     "prism-react-renderer": "^2.1.0",
