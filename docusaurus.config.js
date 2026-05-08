@@ -118,7 +118,16 @@ const config = {
         sitemap: {
           changefreq: "weekly",
           priority: 0.5,
-          ignorePatterns: ["/tags/**"],
+          ignorePatterns: [
+            "/blog/archive",
+            "/blog/authors",
+            "/blog/tags",
+            "/blog/tags/**",
+            "/bookmarks",
+            "/docs/tags",
+            "/docs/tags/**",
+            "/markdown-page",
+          ],
           filename: "sitemap.xml",
         },
         gtag: {

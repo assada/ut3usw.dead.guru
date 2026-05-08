@@ -1,6 +1,6 @@
 ---
 title: Uniden BCD436HP/536HP
-description: Про Uniden BCD436HP/536HP
+description: "Нотатки про сканери Uniden BCD436HP і BCD536HP: налаштування, прошивки, Sentinel, робота з частотами, бази даних і практичне використання."
 tags: [ham, scanner, uniden]
 comments: true
 ---

@@ -1,6 +1,6 @@
 ---
 title: LILYGO T-TWR Plus
-description: Прошиваємо OpenRTX на LILYGO T-TWR Plus
+description: "Як прошити OpenRTX на LILYGO T-TWR Plus: підготовка, збірка, flash, особливості пристрою, обмеження і нотатки з практичного використання."
 tags: [ham, lilygo, ttwrplus, openrtx]
 comments: true
 ---

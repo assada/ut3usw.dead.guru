@@ -1,7 +1,7 @@
 ---
 authors: [ut3ums]
-Title: Reticulum Network
-Description: Що таке Reticulum?
+title: Reticulum Network
+description: Що таке Reticulum Network, як працюють destination, announce, transport nodes, NomadNet і RNode, та як використовувати цей мережевий стек з радіо.
 tags: [ham, mesh, reticulum, network, ut3ums]
 comments: true
 
@@ -213,7 +213,7 @@ rnstatus
 
     Щоб створити RNode на базі девборди, під'єднайте її в режимі прошивки і запустіть `rnodeconf --autoinstall`. Текстовий помічний спитає модель вашої борди, LoRa модуля, підбере файл прошивки і завантажить його на девайс.
 
-    ![img](./img/rnode_fresh_install.jpg)
+    ![Свіжа інсталяція RNode](./img/rnode_fresh_install.jpg)
 
     Тепер необхідно сконфігурувати інтерфейс, задавши для RNode всі параметри фізичного рівня.
 
@@ -298,16 +298,16 @@ LXMF відчувається як аналог HTTP в світі reticulum. В
 
 Для запуску в режимі клієнта достатньо просто виконати `nomadnet` і перед вами відкриється вражаюче, як на мене, текстове меню в дусі FAR, minicom, tmux та іншої класики TUI.
 
-![img](./img/nomadnet_nissa_node.png)
+![NomadNet сторінка nissa node](./img/nomadnet_nissa_node.png)
 
 Вкладка `[ Conversations ]` це месcенджер, що працює на чистому LXMF, це робить `nomadnet` сумісним з інишими програмами як мінімум в контексті листування між користувачами
 Вкладка `[ Network ]` це переглядач nomadnet вузлів - по відчуттях це аналог BBS та ZX-net. Сторінки верстаються мовою розмітки Micron, повний її опис з прикладами доступний у вкладці `[ Guide ]`.
 
-![img](./img/nomadnet_sherby_node.png)
+![NomadNet сторінка sherby node](./img/nomadnet_sherby_node.png)
 
 Комбінація клавіш `Ctrl+G` ховає або показує бічну панель. В ній відображаються анонси, отримані від нод. Символом "Ⓟ" позначається звичайна нода, символом "↑" - нода в режимі propagation. Ви можете зберігти ноду у певний аналог "вибраного" - тоді замість хешу буде відображатися її ім'я - наприклад "S0LAR|N0DE".
 
-![img](./img/nomadnet_hypogea_alert_node.png)
+![NomadNet alert node у мережі hypogea](./img/nomadnet_hypogea_alert_node.png)
 
 `nomadnet://81c987e99b3cf649c3957942355085ba:/page/index.mu`
 
@@ -387,7 +387,7 @@ print(tpl)
 ```
     Розмітка починається з символу `` ` ``, далі іде, наприклад `B` - background та три шістнадцяткові цифри. Micron використовує трисимвольну шістнацяткову палітру кольорів. Щоб не рахувати вручну, ось [всі 4096 можливих кольорів у таблицях](https://borderleft.com/toolbox/hex/). `` `r=/ =`l=/ =`c `` - вирівняти елемент по правому краю/лівомукраю/центру. Детальніше дивіться у `[ Guide ]` та в [прикладах](https://github.com/markqvist/NomadNet/tree/master/nomadnet/examples), що ідуть разом з кодом.
 
-    ![img](./img/nomadnet_hellowrold.png)
+    ![Приклад сторінки hello world у NomadNet](./img/nomadnet_hellowrold.png)
 
 
 ### Sideband

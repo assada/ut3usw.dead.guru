@@ -114,7 +114,7 @@ export default function Home() {
     let velocityY = 0;
     let isActive = false;
     let isAnimating = false;
-    
+
     const baseSpeed = 15;
     const maxSpeed = 25;
     const repelForce = 100;
@@ -140,22 +140,22 @@ export default function Home() {
 
     function activateBouncing(event) {
       if (isActive) return;
-      
+
       isActive = true;
-      
+
       staticLogo.classList.add('hidden');
       bouncingImage.classList.add('active');
-      
+
       velocityX = 0;
       velocityY = 0;
-      
+
       let pushDirection = { x: 0, y: 0 };
-      
+
       if (event) {
         const logoRect = staticLogo.getBoundingClientRect();
         const logoCenterX = logoRect.left + logoRect.width / 2;
         const logoCenterY = logoRect.top + logoRect.height / 2;
-        
+
         let clientX, clientY;
         if (event.touches && event.touches[0]) {
           clientX = event.touches[0].clientX;
@@ -164,28 +164,28 @@ export default function Home() {
           clientX = event.clientX;
           clientY = event.clientY;
         }
-        
+
         const dirX = logoCenterX - clientX;
         const dirY = logoCenterY - clientY;
         const distance = Math.sqrt(dirX * dirX + dirY * dirY);
-        
+
         if (distance > 0) {
           pushDirection.x = (dirX / distance) * 8;
           pushDirection.y = (dirY / distance) * 8;
         }
       }
-      
+
       if (Math.abs(pushDirection.x) < 0.1 && Math.abs(pushDirection.y) < 0.1) {
         pushDirection.x = (Math.random() - 0.5) * 6;
         pushDirection.y = -4.0;
       }
-      
+
       setTimeout(() => {
         if (isActive) {
           velocityX = pushDirection.x * 40;
           velocityY = pushDirection.y * 40;
           isAnimating = true;
-          
+
           if (!animationId) {
             animationId = requestAnimationFrame(animateBounce);
           }
@@ -195,17 +195,17 @@ export default function Home() {
 
     function deactivateBouncing() {
       if (!isActive) return;
-      
+
       isActive = false;
       isAnimating = false;
-      
+
       if (animationId) {
         cancelAnimationFrame(animationId);
         animationId = null;
       }
-      
+
       positionAtLogo();
-      
+
       setTimeout(() => {
         staticLogo.classList.remove('hidden');
         bouncingImage.classList.remove('active');
@@ -216,10 +216,10 @@ export default function Home() {
         velocityY = 0;
       }, 300);
     }
-    
+
     let currentTouchId = null;
     let isMouseDown = false;
-    
+
     const iframe = document.querySelector('iframe');
 
     function applyRepelForce(mouseX, mouseY) {
@@ -227,38 +227,38 @@ export default function Home() {
         x: x + imageHalfWidth,
         y: y + imageHalfHeight
       };
-      
+
       const predictedMouseX = mouseX + mouseVelocity.x * predictionMultiplier;
       const predictedMouseY = mouseY + mouseVelocity.y * predictionMultiplier;
-      
+
       const distanceCurrent = Math.sqrt(
         Math.pow(mouseX - imageCenter.x, 2) +
         Math.pow(mouseY - imageCenter.y, 2)
       );
-      
+
       const distancePredicted = Math.sqrt(
         Math.pow(predictedMouseX - imageCenter.x, 2) +
         Math.pow(predictedMouseY - imageCenter.y, 2)
       );
-      
+
       const effectiveMouseX = distancePredicted < distanceCurrent ? predictedMouseX : mouseX;
       const effectiveMouseY = distancePredicted < distanceCurrent ? predictedMouseY : mouseY;
       const effectiveDistance = Math.min(distanceCurrent, distancePredicted);
-      
+
       if (effectiveDistance < detectionRadius && effectiveDistance > 0) {
         const repelX = imageCenter.x - effectiveMouseX;
         const repelY = imageCenter.y - effectiveMouseY;
-        
+
         const normalizedX = repelX / effectiveDistance;
         const normalizedY = repelY / effectiveDistance;
-        
+
         if (effectiveDistance < 100) {
           velocityX = normalizedX * maxSpeed * 0.9;
           velocityY = normalizedY * maxSpeed * 0.9;
         } else {
           const distanceFactor = 1 - (effectiveDistance / detectionRadius);
           let forceMagnitude = repelForce * Math.pow(distanceFactor, 4);
-          
+
           if (effectiveDistance < 150) {
             forceMagnitude *= 4;
           } else if (effectiveDistance < 250) {
@@ -266,10 +266,10 @@ export default function Home() {
           } else if (effectiveDistance < 400) {
             forceMagnitude *= 1.5;
           }
-          
+
           velocityX += normalizedX * forceMagnitude;
           velocityY += normalizedY * forceMagnitude;
-          
+
           const currentSpeed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
           if (currentSpeed > maxSpeed) {
             const scale = maxSpeed / currentSpeed;
@@ -283,20 +283,20 @@ export default function Home() {
     function avoidCorners() {
       const screenWidth = window.innerWidth;
       const screenHeight = window.innerHeight;
-      
+
       const imageCenter = {
         x: x + imageHalfWidth,
         y: y + imageHalfHeight
       };
-      
+
       const distanceToLeft = x;
       const distanceToRight = screenWidth - (x + imageWidth);
       const distanceToTop = y;
       const distanceToBottom = screenHeight - (y + imageHeight);
-      
+
       const minDistanceX = Math.min(distanceToLeft, distanceToRight);
       const minDistanceY = Math.min(distanceToTop, distanceToBottom);
-      
+
       if (minDistanceX < cornerEscapeDistance) {
         const distanceFactor = 1 - (minDistanceX / cornerEscapeDistance);
         const force = cornerEscapeForce * distanceFactor * distanceFactor * distanceFactor;
@@ -306,7 +306,7 @@ export default function Home() {
           velocityX -= force * 3;
         }
       }
-      
+
       if (minDistanceY < cornerEscapeDistance) {
         const distanceFactor = 1 - (minDistanceY / cornerEscapeDistance);
         const force = cornerEscapeForce * distanceFactor * distanceFactor * distanceFactor;
@@ -316,7 +316,7 @@ export default function Home() {
           velocityY -= force * 3;
         }
       }
-      
+
       if (minDistanceX < cornerEscapeDistance && minDistanceY < cornerEscapeDistance) {
         const escapeAngle = Math.atan2(screenHeight / 2 - imageCenter.y, screenWidth / 2 - imageCenter.x);
         const cornerFactor = 1 - Math.min(minDistanceX, minDistanceY) / cornerEscapeDistance;
@@ -328,7 +328,7 @@ export default function Home() {
 
     function animateBounce(currentTime) {
       if (!isAnimating) return;
-      
+
       const deltaTime = (currentTime - lastTime) / 16.67;
       lastTime = currentTime;
 
@@ -341,40 +341,40 @@ export default function Home() {
 
       x += velocityX * deltaTime;
       y += velocityY * deltaTime;
-      
+
       if (iframe) {
         const iframeRect = iframe.getBoundingClientRect();
         const imageBottom = y + imageHeight;
         const imageRight = x + imageWidth;
         const imageTop = y;
         const imageLeft = x;
-        
-        if (imageBottom > iframeRect.top && 
-            imageTop < iframeRect.top && 
-            imageRight > iframeRect.left && 
+
+        if (imageBottom > iframeRect.top &&
+            imageTop < iframeRect.top &&
+            imageRight > iframeRect.left &&
             imageLeft < iframeRect.right &&
             velocityY > 0) {
           y = iframeRect.top - imageHeight;
           velocityY = -Math.abs(velocityY) * 0.8;
         }
-        
-        if (imageTop < iframeRect.bottom && 
+
+        if (imageTop < iframeRect.bottom &&
             imageBottom > iframeRect.top) {
-          if (imageRight > iframeRect.left && 
-              imageLeft < iframeRect.left && 
+          if (imageRight > iframeRect.left &&
+              imageLeft < iframeRect.left &&
               velocityX > 0) {
             x = iframeRect.left - imageWidth;
             velocityX = -Math.abs(velocityX) * 0.8;
           }
-          else if (imageLeft < iframeRect.right && 
-                   imageRight > iframeRect.right && 
+          else if (imageLeft < iframeRect.right &&
+                   imageRight > iframeRect.right &&
                    velocityX < 0) {
             x = iframeRect.right;
             velocityX = Math.abs(velocityX) * 0.8;
           }
         }
       }
-      
+
       if (x + imageWidth > window.innerWidth) {
         x = window.innerWidth - imageWidth;
         velocityX = -Math.abs(velocityX) * 0.9;
@@ -393,7 +393,7 @@ export default function Home() {
       }
 
       const currentSpeed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
-      
+
       if (currentSpeed > baseSpeed) {
         velocityX *= friction;
         velocityY *= friction;
@@ -402,7 +402,7 @@ export default function Home() {
         velocityX *= scale;
         velocityY *= scale;
       }
-      
+
       const clampedSpeed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
       if (clampedSpeed > maxSpeed) {
         const scale = maxSpeed / clampedSpeed;
@@ -413,14 +413,14 @@ export default function Home() {
       bouncingImage.style.transform = `translate(${x}px, ${y}px)`;
       animationId = requestAnimationFrame(animateBounce);
     }
-    
+
     function handleMouseMove(e) {
       const newX = e.clientX;
       const newY = e.clientY;
-      
+
       mouseVelocity.x = newX - lastMousePos.x;
       mouseVelocity.y = newY - lastMousePos.y;
-      
+
       lastMousePos.x = currentMousePos.x;
       lastMousePos.y = currentMousePos.y;
       currentMousePos.x = newX;
@@ -438,20 +438,20 @@ export default function Home() {
     function handleMouseUp() {
       isMouseDown = false;
     }
-    
+
     function handleImageClick(e) {
       if (!isActive) return;
-      
+
       e.stopPropagation();
-      
+
       /* INP_OPTIMIZATION: confetti disabled for performance
       const rect = bouncingImage.getBoundingClientRect();
       const centerX = (rect.left + rect.right) / 2;
       const centerY = (rect.top + rect.bottom) / 2;
-      
+
       const xPos = centerX / window.innerWidth;
       const yPos = centerY / window.innerHeight;
-      
+
       confetti({
         particleCount: 200,
         spread: 120,
@@ -462,7 +462,7 @@ export default function Home() {
         scalar: 1.4,
         ticks: 120,
       });
-      
+
       confetti({
         particleCount: 120,
         spread: 180,
@@ -473,7 +473,7 @@ export default function Home() {
         scalar: 1.0,
         ticks: 140,
       });
-      
+
       confetti({
         particleCount: 80,
         spread: 360,
@@ -486,19 +486,19 @@ export default function Home() {
         ticks: 100,
       });
       */
-      
+
       bouncingImage.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
       bouncingImage.style.opacity = '0';
       bouncingImage.style.transform = `translate(${x}px, ${y}px) scale(0)`;
-      
+
       setTimeout(() => {
         deactivateBouncing();
       }, 300);
     }
-    
+
     function handleTouchStart(e) {
       if (currentTouchId || e.touches.length === 0) return;
-      
+
       const touch = e.touches[0];
       currentTouchId = touch.identifier;
       lastMousePos.x = currentMousePos.x;
@@ -512,10 +512,10 @@ export default function Home() {
       if (touch) {
         const newX = touch.clientX;
         const newY = touch.clientY;
-        
+
         mouseVelocity.x = newX - lastMousePos.x;
         mouseVelocity.y = newY - lastMousePos.y;
-        
+
         lastMousePos.x = currentMousePos.x;
         lastMousePos.y = currentMousePos.y;
         currentMousePos.x = newX;
@@ -534,14 +534,14 @@ export default function Home() {
         mouseVelocity.y = 0;
       }
     }
-    
+
     document.addEventListener('mousemove', handleMouseMove, { passive: true });
     document.addEventListener('mousedown', handleMouseDown, { passive: true });
     document.addEventListener('mouseup', handleMouseUp, { passive: true });
     document.addEventListener('touchstart', handleTouchStart, { passive: true });
     document.addEventListener('touchmove', handleTouchMove, { passive: true });
     document.addEventListener('touchend', handleTouchEnd, { passive: true });
-    
+
     bouncingImage.addEventListener('click', handleImageClick);
     bouncingImage.addEventListener('touchend', (e) => {
       if (e.target === bouncingImage) {
@@ -555,7 +555,7 @@ export default function Home() {
     staticLogo.addEventListener('touchstart', (e) => {
       activateBouncing(e);
     }, { passive: true });
-    
+
     let deactivateTimeout;
     document.addEventListener('mouseleave', () => {
       currentMousePos.x = -1000;
@@ -566,29 +566,29 @@ export default function Home() {
       mouseVelocity.y = 0;
       deactivateTimeout = setTimeout(deactivateBouncing, 2000);
     });
-    
+
     document.addEventListener('mouseenter', () => {
       if (deactivateTimeout) {
         clearTimeout(deactivateTimeout);
         deactivateTimeout = null;
       }
     });
-    
+
     window.addEventListener('resize', () => {
       if (!isActive) {
         positionAtLogo();
       }
     });
-    
+
     return () => {
       if (animationId) {
         cancelAnimationFrame(animationId);
       }
-      
+
       if (deactivateTimeout) {
         clearTimeout(deactivateTimeout);
       }
-      
+
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mousedown', handleMouseDown);
       document.removeEventListener('mouseup', handleMouseUp);
@@ -603,7 +603,7 @@ export default function Home() {
   }, []);
 
   return (
-      <Layout title={`Журнал UT3USW. dead.md`} Add commentMore actions
+      <Layout title={`Журнал UT3USW. dead.md`}
               description="Персональний журнал про радіо, програмування та інженерію від людини.">
         <img id={"bouncing-image"} alt={"dead!"} src={"/img/animation_logo.gif"} width="120" height="120"/>
         <header className={clsx('hero', styles.heroBanner)}>

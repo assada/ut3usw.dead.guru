@@ -1,6 +1,6 @@
 ---
 title: Flipper Zero Українською
-description: Загалні відомості про Flipper Zero
+description: "Українські нотатки про Flipper Zero: загальні можливості, прошивки, RFID/NFC, Sub-GHz, інструменти, обмеження і корисні сценарії використання."
 tags: [hardware, flipper-zero, bad]
 comments: true
 ---

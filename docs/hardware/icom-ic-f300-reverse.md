@@ -1,6 +1,6 @@
 ---
-title: Icom IC-F300 - Реверс
-description: Розбір прошивок для рацій серії Icom IC-F300
+title: Icom IC-F300: Реверс
+description: "Реверс і розбір прошивок для рацій Icom IC-F300, IC-F310 та IC-F320: дампи, структура, програмування, корисні нотатки і технічні посилання."
 tags: [ham, icom, f300, reverse]
 comments: true
 ---

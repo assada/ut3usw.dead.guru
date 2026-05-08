@@ -1,6 +1,6 @@
 ---
-Title: Репорти про сигнали
-Description: Що таке 59 і як працювати з репортами радіозв'язку
+title: Репорти про сигнали
+description: "Пояснення радіоаматорських signal reports: що означає 59, як працюють RST, RS, S-meter, розбірливість, сила сигналу і практичні приклади."
 tags: [ham, radio, signal-reports]
 comments: true
 ---

@@ -1,6 +1,6 @@
 ---
-Title: sway
-Description: Sway, hyprland і шо ваще по wayland?
+title: sway
+description: "Нотатки про Sway, Hyprland, Wayland, Debian, Fedora, Nvidia і особистий досвід переходу між віконними менеджерами в Linux."
 comments: true
 ---
 
@@ -14,7 +14,7 @@ comments: true
 
 **UPD 06.2025:**
 
-Поки я довго думав дописувати статтю, я вже прейшов знову на Fedora, адово намучався з nvidia драйвером та врешті перейшов на hyprland. 
+Поки я довго думав дописувати статтю, я вже прейшов знову на Fedora, адово намучався з nvidia драйвером та врешті перейшов на hyprland.
 
 Я не думаю що ця стаття колись буде відновлена в тому вигляді в котрому вона була =(
 

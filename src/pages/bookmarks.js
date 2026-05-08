@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '@theme/Layout';
+import Head from '@docusaurus/Head';
 import Admonition from '@theme/Admonition';
 import styles from './bookmarks.module.css';
 import BookmarksList from '../components/BookmarksList';
@@ -22,6 +23,9 @@ export default function Bookmarks() {
 
   return (
     <Layout title="Закладки" description="Мої закладки з Twitter">
+      <Head>
+        <meta name="robots" content="noindex,follow" />
+      </Head>
       <main className="container margin-vert--lg">
         <div style={{maxWidth: "800px", flexDirection: "column", margin: "0 auto", display: "flex", justifyContent: "center", alignItems: "center",}}>
         <Admonition type="info" icon="😔" title="Оновлення">
@@ -31,7 +35,7 @@ export default function Bookmarks() {
             Я не зберігаю медіа файли у себе на сервері. А напряму вказую на оригінальні URL-адреси. Тому якщо ви бачите що щось не працює, то спробуйте перейти по оригінальній URL-адресі твіта.
         </Admonition>
         </div>
-      
+
         {isLoading ? (
           <div className={styles.loaderContainer}>
             <div className={styles.loader}></div>
@@ -42,4 +46,4 @@ export default function Bookmarks() {
       </main>
     </Layout>
   );
-} 
+}

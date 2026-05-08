@@ -1,6 +1,6 @@
 ---
-Title: Що таке MMDVM та PI-Star?
-Description: Опис MMDVM та PI-Star
+title: "MMDVM та Pi-Star: що це і як працює"
+description: "Пояснення MMDVM і Pi-Star українською: DMR, D-STAR, YSF, P25, хотспоти на Raspberry Pi, майстер-сервери та базова логіка цифрового радіозв'язку."
 sidebar_class_name: pistar-sidebar
 tags: [ham, mmdvm, pistar, dmr, dstar, ysf, p25]
 comments: true
@@ -30,7 +30,7 @@ DMR, D-STAR, YSF, P25 — радіоаматори дуже полюбляють
 
 Існують як сімплексні так і дуплексні модеми. Для домашнього використання і швидкого старту достатньо придбати сімплексний модем і підключити його до Raspberry Pi Zero W.
 
-### Короткий юзкейс використання MMDVM:
+### Короткий юзкейс використання MMDVM
 
 У вас є DMR (наприклад [hardware/anytone-d878uvII](/docs/hardware/anytone-d878uvII)) рація та у вашого друга з іншої країни є YSF рація. Ви хочете звязатися з ним. Що ви робите?
 

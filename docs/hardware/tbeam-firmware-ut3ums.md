@@ -1,6 +1,6 @@
 ---
 title: Meshtastic для TBEAM
-description: Прошивка TBEAM модему для роботи з Meshtastic
+description: "Нотатки про прошивку T-Beam для Meshtastic і UT3UMS: збірка firmware, PlatformIO, налаштування пристрою, flash-процес і корисні команди."
 tags: [ham, meshtastic, tbeam]
 comments: true
 ---

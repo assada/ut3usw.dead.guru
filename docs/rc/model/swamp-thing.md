@@ -1,3 +1,10 @@
+---
+title: Радіокерована FPV LRS машинка SWAMP THING
+description: "Нотатки про радіокеровану FPV LRS машинку SWAMP THING: ESC, живлення, контролер, GPS, телеметрія, схема підключення і віджет мапи."
+tags: [rc, model, fpv, lrs, telemetry]
+comments: true
+---
+
 # Радіокерована FVP LRS машинка SWAMP THING
 
 ![Загальний Вигляд](./img/aGHKAW5.jpg)

@@ -1,4 +1,6 @@
 ---
+title: Як працює цей сайт і мережа dead.guru
+description: "Технічна нотатка про dead.md і dead.guru: Docusaurus, хостинг, сервіси, автоматизацію, інфраструктуру сайту та пов'язані інструменти."
 sidebar_position: 2
 tags: [intro]
 comments: true

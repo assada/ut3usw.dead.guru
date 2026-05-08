@@ -1,4 +1,6 @@
 ---
+title: Хто тут?
+description: Про автора dead.md, теми сайту, радіоаматорство, embedded, робототехніку, AI-агентів, програмування, контакти та принципи довіри до нотаток.
 sidebar_position: 1
 tags: [intro]
 comments: true
@@ -27,14 +29,14 @@ comments: true
 ## Можна з тобою зв’язатись?
 
 Ви можете запропонувати свою публікацію тут! Я дуже люблю колаборації =)
-Якщо хочете обговорити щось цікаве, доповнити або (по)ставити питання — ось кілька способів зв’язку:  
+Якщо хочете обговорити щось цікаве, доповнити або (по)ставити питання — ось кілька способів зв’язку:
 
-- **IRC**: `irc.dead.guru#dead (@figushki)`  
-- **Email**: `ut3usw(at)gmail.com`  
+- **IRC**: `irc.dead.guru#dead (@figushki)`
+- **Email**: `ut3usw(at)gmail.com`
 - **GitHub**: [github.com/assada](https://github.com/assada)
-- **DMR ID**: `2550574`  
+- **DMR ID**: `2550574`
 
-Цей сайт працює автоматично, тому якщо вам цікаво, як саме – можете глянути [how-it-works.md](/docs/how-it-works). 
+Цей сайт працює автоматично, тому якщо вам цікаво, як саме – можете глянути [how-it-works.md](/docs/how-it-works).
 
 [^1]: Large Language Model - велика мовна модель, тип штучного інтелекту, яка може генерувати текст на основі вхідних даних. https://en.wikipedia.org/wiki/Large_language_model
 [^2]: https://en.wikipedia.org/wiki/AI_slop

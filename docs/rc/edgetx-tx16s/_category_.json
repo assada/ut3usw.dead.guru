@@ -1,0 +1,8 @@
+{
+  "label": "EdgeTX TX16S",
+  "position": 20,
+  "link": {
+    "type": "doc",
+    "id": "rc/edgetx-tx16s/index"
+  }
+}

@@ -1,3 +1,10 @@
+---
+title: RadioMaster TX16S
+description: "Нотатки про RadioMaster TX16S: версії ELRS і 4in1, OpenTX та EdgeTX, зовнішні модулі, SD-карта, оновлення прошивки і телеметрія з GPS."
+tags: [rc, radiomaster, tx16s, elrs, edgetx]
+comments: true
+---
+
 # RadioMaster TX16S
 
 ![Загальний Вигляд](./img/sskDh8j.png)
@@ -20,7 +27,12 @@ ELRS ([rc/general](/docs/rc/general)) версія має вбудований �
 
 ![Віджет мапи](./img/9jEFtnw.jpg)
 
-# Корисні посилання
+## EdgeTX manual українською
+
+Для повної інструкції по меню EdgeTX, Model Setup, Inputs, Mixes, Outputs, Telemetry, Radio Setup, SD-карті та віджетах дивись окремий розділ: [EdgeTX українською для RadioMaster TX16S](/docs/rc/edgetx-tx16s/).
+
+## Корисні посилання
+
 * прошивка https://github.com/EdgeTX/edgetx/releases
 * контент SD карти: https://github.com/EdgeTX/edgetx-sdcard (480×272)
 * озвучка https://github.com/EdgeTX/edgetx-sdcard-sounds

@@ -1,5 +1,8 @@
 ---
+title: RC General
+description: "Базові нотатки про сучасні системи радіокерування: TBS Crossfire, ELRS, Qczek LRS, переваги, недоліки, прошивки та сумісність TX/RX."
 sidebar_position: 1
+tags: [rc, elrs, crossfire, lrs]
 comments: true
 ---
 
