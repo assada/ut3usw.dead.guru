@@ -190,6 +190,167 @@ sudo ./flash.sh
 
 Якщо все добре то ви побачите прогрес бар. І після цього клавіатура оновлена і одразу має працювати без рестарту!
 
+## Troubleshooting
+
+### CM5 з eMMC: перший раз завантажилось, а потім чорний екран
+
+Я вище писав не брати CM5 з eMMC. Ось чому. На Reddit був дуже корисний кейс: людина поставила CM5 16GB з 64GB eMMC в uConsole, залив образ Rex'а, перший запуск пройшов нормально, майстер налаштування відкрився, WiFi завівся. А потім система сама пішла робити великий apt upgrade і десь посередині просто померла.
+
+Симптоми виглядали так:
+
+- екран чорний
+- клавіатура не реагує
+- SSH і мережа відвалились
+- світлодіоди горять
+- довге натискання power нічого не робить
+- допомагає тільки витягнути батареї
+
+Після наступного старту все виглядає як цегла: зелений LED є, картинки нема, мережі нема, SSH нема. Але це не обов'язково смерть. Часто це просто розірваний посередині `dpkg` плюс побитий `/boot/firmware`.
+
+Що там одночасно пішло не так:
+
+1. Під час оновлення мінявся kernel, а стара система ще працювала на старих модулях.
+2. Mesa/vc4 оновлювались прямо під Wayland-сесією.
+3. CM5 грівся на розпаковці і встановленні пакетів.
+4. Живлення від батарей могло просісти саме в момент пікового навантаження.
+
+Тобто тут не одна магічна причина. Це просто дуже невдалий момент для важкого апдейту.
+
+#### EEPROM для CM5 eMMC
+
+Для CM5 з eMMC краще спочатку прошити EEPROM на зовнішній платі типу Waveshare CM5-IO-BASE-A. У тому кейсі нормальною комбінацією був `pieeprom-2025-05-08` і такий `boot.conf`:
+
+```ini
+[all]
+BOOT_UART=1
+POWER_OFF_ON_HALT=1
+BOOT_ORDER=0xf461
+PCIE_DISABLE=1
+SD_BOOT_MAX_RETRIES=2
+SD_QUIRKS=1
+```
+
+А от EEPROM `2025-11-05` для uConsole краще не брати. У людей з ним був цикл: лого, вимкнення, знову лого, знову вимкнення.
+
+Приклад процедури на Linux-хості:
+
+```bash
+cp -r /usr/share/rpiboot/recovery5 /tmp/recovery-uconsole
+cp /lib/firmware/raspberrypi/bootloader-2712/default/pieeprom-2025-05-08.bin /tmp/recovery-uconsole/pieeprom.original.bin
+
+# записати boot.conf з прикладу вище в /tmp/recovery-uconsole/boot.conf
+cd /tmp/recovery-uconsole
+/usr/share/rpiboot/tools/update-pieeprom.sh
+
+# CM5 перевести в BOOT mode і прошити
+sudo rpiboot -d /tmp/recovery-uconsole/
+```
+
+Після цього в логах треба побачити щось типу `EEPROM_UPDATE` і `success`.
+
+#### Відновлення після зламаного apt
+
+Треба витягнути CM5 з uConsole, поставити його на IO-плату, перевести в BOOT mode і підключити до Linux-хоста.
+
+```bash
+sudo rpiboot
+```
+
+eMMC має з'явитись як диск, наприклад `/dev/sda`. Перевіряємо обидва розділи:
+
+```bash
+sudo fsck.fat -aw /dev/sda1
+sudo fsck.ext4 -fy /dev/sda2
+```
+
+Далі монтуємо систему і заходимо в chroot:
+
+```bash
+sudo mount /dev/sda2 /mnt/cm5
+sudo mount /dev/sda1 /mnt/cm5/boot/firmware
+
+for d in proc sys dev dev/pts run; do
+    sudo mount --bind /$d /mnt/cm5/$d
+done
+
+sudo chroot /mnt/cm5 dpkg --configure -a
+```
+
+А тепер важливий момент. `dpkg --configure -a` не завжди все лікує. Він доведе до кінця конфігурацію пакетів, але не повторить нормально фазу розпаковки файлів. Якщо apt помер посеред запису, у `/boot/firmware` можуть лишитись файли на 0 байт або файли з хвостом `.dpkg-new`.
+
+Перевірити:
+
+```bash
+sudo find /mnt/cm5/boot/firmware -size 0 -ls
+sudo find /mnt/cm5/boot/firmware -name "*.dpkg-new" -ls
+```
+
+Якщо побитий саме пакет ядра, треба перевстановити `.deb` напряму з кешу apt. Назва версії може відрізнятись, тому краще підставити її автоматично.
+
+```bash
+KERNEL_DEB="$(basename "$(ls /mnt/cm5/var/cache/apt/archives/clockworkpi-kernel_*.deb | tail -n 1)")"
+sudo chroot /mnt/cm5 dpkg -i "/var/cache/apt/archives/$KERNEL_DEB"
+```
+
+Після цього мають нормально відновитись `kernel_2712.img`, dtb-файли, overlay для uConsole CM5 і initramfs.
+
+Якщо лишились інші `.dpkg-new`, для яких вже нема `.deb` у кеші, їх можна просто перейменувати:
+
+```bash
+sudo find /mnt/cm5/boot/firmware -name "*.dpkg-new" -exec bash -c 'mv "$1" "${1%.dpkg-new}"' _ {} \;
+```
+
+#### Що зробити перед тим, як збирати назад
+
+Я б не збирав одразу. Краще підготувати систему так, щоб наступного разу не розбирати все знову.
+
+Увімкнути SSH:
+
+```bash
+sudo touch /mnt/cm5/boot/firmware/ssh
+sudo chroot /mnt/cm5 systemctl enable ssh
+```
+
+Додати свій SSH-ключ:
+
+```bash
+sudo mkdir -p /mnt/cm5/home/pi/.ssh
+sudo cp ~/.ssh/id_ed25519.pub /mnt/cm5/home/pi/.ssh/authorized_keys
+sudo chown -R 1000:1000 /mnt/cm5/home/pi/.ssh
+sudo chmod 700 /mnt/cm5/home/pi/.ssh
+sudo chmod 600 /mnt/cm5/home/pi/.ssh/authorized_keys
+```
+
+Вимкнути автозапуск `piwiz`, щоб він знову не запустив той самий великий апдейт:
+
+```bash
+sudo bash -c 'echo "Hidden=true" >> /mnt/cm5/etc/xdg/autostart/piwiz.desktop'
+```
+
+Прибрати `quiet splash`, щоб при наступному старті бачити kernel messages, а не просто чорний екран:
+
+```bash
+sudo sed -i 's/ quiet//; s/ splash//; s/ plymouth.ignore-serial-consoles//' /mnt/cm5/boot/firmware/cmdline.txt
+```
+
+Якщо після цього система стартує, але на робочому столі є тільки аплети audio і bluetooth, то це не нова поломка. Просто `lightdm` міг лишитись на автологіні в користувача `rpi-first-boot-wizard`. Змінюємо на нормального користувача:
+
+```bash
+sudo sed -i 's/^autologin-user=rpi-first-boot-wizard/autologin-user=pi/' /etc/lightdm/lightdm.conf
+sudo systemctl restart lightdm
+```
+
+Корисні перевірки після ремонту:
+
+```bash
+lsusb | grep "BCM2712 Boot"
+ls -la /mnt/cm5/boot/firmware/kernel_2712.img
+ls -la /mnt/cm5/boot/firmware/bcm2712-rpi-cm5-cm4io.dtb
+ls -la /mnt/cm5/boot/firmware/overlays/clockworkpi-uconsole-cm5.dtbo
+```
+
+Мораль проста: перший великий апдейт на CM5 краще робити з зарядкою, нормальними батареями і термопрокладкою на BCM2712. А ще краще перед першим запуском вимкнути `piwiz` або хоча б бути готовим, що він сам полізе оновлювати пів системи.
+
 ## Різне корисне
 
 ### Скрипт моніторингу температури
